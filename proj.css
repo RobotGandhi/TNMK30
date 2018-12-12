@@ -44,27 +44,32 @@ body
     background-color: gray;
 }
 
-table, td
-{
-	border: 2px solid black;
-	padding: 10px 40px;
-	
-}
-table
-{border-collapse: collapse;
-margin-left: auto;
-margin-right: auto;
-}
+
+
 
 .menu
 {background: #6a6a6a;
 background: linear-gradient(#a6a6a6, #6a6a6a);
 color: #fff;
-padding: 12px 20px;
 text-decoration: none;
+position:fixed;
+top:0;
+width: 100%;
+font-size: 20px;
 }
 
-.menu td:hover
+.menu li{
+	 padding: 15px 30px;
+	 display:block;
+	 float:left;
+}
+
+.menu li:hover
 {
-	box-shadow: inset 0 0 10px 1px rgba(0, 0, 0, .3);
+	background-color: #555;
+	border-collapse: collapse;
+	}
+
+ul 
+{margin: 0;
 }
