@@ -40,10 +40,10 @@
             if (!$connection){
                 die("No connection to the lego database could be established.");
             }
-            $result = mysqli_query($connection, "SELECT DISTINCT PartID, partname FROM parts LIMIT 100");
+            $result = mysqli_query($connection, "SELECT DISTINCT PartID, partname FROM parts WHERE partname LIKE '%$searchkey%' LIMIT 100");
             print("<table>\n<tr>");
             while($fieldinfo = mysqli_fetch_field($result)) {
-	           print("<th>". $fieldinfo->name . "</th>");
+	           print("<th>".$fieldinfo->name."</th>");
             }
             print("</tr>\n");
             while($row = mysqli_fetch_row($result)){
