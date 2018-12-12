@@ -33,14 +33,14 @@
 		?>
 		</div>
         
-        <div class= "content">
+        <div class="content">
 
             <?php
             $connection = mysqli_connect("mysql.itn.liu.se","lego","","lego");
             if (!$connection){
                 die("No connection to the lego database could be established.");
             }
-            $result = mysqli_query($connection, "SELECT DISTINCT PartID, partname FROM parts WHERE partname LIKE '%$searchkey%' LIMIT 100");
+            $result = mysqli_query($connection, "SELECT DISTINCT PartID, partname FROM parts WHERE partname LIKE '%$searchkey%' ORDER BY PartID DESC LIMIT 100");
             print("<table>\n<tr>");
             while($fieldinfo = mysqli_fetch_field($result)) {
 	           print("<th>".$fieldinfo->name."</th>");
@@ -56,7 +56,7 @@
             ?>
         </div>
         
-        <div class = "footer">
+        <div class="footer">
             <p>This is the footer</p>
         </div>
     </body>
