@@ -3,6 +3,9 @@
 <html>  
     <head>
         <meta charset="UTF-8"/>
+        <title>Search results</title>
+        <meta name="description" content="A site where you can find your lego pieces!"/>
+        <meta name="author" content="Viktor Carlsson, Uma Eriksson, Ruben Bromee, Jessie Chow, Alma Fernvik"/>
         <link rel="stylesheet" href="proj.css" type="text/css"/>
     </head>
     <body>
