@@ -18,9 +18,10 @@
             }
             $result = mysqli_query($connection, "SELECT PartID FROM parts LIMIT 100");
             print("<table>\n<tr>");
-            while($fieldinfo = mysqli_fetch_field($contents)) {
+            while($fieldinfo = mysqli_fetch_field($result)) {
 	           print("<th>". $fieldinfo->name . "</th>");
             }
+            print("</tr>\n</table>")
             ?>
         </div>
         
