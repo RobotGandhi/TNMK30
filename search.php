@@ -12,11 +12,15 @@
         
         <div class= "content">
             <?php
-            $connection = mysqli_connect("mysql.itn.liu.se", "lego", "", "lego");
+            $connection = mysqli_connect("mysql.itn.liu.se","lego","","lego");
             if (!$connection){
                 die("No connection to the lego database could be established.");
             }
-            print("Yey");
+            $result = mysqli_query($connection, "SELECT PartID FROM parts LIMIT 100");
+            print("<table>\n<tr>");
+            while($fieldinfo = mysqli_fetch_field($contents)) {
+	           print("<th>". $fieldinfo->name . "</th>");
+            }
             ?>
         </div>
         
