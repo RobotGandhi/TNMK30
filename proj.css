@@ -1,23 +1,45 @@
 body
 {
-background-color: grey;
+
+    background-color: darkgreen;
+   
+}
+
+.wrapper
+{
+    text-align: center;
 }
 
 .header
 {
-height: 150px;
-width: 80%;
-border-style: double;
-border-color: darkred;
+    display: inline-block;
+    height: 150px;
+    width: 90%;
+    border-style: solid;
+    border-color: #c61300;
+    background-color: gray;
     
 }
 
 .content
 {
+    display:inline-block;
+    width: 90%;
+    height: auto;
+    margin-top: 3%;
+    border-style: solid;
+    border-color: #c61300;
+    background-color: gray;
+   
     
 }
 
 .footer
 {
-    
+    display:inline-block;
+    width: 90%;
+    margin-top: 3%;
+    border-style: solid;
+    border-color: #c61300;
+    background-color: gray;
 }
