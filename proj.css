@@ -48,8 +48,7 @@ body
 
 
 .menu
-{background: #6a6a6a;
-background: linear-gradient(#a6a6a6, #6a6a6a);
+{background: darkgreen;
 color: #fff;
 text-decoration: none;
 position:fixed;
@@ -66,8 +65,9 @@ font-size: 20px;
 
 .menu li:hover
 {
-	background-color: #555;
+	background-color: red;
 	border-collapse: collapse;
+	color: yellow;
 	}
 
 ul 
