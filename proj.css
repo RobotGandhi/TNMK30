@@ -1,0 +1,23 @@
+body
+{
+background-color: grey;
+}
+
+.header
+{
+height: 150px;
+width: 80%;
+border-style: double;
+border-color: darkred;
+    
+}
+
+.content
+{
+    
+}
+
+.footer
+{
+    
+}
