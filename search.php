@@ -25,7 +25,10 @@
 		$searchkey = $_GET['searchkey'];
 		trim($searchkey);
 		$searchkeyarray = str_split($searchkey);
-		
+		foreach($searchkeyarray as $char)
+		{
+			echo (" " .$char. " ");
+		}
 		print(" ".$searchkey." ");
 		?>
 		</div>
@@ -45,7 +48,7 @@
             print("</tr>\n");
             while($row = mysqli_fetch_row($result)){
                 print("<tr>");
-                for($i=0,$i<mysqli_num_fields($result),$i++){
+                for($i=0;$i<mysqli_num_fields($result);$i++){
                     print("<td>".$row[$i]."</td>");
                 }
                 print("</tr>");
