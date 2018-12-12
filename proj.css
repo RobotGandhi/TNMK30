@@ -51,8 +51,9 @@ body
 {background: darkgreen;
 color: #fff;
 text-decoration: none;
-position:fixed;
+position:sticky;
 top:0;
+overflow:hidden;
 width: 100%;
 font-size: 20px;
 margin: 0;
