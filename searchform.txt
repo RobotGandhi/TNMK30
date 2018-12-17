@@ -1,0 +1,4 @@
+<form method="post" action="searchaction.php">
+<input type="text" name="search" placeholder="Search for something..." size="40" class="search">
+<input type="submit" name="submit" value="Search" class="search">
+</form>

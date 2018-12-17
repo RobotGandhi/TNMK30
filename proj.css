@@ -1,8 +1,17 @@
 body
 {
-
     background-color: darkgreen;
-   
+	text-align: center;
+	margin: auto;
+	width: 100%;
+	max-width: 1400px;
+}
+
+div
+{
+	border-radius: 20px;
+
+	
 }
 
 .wrapper
@@ -12,13 +21,13 @@ body
 
 .header
 {
+	
     display: inline-block;
     height: 150px;
     width: 90%;
     border-style: solid;
     border-color: #c61300;
     background-color: gray;
-    
 }
 
 .content
@@ -54,9 +63,10 @@ text-decoration: none;
 position:sticky;
 top:0;
 overflow:hidden;
-width: 100%;
 font-size: 20px;
 margin: 0;
+min-width: 100%
+
 }
 
 .menu li{
@@ -72,3 +82,25 @@ margin: 0;
 	color: yellow;
 	}
 
+.search
+{
+    font-size: 24px;
+}
+
+th, td{
+	text-align: center;
+	font-size: 20px;
+	padding: 15px;
+	
+	border: 1px solid black;	
+
+}
+
+th {
+	
+	font-size: 25px;
+}
+table{
+display: inline-block;
+
+}
