@@ -63,7 +63,7 @@
 			$Partname = $row['Partname'];
 			print("<tr>");
 			print("<td>$PartID</td>");
-			print("<td><a href=\"test.php?part=".$PartID."\">$Partname</a></td>");
+			print("<td><a href=\"searchresult.php?part=".$PartID."\">$Partname</a></td>");
 			print("</tr>");
 			}
 			print("</table>");
