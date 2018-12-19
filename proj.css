@@ -1,26 +1,28 @@
 body
 {
-background-image: url('lego-duplo-2304-lego-duplo-large-green-building-plate-2.jpg');
+    background-image: url('lego-duplo-2304-lego-duplo-large-green-building-plate-2.jpg');
     background-repeat: no-repeat;
+	background-attachment: fixed;
+    background-size: cover;
 	text-align: center;
 	margin: auto;
-	width: 100%;
+	/*width: 100%;
 	max-width: 1400px;
-
-	
-}
-
-img
-{
-opacity: 0.5;	
+	*/
 }
 
 div
 {
 	border-radius: 5px;
-	
 
 	
+}
+
+h1
+{
+	font-size: 32px;
+	font-family: 'Bree Serif', serif;
+
 }
 
 .wrapper
@@ -36,7 +38,7 @@ div
     width: 90%;
     border-style: solid;
     border-color: #c61300;
-     background-color: #f0f8ff;
+    background-color: gray;
 	margin-top: 3%;
 }
 
@@ -48,8 +50,11 @@ div
     margin-top: 3%;
     border-style: solid;
     border-color: #c61300;
-    background: rgba(255, 255, 255, 0.5);
+    background-color: gray;
+	font-family: 'Bree Serif', serif;
 
+	
+	
    
     
 }
@@ -61,15 +66,14 @@ div
     margin-top: 3%;
     border-style: solid;
     border-color: #c61300;
-    background: rgba(255, 255, 255, 0.5);
-	
+    background-color: gray;
 }
 
 
 
-
 .menu
-{display:inline-block;
+{
+display:inline-block;
 background: darkgreen;
 color: #fff;
 text-decoration: none;
@@ -79,7 +83,7 @@ overflow: hidden;
 font-size: 20px;
 margin: 0;
 width: 90%;
-margin-top: 3%;
+
 }
 
 .menu li{
@@ -98,8 +102,6 @@ margin-top: 3%;
 .search
 {
     font-size: 24px;
-	margin-top: 1%;
-
 }
 
 th, td{
@@ -118,13 +120,4 @@ th {
 table{
 display: inline-block;
 
-}
-.logo
-{
-	height: 15px;
-	width: 30px;
-}
-a
-{text-decoration: none;
-color: inherit;
 }
