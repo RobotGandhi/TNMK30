@@ -1,5 +1,5 @@
 <ul class="menu">
-<li>Home</li>
-<li>How To Search</li>
-<li>About Us</li>
+<li><a href="http://www.student.itn.liu.se/~almfe097/tnmk30/Project/homepage.php">Home</a></li>
+<li><a href="http://www.student.itn.liu.se/~almfe097/tnmk30/Project/howtosearch.php">How To Search</a></li>
+<li><a href="http://www.student.itn.liu.se/~almfe097/tnmk30/Project/aboutus.php">About Us</a></li>
 </ul>

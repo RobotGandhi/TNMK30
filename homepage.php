@@ -25,9 +25,13 @@
 		
         </div>
 		
+	
          <?php include("menu.txt");?>
+		
 		 
+		<div class="search"> 
 		 <?php include("searchform.txt");?>
+		 </div>
 		 
       <div class= "content">
         
@@ -45,7 +49,7 @@
 
     <div class = "footer">
         <p>This is the footer</p>
-        
+        <?php include("footer.txt");?>
         <!-- Footer content div closing tag  -->
     </div>
             
