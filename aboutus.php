@@ -30,7 +30,7 @@
 		
 		 
 		<div class="search"> 
-		<p></p>
+		
 		 <?php include("searchform.txt");?>
 		 </div>
 		 
