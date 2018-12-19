@@ -30,7 +30,13 @@
 		$searchkey = $_GET['searchkey'];
 		trim($searchkey);
 		$searchkeyarray = str_split($searchkey);
-		$newsearchkey = "";
+		$searchkeylength = count($searchkeyarray);
+		for($i = 1; $i < $searchkeylength - 1; $i++)
+		{
+			
+		}
+		/*$newsearchkey = "";
+	
 		for($i = 0; $i<count($searchkeyarray); $i++)
 		{
 			if(is_numeric($searchkeyarray[$i]))
@@ -71,7 +77,7 @@
 				}
 			}
 		}
-		print("\n\n\n".$newsearchkey." ");
+		print("\n\n\n".$newsearchkey." ");*/
 		?>
 		</div>
         
@@ -82,7 +88,7 @@
             if (!$connection){
                 die("No connection to the lego database could be established.");
             }
-            $result = mysqli_query($connection, "SELECT DISTINCT * FROM parts WHERE partname LIKE '$searchkey%' ORDER BY length(CatID), CatID, partname ASC LIMIT 300");
+            $result = mysqli_query($connection, "SELECT DISTINCT * FROM parts WHERE partname LIKE '$searchkey%' ORDER BY length(CatID), CatID, partname ASC LIMIT 100");
             print("<table>\n<tr>");
             while($fieldinfo = mysqli_fetch_field($result)) {
 	           print("<th>".$fieldinfo->name."</th>");
