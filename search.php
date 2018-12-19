@@ -25,13 +25,24 @@
 		<!-- Sökresultat efter string management -->
 		<div class="stringresult">
 		<?php
-		$x_amount = 0;
-		$number_amount = 1;
 		$searchkey = $_GET['searchkey'];
 		trim($searchkey);
 		$searchkeyarray = str_split($searchkey);
-		$searchkeylength = count($searchkeyarray);
-		
+		for($i = 0; $i < count($searchkeyarray); $i++) {
+			if ($searchkeyarray[$i] == 'x'){
+				if (is_numeric($searchkeyarray[$i + 1])){
+					array_splice($searchkeyarray, $i + 1, 0, ' ');
+				}
+				if (is_numeric($searchkeyarray[$i - 1])){
+					array_splice($searchkeyarray, $i, 0, ' ');
+					$i++;
+				}
+			}
+		}
+		$searchkey = "";
+		for($i = 0; $i < count($searchkeyarray); $i++){
+			$searchkey .= $searchkeyarray[$i];
+		}
 		?>
 		</div>
         
@@ -42,7 +53,7 @@
             if (!$connection){
                 die("No connection to the lego database could be established.");
             }
-            $result = mysqli_query($connection, "SELECT DISTINCT * FROM parts WHERE partname LIKE '$searchkey%' ORDER BY length(CatID), CatID, partname ASC LIMIT 100");
+            $result = mysqli_query($connection, "SELECT DISTINCT * FROM parts WHERE partname LIKE '%$searchkey%' ORDER BY length(CatID), CatID, partname ASC LIMIT 100");
             print("<table>\n<tr>");
 	        print("<th>PartID</th> <th>Partname</th>");
             print("</tr>\n");
