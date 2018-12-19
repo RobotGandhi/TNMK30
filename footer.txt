@@ -1,0 +1,5 @@
+<p>Contact</p>
+<p>Email: questions@liu.se</p>
+<p>Phone: 013 28 10 00</p>
+<p><a href="http://www.student.itn.liu.se/~almfe097/tnmk30/Project/howtosearch.php">How To Search</a></p>
+<p><a href="http://www.student.itn.liu.se/~almfe097/tnmk30/Project/aboutus.php">About Us</a></p>
