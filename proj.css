@@ -1,6 +1,8 @@
 body
 {
     background-image: url('lego-duplo-2304-lego-duplo-large-green-building-plate-2.jpg');
+    background-repeat: no-repeat;
+    background-size: auto;
 	text-align: center;
 	margin: auto;
 	width: 100%;
