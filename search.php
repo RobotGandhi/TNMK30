@@ -34,7 +34,8 @@
 					array_splice($searchkeyarray, $i + 1, 0, ' ');
 				}
 				if (is_numeric($searchkeyarray[$i - 1])){
-					array_splice($searchkeyarray, $i - 1, 0, ' ');
+					array_splice($searchkeyarray, $i, 0, ' ');
+					$i++;
 				}
 			}
 		}
@@ -42,49 +43,8 @@
 		for($i = 0; $i < count($searchkeyarray); $i++){
 			$searchkey .= $searchkeyarray[$i];
 		}
-		/*$newsearchkey = "";
-	
-		for($i = 0; $i<count($searchkeyarray); $i++)
-		{
-			if(is_numeric($searchkeyarray[$i]))
-			{
-				for($j = 0; $j < 6 && $j + $i < count($searchkeyarray); $j++)
-				{
-					//print(var_dump($searchkeyarray[$i + $j] == 'x'));
-					if($searchkeyarray[$i + $j] == 'x')
-					{
-						if ($j == 0) {
-							//print($searchkeyarray[$i + $j] . " " . var_dump($newsearchkey) . "\n");
-							break;
-						}
-						else{
-							$newsearchkey .= " x";
-							//print($searchkeyarray[$i + $j] . " " . var_dump($newsearchkey) . "\n");
-						}
-					}
-					
-					else if(is_numeric($searchkeyarray[$i + $j]))
-					{
-						if ($j == 0) {
-							$newsearchkey = substr($searchkey, 0, $i + 1);
-							//print(var_dump(substr($searchkey, 0, $i + 1)));
-						}
-						else{
-							$newsearchkey .= " " . $searchkeyarray[$i + $j];
-							//print($searchkeyarray[$i + $j] . " " . var_dump($newsearchkey) . "\n");
-						}
-					}
-					
-					else if($searchkeyarray[$i + $j] != " "){
-						$newsearchkey .= substr($searchkey, $i + $j - 1);
-							//print($searchkeyarray[$i + $j] . " " . var_dump($newsearchkey) . "\n");
-						$i =  $i + $j;
-						break;
-					}
-				}
-			}
-		}
-		print("\n\n\n".$newsearchkey." ");*/
+		print(var_dump($searchkeyarray));
+		print($searchkey);
 		?>
 		</div>
         
@@ -95,7 +55,7 @@
             if (!$connection){
                 die("No connection to the lego database could be established.");
             }
-            $result = mysqli_query($connection, "SELECT DISTINCT * FROM parts WHERE partname LIKE '$searchkey%' ORDER BY length(CatID), CatID, partname ASC LIMIT 100");
+            $result = mysqli_query($connection, "SELECT DISTINCT * FROM parts WHERE partname LIKE '%$searchkey%' ORDER BY length(CatID), CatID, partname ASC LIMIT 100");
             print("<table>\n<tr>");
             while($fieldinfo = mysqli_fetch_field($result)) {
 	           print("<th>".$fieldinfo->name."</th>");
