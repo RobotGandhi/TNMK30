@@ -12,6 +12,10 @@
 	<!-- Google fonts bree serif -->
 	<link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
 	
+	
+	 <meta name="viewport" content="width=device-width, initial-scale=f1.0">
+
+	
 	<title>Homepage</title>
 	
     
