@@ -25,15 +25,22 @@
 		<!-- Sökresultat efter string management -->
 		<div class="stringresult">
 		<?php
-		$x_amount = 0;
-		$number_amount = 1;
 		$searchkey = $_GET['searchkey'];
 		trim($searchkey);
 		$searchkeyarray = str_split($searchkey);
-		$searchkeylength = count($searchkeyarray);
-		for($i = 1; $i < $searchkeylength - 1; $i++)
-		{
-			
+		for($i = 0; $i < count($searchkeyarray); $i++) {
+			if ($searchkeyarray[$i] == 'x'){
+				if (is_numeric($searchkeyarray[$i + 1])){
+					array_splice($searchkeyarray, $i + 1, 0, ' ');
+				}
+				if (is_numeric($searchkeyarray[$i - 1])){
+					array_splice($searchkeyarray, $i - 1, 0, ' ');
+				}
+			}
+		}
+		$searchkey = "";
+		for($i = 0; $i < count($searchkeyarray); $i++){
+			$searchkey .= $searchkeyarray[$i];
 		}
 		/*$newsearchkey = "";
 	
