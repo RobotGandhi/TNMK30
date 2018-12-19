@@ -6,8 +6,14 @@
 <head>
     
      <meta charset="UTF-8"/>
-    <link rel="stylesheet" href="proj.css" type="text/css"/>
+	 
+    <link rel="stylesheet" href="proj.css" type="text/css">
+	
+	<!-- Google fonts bree serif -->
+	<link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
+	
 	<title>Homepage</title>
+	
     
 </head>
     
@@ -25,13 +31,9 @@
 		
         </div>
 		
-	
          <?php include("menu.txt");?>
-		
 		 
-		<div class="search"> 
 		 <?php include("searchform.txt");?>
-		 </div>
 		 
       <div class= "content">
         
@@ -49,7 +51,7 @@
 
     <div class = "footer">
         <p>This is the footer</p>
-        <?php include("footer.txt");?>
+        
         <!-- Footer content div closing tag  -->
     </div>
             
