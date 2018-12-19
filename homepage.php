@@ -11,7 +11,7 @@
     
 </head>
     
-<body background="lego-duplo-2304-lego-duplo-large-green-building-plate-2.jpg">
+<body>
         
  <div class="wrapper">
         
