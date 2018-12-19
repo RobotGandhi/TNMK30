@@ -30,24 +30,45 @@
 		 <?php include("searchform.txt");?>
 		
       <div class= "content">
-	  <h3> Result </h3> 
-<table>
-					<tr>
-						<th>Namn</th>
-						<th>namn:</th>
-						<th>Namn</th>
-						<th>namn:</th>
-					</tr>
-					<tr>
-						<td>test</td>
-						<td>test</td>
-						<td>ja</td>
-						<td>ja</td>
-					</tr>
-					
-				</table>
-        
-         
+	 <?php
+	if(!isset($_GET['part']) || empty($_GET['part'])){
+		die("No PartID found!");
+	}
+	else
+	{
+	$part = $_GET['part'];
+	$prefix = "http://www.itn.liu.se/~stegu76/img.bricklink.com/PL/";
+	$connection = mysqli_connect("mysql.itn.liu.se","lego","","lego");
+            if (!$connection){
+                die("No connection to the lego database could be established.");
+            }
+			
+            $result = mysqli_query($connection, "SELECT DISTINCT parts.PartID, parts.partname, images.ItemTypeID, images.ItemID, images.has_largegif, images.has_largejpg FROM parts, images WHERE parts.PartID = '$part' AND images.ItemID=parts.PartID AND images.ItemTypeID='P'");
+            print("<table>\n<tr>");
+	        print("<th>Image</th> <th>PartID</th> <th>Partname</th> ");
+            print("</tr>\n");
+            while($row = mysqli_fetch_array($result))
+			{
+            $PartID = $row['PartID'];
+			$Partname = $row['partname'];
+			$Imagesource = $prefix . $PartID;
+			if($row['has_largejpg'])
+			{
+				$Imagesource .= ".jpg";
+			}
+			else if($row['has_largegif'])
+			{
+				$Imagesource .= ".gif";
+			}
+			print("<tr>");
+			print("<td> <img src=\"$Imagesource\"></td>");
+			print("<td>$PartID</td>");
+			print("<td>$Partname</td>");
+			print("</tr>");
+			}
+			print("</table>");
+	}
+	 ?>
             <!-- content content div closing tag  -->
         </div>
 		

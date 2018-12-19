@@ -1,12 +1,18 @@
 body
 {
- background-image: url('lego-duplo-2304-lego-duplo-large-green-building-plate-2.jpg');
+background-image: url('lego-duplo-2304-lego-duplo-large-green-building-plate-2.jpg');
     background-repeat: no-repeat;
-    background-size: cover;
 	text-align: center;
 	margin: auto;
 	width: 100%;
 	max-width: 1400px;
+
+	
+}
+
+img
+{
+opacity: 0.5;	
 }
 
 div
@@ -30,7 +36,7 @@ div
     width: 90%;
     border-style: solid;
     border-color: #c61300;
-    background-color: gray;
+     background-color: #f0f8ff;
 	margin-top: 3%;
 }
 
@@ -42,7 +48,8 @@ div
     margin-top: 3%;
     border-style: solid;
     border-color: #c61300;
-    background-color: gray;
+    background: rgba(255, 255, 255, 0.5);
+
    
     
 }
@@ -54,7 +61,8 @@ div
     margin-top: 3%;
     border-style: solid;
     border-color: #c61300;
-    background-color: gray;
+    background: rgba(255, 255, 255, 0.5);
+	
 }
 
 
@@ -90,6 +98,8 @@ margin-top: 3%;
 .search
 {
     font-size: 24px;
+	margin-top: 1%;
+
 }
 
 th, td{
