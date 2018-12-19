@@ -25,26 +25,13 @@
 		<!-- Sökresultat efter string management -->
 		<div class="stringresult">
 		<?php
+		$x_amount = 0;
+		$number_amount = 1;
 		$searchkey = $_GET['searchkey'];
 		trim($searchkey);
 		$searchkeyarray = str_split($searchkey);
-		for($i = 0; $i < count($searchkeyarray); $i++) {
-			if ($searchkeyarray[$i] == 'x'){
-				if (is_numeric($searchkeyarray[$i + 1])){
-					array_splice($searchkeyarray, $i + 1, 0, ' ');
-				}
-				if (is_numeric($searchkeyarray[$i - 1])){
-					array_splice($searchkeyarray, $i, 0, ' ');
-					$i++;
-				}
-			}
-		}
-		$searchkey = "";
-		for($i = 0; $i < count($searchkeyarray); $i++){
-			$searchkey .= $searchkeyarray[$i];
-		}
-		print(var_dump($searchkeyarray));
-		print($searchkey);
+		$searchkeylength = count($searchkeyarray);
+		
 		?>
 		</div>
         
@@ -55,19 +42,19 @@
             if (!$connection){
                 die("No connection to the lego database could be established.");
             }
-            $result = mysqli_query($connection, "SELECT DISTINCT * FROM parts WHERE partname LIKE '%$searchkey%' ORDER BY length(CatID), CatID, partname ASC LIMIT 100");
+            $result = mysqli_query($connection, "SELECT DISTINCT * FROM parts WHERE partname LIKE '$searchkey%' ORDER BY length(CatID), CatID, partname ASC LIMIT 100");
             print("<table>\n<tr>");
-            while($fieldinfo = mysqli_fetch_field($result)) {
-	           print("<th>".$fieldinfo->name."</th>");
-            }
+	        print("<th>PartID</th> <th>Partname</th>");
             print("</tr>\n");
-            while($row = mysqli_fetch_row($result)){
-                print("<tr>");
-                for($i=0;$i<mysqli_num_fields($result);$i++){
-                    print("<td>".$row[$i]."</td>");
-                }
-                print("</tr>\n");
-            }
+            while($row = mysqli_fetch_array($result))
+			{
+            $PartID = $row['PartID'];
+			$Partname = $row['Partname'];
+			print("<tr>");
+			print("<td>$PartID</td>");
+			print("<td><a href=\"test.php?part=".$PartID."\">$Partname</a></td>");
+			print("</tr>");
+			}
 			print("</table>");
             ?>
         </div>
