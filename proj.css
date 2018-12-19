@@ -11,7 +11,7 @@ body
 
 div
 {
-	border-radius: 20px;
+	border-radius: 5px;
 
 	
 }
@@ -30,6 +30,7 @@ div
     border-style: solid;
     border-color: #c61300;
     background-color: gray;
+	margin-top: 3%;
 }
 
 .content
@@ -57,17 +58,18 @@ div
 
 
 
-
 .menu
-{background: darkgreen;
+{
+display:inline-block;
+background: darkgreen;
 color: #fff;
 text-decoration: none;
-position:sticky;
-top:0;
-overflow:hidden;
+position: sticky;
+top: 0;
+overflow: hidden;
 font-size: 20px;
 margin: 0;
-min-width: 100%
+width: 90%;
 
 }
 
