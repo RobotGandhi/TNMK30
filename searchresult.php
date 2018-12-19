@@ -44,6 +44,9 @@
             }
 			
             $result = mysqli_query($connection, "SELECT DISTINCT parts.PartID, parts.partname, images.ItemTypeID, images.ItemID, images.has_largegif, images.has_largejpg FROM parts, images WHERE parts.PartID = '$part' AND images.ItemID=parts.PartID AND images.ItemTypeID='P'");
+			if($result->num_rows == 0){
+				$result = mysqli_query($connection, "SELECT DISTINCT PartID, partname FROM parts WHERE PartID = '$part'");
+			}
             print("<table>\n<tr>");
 	        print("<th>Image</th> <th>PartID</th> <th>Partname</th> ");
             print("</tr>\n");
@@ -55,13 +58,21 @@
 			if($row['has_largejpg'])
 			{
 				$Imagesource .= ".jpg";
+				$Imageexists = true;
 			}
 			else if($row['has_largegif'])
 			{
 				$Imagesource .= ".gif";
+				$Imageexists = true;
+			}
+			else{
+				$Imageexists = false;
 			}
 			print("<tr>");
-			print("<td> <img src=\"$Imagesource\"></td>");
+			if ($Imageexists)
+				print("<td> <img src=\"$Imagesource\"></td>");
+			else
+				print("<td>No image avaliable!</td>");
 			print("<td>$PartID</td>");
 			print("<td>$Partname</td>");
 			print("</tr>");
