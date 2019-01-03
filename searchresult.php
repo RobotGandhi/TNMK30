@@ -39,12 +39,15 @@
 	{
 	$part = $_GET['part'];
 	$prefix = "http://www.itn.liu.se/~stegu76/img.bricklink.com/PL/";
+	$prefix_colors = "http://www.itn.liu.se/~stegu76/img.bricklink.com/P/";
 	$connection = mysqli_connect("mysql.itn.liu.se","lego","","lego");
             if (!$connection){
                 die("No connection to the lego database could be established.");
             }
 			
             $result = mysqli_query($connection, "SELECT DISTINCT parts.PartID, parts.partname, images.ItemTypeID, images.ItemID, images.has_largegif, images.has_largejpg FROM parts, images WHERE parts.PartID = '$part' AND images.ItemID=parts.PartID AND images.ItemTypeID='P'");
+			$result_colors = mysqli_query($connection, "SELECT DISTINCT inventory.ItemID, colors.ColorID, colors.Colorname, images.ItemID, images.has_gif, images.has_jpg FROM inventory, colors, images WHERE 
+			inventory.ItemID='$part' AND inventory.ColorID=colors.ColorID AND inventory.ItemID=images.ItemID LIMIT 10");
 			if($result->num_rows == 0){
 				$result = mysqli_query($connection, "SELECT DISTINCT PartID, partname FROM parts WHERE PartID = '$part'");
 			}
@@ -79,23 +82,48 @@
 			print("</tr>");
 			}
 			print("</table>");
-	}
-	 ?>
-            <!-- content content div closing tag  -->
+	
+	
+        print("
         </div>
 		
-		<div class= "contentParent">
+		<div class=\"contentParent\">
 		
-		<div class ="leftCol">
+		<div class=\"leftCol\">
 		<p> related parts </p>
-		</div>
+		</div>");
 		
-		<div class ="leftCol">
-		<p> related parts </p>
-		</div>
-		
-		</div>
-    
+		print("<div class=\"leftCol\">");
+		print("<table>\n<tr>");
+		print("<th>Image</th> <th>Partname</th> <th>Colorname</th>");
+		print("</tr>");
+		while($row_colors = mysqli_fetch_array($result_colors))
+		{
+			$Colorname = $row_colors['Colorname'];
+			$ColorID = $row_colors['ColorID'];
+			$Imagesource_colors = $prefix_colors . "/" . $ColorID . "/" . $part;
+			print("<tr>");
+			if($row_colors['has_gif'])
+			{
+				print("<td><img src=\"$Imagesource_colors".".gif"."\" onerror=\"this.onerror=null;this.src='$Imagesource_colors".".jpg"."'\">");
+			}
+			else if($row_colors['has_jpg'])
+			{
+				print("<td><img src=\"$Imagesource_colors".".jpg"."\" onerror=\"this.onerror=null;this.src='$Imagesource_colors".".gif"."'\">");
+			}
+			else
+			{
+				print("<td> No image available! </td>");
+			}
+			print("<td>$Partname</td>");
+			print("<td>$Colorname</td>");
+			print("</tr>");
+		}
+		print("</table>");
+		print("</div>");
+		print("</div>");
+	}
+    ?>
     
 
     <div class = "footer">
