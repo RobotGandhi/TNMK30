@@ -1,18 +1,24 @@
+
+
 body
 {
-    background-image: url('lego-duplo-2304-lego-duplo-large-green-building-plate-2.jpg');
+    /*
+	background-image: url('lego-duplo-2304-lego-duplo-large-green-building-plate-2.jpg');
     background-repeat: no-repeat;
 	background-attachment: fixed;
     background-size: cover;
+	*/
+	background-color: green;
 	text-align: center;
 	margin: auto;
-	/*width: 100%;
-	max-width: 1400px;
-	*/
+	width: 100%
+	height: auto;
+	
 }
 
 div
 {
+	/* Alla divvar ska ha samma rundade kanter*/
 	border-radius: 5px;
 
 	
@@ -20,7 +26,7 @@ div
 
 h1
 {
-	font-size: 32px;
+	
 	font-family: 'Bree Serif', serif;
 
 }
@@ -28,13 +34,15 @@ h1
 .wrapper
 {
     text-align: center;
+	width: 100%;
+
 }
 
 .header
 {
-	
+
     display: inline-block;
-    height: 150px;
+    height: 30%;
     width: 90%;
     border-style: solid;
     border-color: #c61300;
@@ -52,6 +60,7 @@ h1
     border-color: #c61300;
     background-color: #b3e6b3	;
 	font-family: 'Bree Serif', serif;
+	font-size: 18px;
  
 }
 
@@ -61,12 +70,53 @@ h1
     width: 90%;
     margin-top: 3%;
     border-style: solid;
+	/* Merry Chrysler */
     border-color: #c61300;
     background-color: #b3e6b3;
+}
+/*
+ul
+{
+
+	padding-inline-start: 0px;
+}
+*/
+
+nav ul {
+	width: 90%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  top: 0;
+  overflow: hidden;
+  background-color: darkgreen;
+  	position: sticky;
+	margin: auto;
+	justify-content: space-around;
+	font-size: 20px;
+	
+}
+
+nav li {
+  float: left;
+  
+}
+
+nav li a {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+nav li a:hover {
+  background-color: red;
 }
 
 
 
+/*
 .menu
 {
 	
@@ -77,6 +127,7 @@ h1
 	position: sticky;
 	top: 0;
 	overflow: hidden;
+	
 	font-size: 20px;
 	margin: 0;
 	width: 90%;
@@ -95,6 +146,8 @@ h1
 	border-collapse: collapse;
 	color: yellow;
 	}
+	
+	*/
 
 .search
 {
@@ -126,7 +179,58 @@ table{
 @media only screen and (min-width: 150px) and (max-width: 600px)
 {
 	/* add the thingies */
+
+p 
+{
+	font-size: 130%;
 }
+
+.wrapper
+{
+
+}	
+	
+.header 
+{
+    font-size: 95%;
+	height: 40%;
+	width: 95%;
+
+}
+
+.content
+{
+	margin-bottom:10%;
+	
+	width: 95%;
+	margin: auto;
+	overflow: scroll;
+
+
+}
+
+.footer
+{
+	display: none;
+	
+	
+}
+.search
+{
+	width: 90%;
+}
+
+nav ul
+{
+	width: 100 vw;
+	font-size: 30px;
+	
+}
+
+
+}
+
+
 
 
 

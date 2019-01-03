@@ -12,8 +12,9 @@
 	<!-- Google fonts bree serif -->
 	<link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
 	
+	<!-- resposive -->
 	
-	 <meta name="viewport" content="width=device-width, initial-scale=f1.0">
+	 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	
 	<title>Homepage</title>
@@ -29,7 +30,8 @@
     
         <div class ="header">
        
-        <h1>This is the header</h1>
+        <h1>This is my mexican accent</h1>
+		<h2>Chungus is fat</h2>
 		
 		
 		
