@@ -11,16 +11,17 @@
     
 </head>
     
-<body background="lego-duplo-2304-lego-duplo-large-green-building-plate-2.jpg">
+<body>
         
+	<!-- Parent wrapper div -->
+	
  <div class="wrapper">
         
      
-    
+   <!-- header wrapper div -->
         <div class ="header">
        
         <h1>This is the header</h1>
-		
 		
 		
         </div>
@@ -32,7 +33,7 @@
       <div class= "content">
 	 <?php
 	if(!isset($_GET['part']) || empty($_GET['part'])){
-		die("No PartID found!");
+		die("<p>No PartID found!</p>");// Denna rad skapar ogiltig html BTW
 	}
 	else
 	{
@@ -83,8 +84,16 @@
             <!-- content content div closing tag  -->
         </div>
 		
-		<div class= "content">
-		<h3> related parts </h3>
+		<div class= "contentParent">
+		
+		<div class ="leftCol">
+		<p> related parts </p>
+		</div>
+		
+		<div class ="leftCol">
+		<p> related parts </p>
+		</div>
+		
 		</div>
     
     
