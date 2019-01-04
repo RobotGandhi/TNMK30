@@ -82,18 +82,24 @@ ul
 }
 */
 
+nav
+{
+position: sticky;	
+top: 0;
+}
+
 nav ul {
+	display: inline-block;
+	margin-top: 3%;
 	width: 90%;
   list-style-type: none;
   margin: 0;
   padding: 0;
-  top: 0;
   overflow: hidden;
   background-color: darkgreen;
-  	position: sticky;
-	margin: auto;
 	justify-content: space-around;
 	font-size: 20px;
+	font-family: 'Bree Serif', serif;
 	
 }
 
@@ -222,8 +228,10 @@ p
 
 nav ul
 {
-	width: 100 vw;
-	font-size: 30px;
+	width: 100%;
+	font-size: 15px;
+	
+
 	
 }
 
