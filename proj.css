@@ -30,6 +30,16 @@ h1
 	font-family: 'Bree Serif', serif;
 
 }
+/*
+.Icon
+{
+   background-image: url(LegoFinder.png);
+   width: 331px;
+   height:144px;
+   background-size: 331px 144px;
+}
+
+*/
 
 .wrapper
 {
@@ -42,12 +52,16 @@ h1
 {
 
     display: inline-block;
-    height: 30%;
+    height: 40%;
     width: 90%;
-    border-style: solid;
+    border-style: hidden;
     border-color: #c61300;
-    background-color: #b3e6b3;
+   /* background-color: #b3e6b3; */
+      background-image: url(LegoFinder.png);
+	  background-repeat: no-repeat;
+	  background-position: center;
 	margin-top: 3%;
+	text-align: center;
 }
 
 .content
