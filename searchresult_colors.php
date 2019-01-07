@@ -5,9 +5,33 @@
     <meta charset="UTF-8"/>
     <link rel="stylesheet" href="proj.css" type="text/css"/>
     <title>Search result colors</title>
+	<link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
+
+<div class="wrapper">
+    <div class ="header">
+       
+        <h1>LegoFinder</h1>
+		<!--<h2>Chungus is fat</h2> -->
+		</div>
+		
+		<nav>
+
+<ul>
+<li><a href="Homepage_V2.php">Home</a></li>
+<li><a href="howtosearch.php">How To Search</a></li>
+<li><a href="aboutus.php">About Us</a></li>
+</ul>
+
+</nav>
+
+<div class ="content">
+        
+       
+		
 <?php
 $ItemID        = $_GET['ItemID'];
 $ColorID       = $_GET['ColorID'];
@@ -19,6 +43,7 @@ if (!$connection) {
 
 $result_sets = mysqli_query($connection, "SELECT inventory.SetID, inventory.ItemID, inventory.ColorID, sets.SetID, sets.Setname, sets.Year FROM inventory, sets WHERE inventory.ItemID='$ItemID' AND inventory.ColorID='$ColorID' AND inventory.SetID=sets.SetID");
 $result_part = mysqli_query($connection, "SELECT colors.ColorID, colors.Colorname, parts.PartID, parts.Partname FROM colors, parts WHERE colors.ColorID='$ColorID' AND parts.PartID='$ItemID'");
+print("<div class=\"colorinfo\">");
 
 $row = mysqli_fetch_array($result_part);
 print("<table>");
@@ -30,6 +55,9 @@ print("<td><img src='$prefix_colors/$ColorID/$ItemID.gif' onerror='this.onerror=
 print("</tr>");
 print("</table>");
 
+print("</div>");
+
+print("<div class=\"idfk\">");
 
 print("<table>");
 print("<tr>");
@@ -44,8 +72,13 @@ while ($row = mysqli_fetch_array($result_sets)) {
                 print("<td>$Setname</td>");
                 print("<td>$Year</td>");
                 print("</tr>");
+				
+print("</div>");
 }
 print("</table>");
 ?>
+
+</div>
+</div>
 </body>
 </html>
