@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-
+<?php
+	error_reporting(E_ALL);
+	ini_set("display_errors",1);
+?>
 <html>  
     <head>
         <meta charset="UTF-8"/>
@@ -14,8 +17,8 @@
 	<div class="wrapper">
     <div class ="header">
        
-        <h1>LegoFinder</h1>
-		<!--<h2>Chungus is fat</h2> -->
+        <h1>This is my mexican accent</h1>
+		<h2>Chungus is fat</h2>
 		</div>
 		
 		<nav>
@@ -73,6 +76,15 @@ if (!$connection) {
     die("No connection to the lego database could be established.");
 }
 $result = mysqli_query($connection, "SELECT DISTINCT * FROM parts WHERE partname LIKE '%$searchkey%' OR PartID LIKE '%$searchkey%' ORDER BY length(CatID), CatID, partname ASC LIMIT 100");
+$number_of_results_parts = 0;
+while(mysqli_fetch_array($result))
+{
+	$number_of_results_parts++;
+}
+echo $number_of_results_parts; 
+
+mysqli_data_seek($result, 0);
+
 print("<table>\n<tr>");
 print("<th>PartID</th> <th>Partname</th>");
 print("</tr>\n");
@@ -85,6 +97,7 @@ while ($row = mysqli_fetch_array($result)) {
     print("</tr>");
 }
 print("</table>");
+
 		}
 ?>
        </div>
