@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<?php
-	error_reporting(E_ALL);
-	ini_set("display_errors",1);
-?>
+
 <html>
 <head>
     <meta charset="UTF-8"/>
@@ -34,7 +31,7 @@
         
 
        
-		
+		<div class= "content">
      <?php
 if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
     die("<p>No results found!</p>"); 
@@ -52,20 +49,12 @@ if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
     if ($result->num_rows == 0) {
         $result = mysqli_query($connection, "SELECT DISTINCT PartID, partname FROM parts WHERE PartID = '$part_selected'");
     }
-	
-	$row = mysqli_fetch_array($result);
-	$Partname    = $row['partname'];
-	print("<div class\"breadcrumbs\">");
-	print("<a href=\"Homepage_V2.php\"> Home </a>");
-	print("/");
-	print("$Partname");
-	print("</div>");
-	print("<div class=\"content\">");
     print("<table>\n<tr>");
     print("<th>Image</th> <th>PartID</th> <th>Partname</th> ");
     print("</tr>\n");
-    
+    while ($row = mysqli_fetch_array($result)) {
         $PartID      = $row['PartID'];
+        $Partname    = $row['partname'];
         $Imagesource = $prefix . $PartID;
         if ($row['has_largejpg']) {
             $Imagesource .= ".jpg";
@@ -83,7 +72,7 @@ if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
             print("<td>No image avaliable!</td>");
         print("<td>$PartID</td> <td>$Partname</td>");
         print("</tr>");
-    
+    }
     print("</table>");
     
     
@@ -108,7 +97,6 @@ if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
         print("<td>$Partname</td>");
         print("<td><a href='searchresult_colors.php?ItemID=" . $part_selected . "&ColorID=" . $ColorID . "'> $Colorname </a> </td>");
         print("</tr>");
-		$number_of_results_colors++;
     }
     print("</table>");
     print("</div>");
