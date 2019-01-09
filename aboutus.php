@@ -8,6 +8,10 @@
      <meta charset="UTF-8"/>
     <link rel="stylesheet" href="proj.css" type="text/css"/>
 	<title>About Us</title>
+	<meta name="description" content="A site where you can find your lego parts and see what set they're in!"/>
+        <meta name="author" content="Viktor Carlsson, Uma Eriksson, Ruben Bromee, Jessie Chow, Alma Fernvik"/>
+		<link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
     
 </head>
     
@@ -20,19 +24,19 @@
         <div class ="header">
        
         <h1>This is the header</h1>
+		</div>
 		
+		<nav>
+
+<ul>
+<li><a href="Homepage_V2.php">Home</a></li>
+<li><a href="howtosearch.php">How To Search</a></li>
+<li><a href="aboutus.php">About Us</a></li>
+</ul>
+
+</nav>
 		
-		
-        </div>
-		
-	
-         <?php include("menu.txt");?>
-		
-		 
-		<div class="search"> 
-		
-		 <?php include("searchform.txt");?>
-		 </div>
+       
 		 
       <div class= "content">
         
@@ -49,7 +53,9 @@
 
     <div class = "footer">
         <p>This is the footer</p>
-		<?php include("footer.txt");?>
+		<p>Contact</p>
+<p>Email: questions@liu.se</p>
+<p>Phone: 013 28 10 00</p>
         
         <!-- Footer content div closing tag  -->
     </div>
