@@ -17,8 +17,9 @@
 	<div class="wrapper">
     <div class ="header">
        
-        <h1>This is my mexican accent</h1>
-		<h2>Chungus is fat</h2>
+        <h1>LegoFinder</h1>
+		 
+	
 		</div>
 		
 		<nav>
@@ -35,9 +36,9 @@
         
         <!-- Sökruta -->
         <div class="searchbar">
-        <form action="Homepage_V2.php" method="get">
-        <table>
-        <tr><td> <input type="text" name="searchkey" placeholder="Search for a lego part using name or PartID" size="40"></td></tr>
+        <form action="Homepage_V2.php" method="get" >
+        <table class ="searchtable">
+        <tr><td> <input class="search" type="text" name="searchkey" placeholder="Search for a lego part using name or PartID" size="40"></td></tr>
         </table>
         </form>
         </div>
