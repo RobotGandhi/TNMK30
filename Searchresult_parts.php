@@ -51,13 +51,14 @@ if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
     
     if (isset($_GET['searchkey']) && !empty($_GET['searchkey'])) {
     $color_search = $_GET['searchkey'];
-    $result_colors = mysqli_query($connection, "SELECT DISTINCT inventory.ItemID, colors.ColorID, colors.Colorname, images.ItemID, images.has_gif, images.has_jpg FROM inventory, colors, images WHERE inventory.ItemID='$part_selected' AND inventory.ColorID=colors.ColorID AND inventory.ItemID=images.ItemID AND colors.Colorname LIKE '%$color_search%' LIMIT 10");
+    $result_colors = mysqli_query($connection, "SELECT DISTINCT inventory.ItemID, colors.ColorID, colors.Colorname, images.ItemID FROM inventory, colors, images WHERE inventory.ItemID='$part_selected' AND inventory.ColorID=colors.ColorID AND inventory.ItemID=images.ItemID AND colors.Colorname LIKE '%$color_search%'");
     } else {
-    $result_colors = mysqli_query($connection, "SELECT DISTINCT inventory.ItemID, colors.ColorID, colors.Colorname, images.ItemID, images.has_gif, images.has_jpg FROM inventory, colors, images WHERE inventory.ItemID='$part_selected' AND inventory.ColorID=colors.ColorID AND inventory.ItemID=images.ItemID LIMIT 10");
+    $result_colors = mysqli_query($connection, "SELECT DISTINCT inventory.ItemID, colors.ColorID, colors.Colorname, images.ItemID FROM inventory, colors, images WHERE inventory.ItemID='$part_selected' AND inventory.ColorID=colors.ColorID AND inventory.ItemID=images.ItemID");
     }
     if ($result->num_rows == 0) {
         $result = mysqli_query($connection, "SELECT DISTINCT PartID, partname FROM parts WHERE PartID = '$part_selected'");
     }
+	print(var_dump($result_colors->num_rows));
 	$row = mysqli_fetch_array($result);
 	$Partname    = $row['partname'];
 	print("<div class\"breadcrumbs\">");
@@ -98,7 +99,7 @@ if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
     print("<form action='Searchresult_parts.php' method='get'>");
     print("<table>");
     print("<tr><td> <input type='text' name='searchkey' placeholder='Search for your color' size='40'></td></tr>");
-    print("<input type='hidden' name='PartID' value='$part_selected'>")
+    print("<input type='hidden' name='PartID' value='$part_selected'>");
     print("</table>");
     print("</form>");
     print("</div>");
@@ -113,13 +114,7 @@ if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
         $ColorID            = $row_colors['ColorID'];
         $Imagesource_colors = $prefix_colors . "/" . $ColorID . "/" . $part_selected;
         print("<tr>");
-        if ($row_colors['has_gif']) {
-            print("<td><img src='$Imagesource_colors.gif' onerror='this.onerror=null;this.src=\"$Imagesource_colors.jpg\"'>");
-        } else if ($row_colors['has_jpg']) {
-            print("<td><img src='$Imagesource_colors.jpg' onerror='this.onerror=null;this.src=\"$Imagesource_colors.gif\"'>");
-        } else {
-            print("<td> No image available! </td>");
-        }
+        print("<td><img src='$Imagesource_colors.gif' onerror='this.onerror=null;this.src=\"$Imagesource_colors.jpg\"' alt='No image avaliable!'>");
         print("<td>$Partname</td>");
         print("<td><a href='searchresult_colors.php?ItemID=" . $part_selected . "&ColorID=" . $ColorID . "'> $Colorname </a> </td>");
         print("</tr>");
