@@ -3,7 +3,7 @@
 body
 {
    
-	background-color: green;
+	background-color: honeydew;
 	text-align: center;
 	margin: auto;
 	width: 100%
@@ -38,7 +38,7 @@ h1
 {
 
     display: inline-block;
-    height: 40%;
+    height: auto;
     width: 90%;
     border-style: hidden;
     border-color: #c61300;
@@ -46,6 +46,10 @@ h1
       background-image: url(LegoFinder.png);
 	  background-repeat: no-repeat;
 	  background-position: center;
+	  background-size: auto;
+	  padding-top: 2%;
+	  padding-bottom:2%;
+	  margin-top: 1%;
 
 	text-align: center;
 
@@ -75,13 +79,6 @@ h1
     border-color: #c61300;
     background-color: #b3e6b3;
 }
-/*
-ul
-{
-
-	padding-inline-start: 0px;
-}
-*/
 
 nav
 {
@@ -127,24 +124,39 @@ nav li a:hover {
 display: inline-block;
 }
 
-
+/*
 .idfk
 {
 display: inline-block;
 
 }
 
+
+/*Searchbar*/
 .search
 {
 	margin-top: 1%;
     font-size: 24px;
+	border: none;
+
+}
+/*Div around searchbar */
+.searchbar
+{
+	border-style: hidden;
+}
+
+/*Remove border around searchbar*/
+.searchtable th, td
+{
+	
+	border: none !important;
 }
 
 th, td{
 	text-align: center;
 	font-size: 20px;
 	padding: 15px;
-	
 	border: 1px solid black;	
 
 }
@@ -153,11 +165,19 @@ th {
 	
 	font-size: 25px;
 }
+
+tr:nth-child(even) {
+  background-color: #f2f2f2
+}
+
 table{
 
     display: inline-block;
+	border-collapse: collapse;
 
 }
+
+
 
 /* Responsive thingie */
 
@@ -180,6 +200,7 @@ p
     font-size: 95%;
 	height: 40%;
 	width: 95%;
+	margin-top: 3%;
 
 }
 
