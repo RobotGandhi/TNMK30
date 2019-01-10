@@ -17,9 +17,8 @@
 	<div class="wrapper">
     <div class ="header">
        
-        <h1>LegoFinder</h1>
-		 
-	
+        <h1>Lego finder</h1>
+		<h2>Search for a lego part and see what set it's in</h2>
 		</div>
 		
 		<nav>
@@ -36,9 +35,10 @@
         
         <!-- Sökruta -->
         <div class="searchbar">
-        <form action="Homepage_V2.php" method="get" >
-        <table class ="searchtable">
-        <tr><td> <input class="search" type="text" name="searchkey" placeholder="Search for a lego part using name or PartID" size="40"></td></tr>
+        <form action="Homepage_V2.php" method="get">
+        <table>
+        <tr><td> <input type="text" name="searchkey" placeholder="Search for a lego part using name or PartID" size="40"></td></tr>
+		<input type="hidden" name="pagenumber" value="1">
         </table>
         </form>
         </div>
@@ -49,6 +49,11 @@
 		if(isset($_GET['searchkey']) && $_GET['searchkey'] != NULL)
 		{
 $searchkey = $_GET['searchkey'];
+$pagenumber = $_GET['pagenumber'];
+$offset = ($pagenumber-1) * 15;
+$previous_page = $pagenumber - 1;
+$next_page = $pagenumber + 1;
+var_dump($offset);
 trim($searchkey);
 $searchkeyarray = str_split($searchkey);
 for ($i = 0; $i < count($searchkeyarray); $i++) {
@@ -82,13 +87,14 @@ while(mysqli_fetch_array($result))
 {
 	$number_of_results_parts++;
 }
-echo $number_of_results_parts; 
+echo $number_of_results_parts;
 
-mysqli_data_seek($result, 0);
+$visible_result = mysqli_query($connection, "SELECT DISTINCT * FROM parts WHERE partname LIKE '%$searchkey%' OR PartID LIKE '%$searchkey%' ORDER BY length(CatID), CatID, partname ASC LIMIT 15 OFFSET $offset"); 
+
 print("<table>\n<tr>");
 print("<th>PartID</th> <th>Partname</th>");
 print("</tr>\n");
-while ($row = mysqli_fetch_array($result)) {
+while ($row = mysqli_fetch_array($visible_result)) {
     $PartID   = $row['PartID'];
     $Partname = $row['Partname'];
     print("<tr>");
@@ -97,8 +103,24 @@ while ($row = mysqli_fetch_array($result)) {
     print("</tr>");
 }
 print("</table>");
+echo
+" 
+<form action='Homepage_V2.php' method='get'>\n
+<button type='submit' name='pagenumber' value='$previous_page'> Previous page </button>
+<input type='hidden' name='searchkey' value='$searchkey'>
+";
+echo
+"
+<form action='Homepage_V2.php' method='get'>\n
+<button type='submit' name='pagenumber' value='$next_page'>Next page</button>
+<input type='hidden' name='searchkey' value='$searchkey'>
+";
 		}
+
 ?>
+
+
+</form> 
        </div>
         
         <div class="footer">
