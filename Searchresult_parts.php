@@ -39,7 +39,7 @@
 if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
     die("<p>No results found!</p>"); 
 } else {
-    $part_selected          = $_GET['PartID'];
+    $part_selected = $_GET['PartID'];
     $prefix        = "http://www.itn.liu.se/~stegu76/img.bricklink.com/PL/";
     $prefix_colors = "http://www.itn.liu.se/~stegu76/img.bricklink.com/P/";
     $connection    = mysqli_connect("mysql.itn.liu.se", "lego", "", "lego");
@@ -48,7 +48,13 @@ if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
     }
     
     $result        = mysqli_query($connection, "SELECT DISTINCT parts.PartID, parts.partname, images.ItemTypeID, images.ItemID, images.has_largegif, images.has_largejpg FROM parts, images WHERE parts.PartID = '$part_selected' AND images.ItemID=parts.PartID AND images.ItemTypeID='P'");
+    
+    if (isset($_GET['searchkey']) && !empty($_GET['searchkey'])) {
+    $color_search = $_GET['searchkey'];
+    $result_colors = mysqli_query($connection, "SELECT DISTINCT inventory.ItemID, colors.ColorID, colors.Colorname, images.ItemID, images.has_gif, images.has_jpg FROM inventory, colors, images WHERE inventory.ItemID='$part_selected' AND inventory.ColorID=colors.ColorID AND inventory.ItemID=images.ItemID AND colors.Colorname = '$color_search' LIMIT 10");
+    } else {
     $result_colors = mysqli_query($connection, "SELECT DISTINCT inventory.ItemID, colors.ColorID, colors.Colorname, images.ItemID, images.has_gif, images.has_jpg FROM inventory, colors, images WHERE inventory.ItemID='$part_selected' AND inventory.ColorID=colors.ColorID AND inventory.ItemID=images.ItemID LIMIT 10");
+    }
     if ($result->num_rows == 0) {
         $result = mysqli_query($connection, "SELECT DISTINCT PartID, partname FROM parts WHERE PartID = '$part_selected'");
     }
@@ -85,9 +91,17 @@ if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
         print("</tr>");
     
     print("</table>");
-    
-    
     print("</div>");
+    
+    
+    print("<div class='searchbar'>");
+    print("<form action='Searchresult_parts.php' method='get'>");
+    print("<table>");
+    print("<tr><td> <input type='text' name='searchkey' placeholder='Search for your color' size='40'></td></tr>");
+    print("</table>");
+    print("</form>");
+    print("</div>");
+        
     print("<div class='content'>");
     print("<p>Available colors</p>");
     print("<table>\n<tr>");
