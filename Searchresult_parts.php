@@ -51,7 +51,7 @@ if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
     
     if (isset($_GET['searchkey']) && !empty($_GET['searchkey'])) {
     $color_search = $_GET['searchkey'];
-    $result_colors = mysqli_query($connection, "SELECT DISTINCT inventory.ItemID, colors.ColorID, colors.Colorname, images.ItemID, images.has_gif, images.has_jpg FROM inventory, colors, images WHERE inventory.ItemID='$part_selected' AND inventory.ColorID=colors.ColorID AND inventory.ItemID=images.ItemID AND colors.Colorname = '$color_search' LIMIT 10");
+    $result_colors = mysqli_query($connection, "SELECT DISTINCT inventory.ItemID, colors.ColorID, colors.Colorname, images.ItemID, images.has_gif, images.has_jpg FROM inventory, colors, images WHERE inventory.ItemID='$part_selected' AND inventory.ColorID=colors.ColorID AND inventory.ItemID=images.ItemID AND colors.Colorname LIKE '$color_search' LIMIT 10");
     } else {
     $result_colors = mysqli_query($connection, "SELECT DISTINCT inventory.ItemID, colors.ColorID, colors.Colorname, images.ItemID, images.has_gif, images.has_jpg FROM inventory, colors, images WHERE inventory.ItemID='$part_selected' AND inventory.ColorID=colors.ColorID AND inventory.ItemID=images.ItemID LIMIT 10");
     }
@@ -98,6 +98,7 @@ if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
     print("<form action='Searchresult_parts.php' method='get'>");
     print("<table>");
     print("<tr><td> <input type='text' name='searchkey' placeholder='Search for your color' size='40'></td></tr>");
+    print("<input type='hidden' name='PartID' value='$part_selected'>")
     print("</table>");
     print("</form>");
     print("</div>");
