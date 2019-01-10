@@ -53,7 +53,6 @@ $pagenumber = $_GET['pagenumber'];
 $offset = ($pagenumber-1) * 15;
 $previous_page = $pagenumber - 1;
 $next_page = $pagenumber + 1;
-var_dump($offset);
 trim($searchkey);
 $searchkeyarray = str_split($searchkey);
 for ($i = 0; $i < count($searchkeyarray); $i++) {
@@ -82,12 +81,6 @@ if (!$connection) {
     die("No connection to the lego database could be established.");
 }
 $result = mysqli_query($connection, "SELECT DISTINCT * FROM parts WHERE partname LIKE '%$searchkey%' OR PartID LIKE '%$searchkey%' ORDER BY length(CatID), CatID, partname ASC LIMIT 100");
-$number_of_results_parts = 0;
-while(mysqli_fetch_array($result))
-{
-	$number_of_results_parts++;
-}
-echo $number_of_results_parts;
 
 $visible_result = mysqli_query($connection, "SELECT DISTINCT * FROM parts WHERE partname LIKE '%$searchkey%' OR PartID LIKE '%$searchkey%' ORDER BY length(CatID), CatID, partname ASC LIMIT 15 OFFSET $offset"); 
 
