@@ -82,8 +82,16 @@ if (!$connection) {
     die("No connection to the lego database could be established.");
 }
 $result = mysqli_query($connection, "SELECT DISTINCT * FROM parts WHERE partname LIKE '%$searchkey%' OR PartID LIKE '%$searchkey%' ORDER BY length(CatID), CatID, partname ASC LIMIT 100");
+ $amount_of_results = 0;
+ while(mysqli_fetch_array($result))
+ {
+	 $amount_of_results ++;
+ }
+ 
+ $amount_of_resultpages = ceil(($amount_of_results/15));
 
 $visible_result = mysqli_query($connection, "SELECT DISTINCT * FROM parts WHERE partname LIKE '%$searchkey%' OR PartID LIKE '%$searchkey%' ORDER BY length(CatID), CatID, partname ASC LIMIT 15 OFFSET $offset"); 
+
 
 print("<table>\n<tr>");
 print("<th>PartID</th> <th>Partname</th>");
@@ -97,23 +105,40 @@ while ($row = mysqli_fetch_array($visible_result)) {
     print("</tr>");
 }
 print("</table>");
-if($pagenumber != 1)
+if($pagenumber != 1 && $pagenumber != $amount_of_resultpages)
 {
-echo
-"
-<form action='Homepage_V2.php' method='get'>\n
-<button type='submit' name='pagenumber' value='$next_page'>Next page</button>
-<input type='hidden' name='searchkey' value='$searchkey'>
-";
-}
-else
-{
-echo
-" 
+echo" 
 <form action='Homepage_V2.php' method='get'>\n
 <button type='submit' name='pagenumber' value='$previous_page'> Previous page </button>
 <input type='hidden' name='searchkey' value='$searchkey'>
 ";
+echo"$pagenumber";
+echo"/";
+echo"$amount_of_resultpages";
+echo
+"
+<form action='Homepage_V2.php' method='get'>\n
+<button type='submit' name='pagenumber' value='$next_page'>Next page</button>
+<input type='hidden' name='searchkey' value='$searchkey'>
+";
+
+}
+else if($pagenumber == $amount_of_resultpages)
+{
+	echo" 
+<form action='Homepage_V2.php' method='get'>\n
+<button type='submit' name='pagenumber' value='$previous_page'> Previous page </button>
+<input type='hidden' name='searchkey' value='$searchkey'>
+";
+echo"$pagenumber";
+echo"/";
+echo"$amount_of_resultpages";
+}
+else
+{
+echo"$pagenumber";
+echo"/";
+echo"$amount_of_resultpages";
 echo
 "
 <form action='Homepage_V2.php' method='get'>\n
@@ -121,6 +146,7 @@ echo
 <input type='hidden' name='searchkey' value='$searchkey'>
 ";
 }
+
 		}
 
 ?>
