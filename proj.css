@@ -67,8 +67,10 @@ h1
     border-style: solid;
     border-color: #c61300;
     background-color: #b3e6b3;
+
 }
 
+/*Menu div, making the menu follow along */
 nav
 {
 	position: sticky;
@@ -104,11 +106,13 @@ nav li a {
   
 }
 
+/* change color while hovering over menu button */
 nav li a:hover 
 {
 	background-color: red;
 }
-	
+
+/* put part above the other colors */	
 .colorinfo
 {
 	display: inline-block;

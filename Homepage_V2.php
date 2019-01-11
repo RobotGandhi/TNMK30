@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+
+=======
+>>>>>>> de441834d4a15349b6f2b3efd09557b391c7e649
 <!DOCTYPE html>
 <?php
 	error_reporting(E_ALL);
