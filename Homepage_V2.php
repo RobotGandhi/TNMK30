@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> de441834d4a15349b6f2b3efd09557b391c7e649
 <!DOCTYPE html>
 <?php
 	error_reporting(E_ALL);
@@ -40,6 +43,7 @@
         <table class ="searchtable">
         <tr><td> <input class="search" type="text" name="searchkey" placeholder="Search for a lego part using name or PartID" size="40"></td></tr>
 		<input type="hidden" name="pagenumber" value="1">
+		<button type="submit"> Search </button> 
         </table>
         </form>
         </div>
@@ -82,8 +86,16 @@ if (!$connection) {
     die("No connection to the lego database could be established.");
 }
 $result = mysqli_query($connection, "SELECT DISTINCT * FROM parts WHERE partname LIKE '%$searchkey%' OR PartID LIKE '%$searchkey%' ORDER BY length(CatID), CatID, partname ASC LIMIT 100");
+ $amount_of_results = 0;
+ while(mysqli_fetch_array($result))
+ {
+	 $amount_of_results ++;
+ }
+ 
+ $amount_of_resultpages = ceil(($amount_of_results/15));
 
 $visible_result = mysqli_query($connection, "SELECT DISTINCT * FROM parts WHERE partname LIKE '%$searchkey%' OR PartID LIKE '%$searchkey%' ORDER BY length(CatID), CatID, partname ASC LIMIT 15 OFFSET $offset"); 
+
 
 print("<table>\n<tr>");
 print("<th>PartID</th> <th>Partname</th>");
@@ -97,18 +109,48 @@ while ($row = mysqli_fetch_array($visible_result)) {
     print("</tr>");
 }
 print("</table>");
-echo
-" 
+if($pagenumber != 1 && $pagenumber != $amount_of_resultpages)
+{
+echo" 
 <form action='Homepage_V2.php' method='get'>\n
 <button type='submit' name='pagenumber' value='$previous_page'> Previous page </button>
 <input type='hidden' name='searchkey' value='$searchkey'>
 ";
+echo"$pagenumber";
+echo"/";
+echo"$amount_of_resultpages";
 echo
 "
 <form action='Homepage_V2.php' method='get'>\n
 <button type='submit' name='pagenumber' value='$next_page'>Next page</button>
 <input type='hidden' name='searchkey' value='$searchkey'>
 ";
+
+}
+else if($pagenumber == $amount_of_resultpages)
+{
+	echo" 
+<form action='Homepage_V2.php' method='get'>\n
+<button type='submit' name='pagenumber' value='$previous_page'> Previous page </button>
+<input type='hidden' name='searchkey' value='$searchkey'>
+";
+echo"$pagenumber";
+echo"/";
+echo"$amount_of_resultpages";
+}
+else
+{
+echo"$pagenumber";
+echo"/";
+echo"$amount_of_resultpages";
+echo
+"
+<form action='Homepage_V2.php' method='get'>\n
+<button type='submit' name='pagenumber' value='$next_page'>Next page</button>
+<input type='hidden' name='searchkey' value='$searchkey'>
+";
+}
+
 		}
 
 ?>
