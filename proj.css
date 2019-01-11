@@ -6,6 +6,7 @@ body
 	margin: auto;
 	width: 100%
 	height: auto;
+	
 }
 
 div
@@ -64,6 +65,7 @@ h1
 	height: 20%;
     width: 90%;
     margin-top: 3%;
+	margin-bottom: 1%;
     border-style: solid;
     border-color: #c61300;
     background-color: #b3e6b3;
@@ -127,18 +129,30 @@ display: inline-block;
 */
 
 /*Searchbar*/
-.search
+.searchbar
 {
 	margin-top: 1%;
+	height: 25px;
     font-size: 24px;
 	border-style: double;
 	border-color: #b3e6b3;
 }
 
 /*Div around searchbar */
-.searchbar
+.searchdiv
 {
+	
 	border-style: hidden;
+}
+.button
+{
+	border-style: solid;
+	border-color: #b3e6b3;
+
+	height: 25px;
+	margin-top: 1%;
+	
+	
 }
 
 /*Remove border around searchbar*/
@@ -160,6 +174,7 @@ th
 	font-size: 25px;
 }
 
+/* Striped table */
 tr:nth-child(even) 
 {
   background-color: #f2f2f2
@@ -208,7 +223,7 @@ p
 	
 	
 }
-.search
+.searchbar
 {
 	width: 90%;
 }
