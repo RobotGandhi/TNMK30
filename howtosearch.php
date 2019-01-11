@@ -40,13 +40,13 @@
 
  
         <!-- Sökruta -->
-        <div class="searchbar">
+        <div class="searchdiv">
         <form action="Homepage_V2.php" method="get" >
-        <table class ="searchtable">
-        <tr><td> <input class="search" type="text" name="searchkey" placeholder="Search for a lego part using name or PartID" size="40"></td></tr>
+       
+        <input class="searchbar" type="text" name="searchkey" placeholder="Search for a lego part using name or PartID" size="40">
 		<input type="hidden" name="pagenumber" value="1">
-		<button type="submit"> Search </button> 
-        </table>
+		<button class ="button" type="submit"> Search </button> 
+       
         </form>
         </div>
 		
