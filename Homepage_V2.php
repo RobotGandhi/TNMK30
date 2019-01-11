@@ -34,7 +34,7 @@
         
         <!-- Sökruta -->
         <div class="searchdiv">
-        <form action="Homepage_V2.php" method="get" >
+        <form class="formbitch" action="Homepage_V2.php" method="get" >
         <input class="searchbar" type="text" name="searchkey" placeholder="Search for a lego part using name or PartID" size="40">
 		<input type="hidden" name="pagenumber" value="1">
 		<button class ="button" type="submit"> Search </button> 

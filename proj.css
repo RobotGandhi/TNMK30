@@ -132,8 +132,8 @@ display: inline-block;
 .searchbar
 {
 	margin-top: 1%;
-	height: 25px;
-    font-size: 24px;
+	height: 30px;
+    font-size: 20px;
 	border-style: double;
 	border-color: #b3e6b3;
 }
@@ -148,9 +148,14 @@ display: inline-block;
 {
 	border-style: solid;
 	border-color: #b3e6b3;
+	height: 30px;
 
-	height: 25px;
-	margin-top: 1%;	
+	
+}
+.formbitch
+{
+	margin-top: 1%;
+	height: 28px;
 }
 
 /*Remove border around searchbar*/
@@ -217,13 +222,30 @@ p
 
 .footer
 {
-	display: none;
+
 	
 	
 }
+
+.formbitch
+{
+	margin-top: 3%;
+	height: 28px;
+	margin-bottom: 10%;
+}
+
+.button
+{
+	margin-top: 1%;
+	width: 70px;
+}
+
 .searchbar
 {
+	height: 20px;
 	width: 90%;
+	font-size:15px;
+
 }
 .nav
 {
