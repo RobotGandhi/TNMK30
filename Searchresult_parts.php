@@ -116,7 +116,7 @@ if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
         print("<tr>");
         print("<td><img src='$Imagesource_colors.gif' onerror='this.onerror=null;this.src=\"$Imagesource_colors.jpg\"' alt='No image avaliable!'>");
         print("<td>$Partname</td>");
-        print("<td><a href='searchresult_colors.php?ItemID=" . $part_selected . "&ColorID=" . $ColorID . "'> $Colorname </a> </td>");
+        print("<td><a href='searchresult_colors.php?ItemID=" . $part_selected . "&ColorID=" . $ColorID . "&pagenumber=1'> $Colorname </a> </td>");
         print("</tr>");
     }
     print("</table>");
