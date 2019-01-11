@@ -59,6 +59,7 @@ $offset = ($pagenumber-1) * 15;
 $previous_page = $pagenumber - 1;
 $next_page = $pagenumber + 1;
 trim($searchkey);
+$searchkey = htmlentities($searchkey);
 $searchkeyarray = str_split($searchkey);
 for ($i = 0; $i < count($searchkeyarray); $i++) {
     if ($searchkeyarray[$i] == 'x') {
@@ -85,6 +86,7 @@ $connection = mysqli_connect("mysql.itn.liu.se", "lego", "", "lego");
 if (!$connection) {
     die("No connection to the lego database could be established.");
 }
+$searchkey = mysqli_real_escape_string($connection, $searchkey);
 $result = mysqli_query($connection, "SELECT DISTINCT * FROM parts WHERE partname LIKE '%$searchkey%' OR PartID LIKE '%$searchkey%' ORDER BY length(CatID), CatID, partname ASC LIMIT 100");
  $amount_of_results = 0;
  while(mysqli_fetch_array($result))
@@ -96,7 +98,7 @@ $result = mysqli_query($connection, "SELECT DISTINCT * FROM parts WHERE partname
 
 $visible_result = mysqli_query($connection, "SELECT DISTINCT * FROM parts WHERE partname LIKE '%$searchkey%' OR PartID LIKE '%$searchkey%' ORDER BY length(CatID), CatID, partname ASC LIMIT 15 OFFSET $offset"); 
 
-
+echo"$searchkey";
 print("<table>\n<tr>");
 print("<th>PartID</th> <th>Partname</th>");
 print("</tr>\n");

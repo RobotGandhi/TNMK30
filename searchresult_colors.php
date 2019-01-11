@@ -29,7 +29,6 @@
 <?php
 $pagenumber = $_GET['pagenumber'];
 $offset = ($pagenumber-1) * 15;
-var_dump($offset);
 $previous_page = $pagenumber - 1;
 $next_page = $pagenumber + 1;
 $ItemID        = $_GET['ItemID'];
