@@ -27,6 +27,11 @@
 
 </nav>
 <?php
+$pagenumber = $_GET['pagenumber'];
+$offset = ($pagenumber-1) * 15;
+var_dump($offset);
+$previous_page = $pagenumber - 1;
+$next_page = $pagenumber + 1;
 $ItemID        = $_GET['ItemID'];
 $ColorID       = $_GET['ColorID'];
 $prefix_colors = "http://www.itn.liu.se/~stegu76/img.bricklink.com/P/";
@@ -36,6 +41,17 @@ if (!$connection) {
 }
 
 $result_sets = mysqli_query($connection, "SELECT inventory.SetID, inventory.ItemID, inventory.ColorID, sets.SetID, sets.Setname, sets.Year FROM inventory, sets WHERE inventory.ItemID='$ItemID' AND inventory.ColorID='$ColorID' AND inventory.SetID=sets.SetID");
+
+$result_sets_visible = mysqli_query($connection, "SELECT inventory.SetID, inventory.ItemID, inventory.ColorID, sets.SetID, sets.Setname, sets.Year FROM inventory, sets WHERE inventory.ItemID='$ItemID' AND inventory.ColorID='$ColorID' AND inventory.SetID=sets.SetID LIMIT 15 OFFSET $offset");
+
+$amount_of_results = 0;
+
+while(mysqli_fetch_array($result_sets))
+{
+	$amount_of_results ++;
+}
+$amount_of_resultpages = ceil(($amount_of_results/15));
+
 $result_part = mysqli_query($connection, "SELECT colors.ColorID, colors.Colorname, parts.PartID, parts.Partname FROM colors, parts WHERE colors.ColorID='$ColorID' AND parts.PartID='$ItemID'");
 
 $row_part = mysqli_fetch_array($result_part);
@@ -63,7 +79,7 @@ print("<table>");
 print("<tr>");
 print("<th>SetID</th> <th>Setname</th> <th>Year</th>");
 print("</tr>");
-while ($row = mysqli_fetch_array($result_sets)) {
+while ($row = mysqli_fetch_array($result_sets_visible)) {
 				$SetID   = $row['SetID'];
                 $Setname = $row['Setname'];
                 $Year    = $row['Year'];
@@ -75,6 +91,57 @@ while ($row = mysqli_fetch_array($result_sets)) {
 }
 print("</table>");
 print("</div>");
+if($pagenumber != 1 && $pagenumber != $amount_of_resultpages)
+{
+echo" 
+<form action='searchresult_colors.php' method='get'>
+<input type='hidden' name='ItemID' value='$ItemID'>
+<input type='hidden' name='ColorID' value='$ColorID'>
+<button type='submit' name='pagenumber' value='$previous_page'> Previous page </button>
+</form>
+
+";
+echo"$pagenumber";
+echo"/";
+echo"$amount_of_resultpages";
+echo
+"
+<form action='searchresult_colors.php' method='get'>
+<input type='hidden' name='ItemID' value='$ItemID'>
+<input type='hidden' name='ColorID' value='$ColorID'>
+<button type='submit' name='pagenumber' value='$next_page'>Next page</button>
+</form>
+";
+
+}
+else if($pagenumber == $amount_of_resultpages)
+{
+	echo" 
+<form action='searchresult_colors.php' method='get'>
+<input type='hidden' name='ItemID' value='$ItemID'>
+<input type='hidden' name='ColorID' value='$ColorID'>
+<button type='submit' name='pagenumber' value='$previous_page'> Previous page </button>
+</form>
+";
+echo"$pagenumber";
+echo"/";
+echo"$amount_of_resultpages";
+}
+else
+{
+echo"$pagenumber";
+echo"/";
+echo"$amount_of_resultpages";
+echo
+"
+<form action='searchresult_colors.php' method='get'>
+<input type='hidden' name='ItemID' value='$ItemID'>
+<input type='hidden' name='ColorID' value='$ColorID'>
+<button type='submit' name='pagenumber' value='$next_page'>Next page</button>
+</form>
+";
+}
+
 ?>
 </div>
 </body>
