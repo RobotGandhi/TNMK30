@@ -58,7 +58,6 @@ if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
     if ($result->num_rows == 0) {
         $result = mysqli_query($connection, "SELECT DISTINCT PartID, partname FROM parts WHERE PartID = '$part_selected'");
     }
-	print(var_dump($result_colors->num_rows));
 	$row = mysqli_fetch_array($result);
 	$Partname    = $row['partname'];
 	print("<div class\"breadcrumbs\">");
@@ -100,6 +99,7 @@ if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
     print("<table>");
     print("<tr><td> <input type='text' name='searchkey' placeholder='Search for your color' size='40'></td></tr>");
     print("<input type='hidden' name='PartID' value='$part_selected'>");
+	echo"<button type='submit'> Filter </button>"; 
     print("</table>");
     print("</form>");
     print("</div>");

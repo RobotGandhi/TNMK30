@@ -58,7 +58,6 @@ print("<td><img src='$prefix_colors/$ColorID/$ItemID.gif' onerror='this.onerror=
 print("</tr>");
 print("</table>");
 print("</div>");
-
 print("<div class=\"content\">");
 print("<table>");
 print("<tr>");

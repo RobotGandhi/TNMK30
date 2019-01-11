@@ -1,4 +1,3 @@
-Jeff
 <!DOCTYPE html>
 <?php
 	error_reporting(E_ALL);
@@ -40,6 +39,7 @@ Jeff
         <table class ="searchtable">
         <tr><td> <input class="search" type="text" name="searchkey" placeholder="Search for a lego part using name or PartID" size="40"></td></tr>
 		<input type="hidden" name="pagenumber" value="1">
+		<button type="submit"> Search </button> 
         </table>
         </form>
         </div>
@@ -97,6 +97,17 @@ while ($row = mysqli_fetch_array($visible_result)) {
     print("</tr>");
 }
 print("</table>");
+if($pagenumber != 1)
+{
+echo
+"
+<form action='Homepage_V2.php' method='get'>\n
+<button type='submit' name='pagenumber' value='$next_page'>Next page</button>
+<input type='hidden' name='searchkey' value='$searchkey'>
+";
+}
+else
+{
 echo
 " 
 <form action='Homepage_V2.php' method='get'>\n
@@ -109,6 +120,7 @@ echo
 <button type='submit' name='pagenumber' value='$next_page'>Next page</button>
 <input type='hidden' name='searchkey' value='$searchkey'>
 ";
+}
 		}
 
 ?>

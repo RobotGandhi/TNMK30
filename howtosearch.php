@@ -45,6 +45,7 @@
         <table class ="searchtable">
         <tr><td> <input class="search" type="text" name="searchkey" placeholder="Search for a lego part using name or PartID" size="40"></td></tr>
 		<input type="hidden" name="pagenumber" value="1">
+		<button type="submit"> Search </button> 
         </table>
         </form>
         </div>
