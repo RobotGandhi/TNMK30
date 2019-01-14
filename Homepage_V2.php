@@ -15,7 +15,24 @@
     </head>
     <body>
 	<div class="wrapper">
-	<?php include("headermenu.txt");?>
+		<a class="icon" href="Homepage_V2.php">
+    <div class ="header">
+       
+		
+        <h1>Lego finder</h1>
+		</div>
+		
+		</a>
+		
+		<nav>
+
+<ul>
+<li><a href="Homepage_V2.php">Home</a></li>
+<li><a href="howtosearch.php">How To Search</a></li>
+<li><a href="aboutus.php">About Us</a></li>
+</ul>
+
+</nav>
         
         <!-- Sökruta -->
         <div class="searchdiv">
@@ -26,7 +43,7 @@
         </form>
         </div>
 		
-		
+		<div class="content">
         
         <!-- Sökresultat efter string management -->
         
@@ -79,7 +96,7 @@ if(isset($_GET['searchkey']) && $_GET['searchkey'] != NULL) {
 	
 
 
-print("<div class='pagenavigation'>");
+
 
 	//Show results if there are any
 	if($amount_of_results != 0) {
@@ -133,9 +150,16 @@ print("<div class='pagenavigation'>");
 }
 ?>
 
+</div>
+
 
 </form> 
-        <?php include("footer.txt");?>
+       <div class="footer">
+            <p>This is the footer</p>
+			<p>Contact</p>
+<p>Email: questions@liu.se</p>
+<p>Phone: 013 28 10 00</p>
+        </div>
 		</div>
     </body>
 </html>
