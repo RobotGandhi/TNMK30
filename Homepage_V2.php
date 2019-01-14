@@ -78,7 +78,7 @@ if(isset($_GET['searchkey']) && $_GET['searchkey'] != NULL) {
 	$amount_of_results = $result->num_rows;
 	
 
-
+print("<h1>Choose the type of part you're looking for:</h1>");
 print("<div class='pagenavigation'>");
 
 	//Show results if there are any

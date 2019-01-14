@@ -37,7 +37,12 @@
       <div class= "content">
         
             <h1>How to search</h1>
-			<p>This database is dedicated to search for any piece of Lego in this database. It is possible to search for any piece and then see which set it belongs to, and also every variation of it.</p>
+			<p>Step 1: Search for the type of part you're looking for by typing in either its name or its PartID into the searchbar. <br> Then press either the "Search" button with your mouse or press the "Enter" button on your keyboard<br>
+			<br>
+			Step 2: Choose the type of part you're looking by clicking the partname with your mouse.<br>
+			Step 3: Choose the color of the part you have chosen. You can filter the colors by typing any available color in the filter bar and either pressing the "Filter" button with your mouse or the "Enter" button on your keyboard.<br>
+			You can navigate back to the type of part you have chosen by using the breadcrumb menu that appears at the upper part of your screen. You can navigate to the homepage at any time by pressing the "Home" button in either the breadcrumb menu, the header menu or by pressing the red lego brick at the top of your screen. 
+			</p>
             <!-- content content div closing tag  -->
         </div>
     

@@ -57,7 +57,7 @@ if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
 	//Query for each page visible in the result
 	$result_colors = mysqli_query($connection, "SELECT DISTINCT inventory.ItemID, colors.ColorID, colors.Colorname, images.ItemID FROM inventory, colors, images WHERE inventory.ItemID='$part_selected' AND inventory.ColorID=colors.ColorID AND inventory.ItemID=images.ItemID LIMIT 15 OFFSET $offset");
     }
-	//If no image is found for the part you have selected then only the PartID 
+	//If no image is found for the part you have selected then only the PartID and the Partname is shown 
     if ($result->num_rows == 0) {
         $result = mysqli_query($connection, "SELECT DISTINCT PartID, partname FROM parts WHERE PartID = '$part_selected'");
     }
@@ -95,9 +95,8 @@ if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
     
     print("</table>");
     print("</div>");
-    
-    
-   
+    print("<h1>Available colors:</h1>");
+   //Form for filtering colors
     print("<form action='Searchresult_parts.php' method='get'>");
 	print("<div class='searchdiv'>");
     print("<input class='searchbar' type='text' name='searchkey' placeholder='Filter colors' size='40'>");
@@ -106,8 +105,8 @@ if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
     print("</form>");
     print("</div>");
         
+	//Print all the available colors for the selected part
     print("<div class='content'>");
-    print("<p>Available colors</p>");
     print("<table>\n<tr>");
     print("<th>Image</th> <th>Partname</th> <th>Colorname</th>");
     print("</tr>");
@@ -116,13 +115,18 @@ if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
         $ColorID            = $row_colors['ColorID'];
         $Imagesource_colors = $prefix_colors . "/" . $ColorID . "/" . $part_selected;
         print("<tr>");
+		//If no gif file is found search for a jpg file
         print("<td><img src='$Imagesource_colors.gif' onerror='this.onerror=null;this.src=\"$Imagesource_colors.jpg\"' alt='No image avaliable!'>");
         print("<td>$Partname</td>");
+		//Print a link to the selected color of the selected part
         print("<td><a href='searchresult_colors.php?ItemID=" . $part_selected . "&ColorID=" . $ColorID . "&pagenumber=1'> $Colorname </a> </td>");
         print("</tr>");
     }
     print("</table>");
     print("</div>");
+	
+	/*Print only a "Next page" button if you're on page 1. Print both a "Next page" and a "Previous page" button if you're on any page between the first and the last. 
+	Print only a "Next page" button if you're on the last page. */
 	if($amount_of_resultpages == 1 || $amount_of_resultpages == null) {}
 	else if($pagenumber != 1 && $pagenumber != $amount_of_resultpages) {
 		echo "<form action='Searchresult_parts.php' method='get'>\n
