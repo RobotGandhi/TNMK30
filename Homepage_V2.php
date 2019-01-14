@@ -38,7 +38,7 @@
         
         <!-- Sökruta -->
         <div class="searchdiv">
-        <form class="formbitch" action="Homepage_V2.php" method="get" >
+        <form class="searchform" action="Homepage_V2.php" method="get" >
         <input class="searchbar" type="text" name="searchkey" placeholder="Search for a lego part using name or PartID" size="40">
 		<input type="hidden" name="pagenumber" value="1">
 		<button class ="button" type="submit"> Search </button> 
@@ -97,7 +97,7 @@ $result = mysqli_query($connection, "SELECT DISTINCT * FROM parts WHERE partname
 $visible_result = mysqli_query($connection, "SELECT DISTINCT * FROM parts WHERE partname LIKE '%$searchkey%' OR PartID LIKE '%$searchkey%' ORDER BY length(CatID), CatID, partname ASC LIMIT 15 OFFSET $offset"); 
 
 echo"$searchkey";
-print("<table class='tablebody'>\n<tr>");
+print("<table>\n<tr>");
 print("<th>PartID</th> <th>Partname</th>");
 print("</tr>\n");
 while ($row = mysqli_fetch_array($visible_result)) {
@@ -109,6 +109,9 @@ while ($row = mysqli_fetch_array($visible_result)) {
     print("</tr>");
 }
 print("</table>");
+print("</div>");
+
+print("<div class='pagenavigation'>");
 if($pagenumber != 1 && $pagenumber != $amount_of_resultpages)
 {
 echo" 
@@ -152,12 +155,12 @@ echo
 }
 
 		}
-
+print("</div>");
 ?>
 
 
 </form> 
-       </div>
+
         
         <div class="footer">
             <p>This is the footer</p>

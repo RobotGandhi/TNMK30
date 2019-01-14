@@ -33,8 +33,6 @@ h1
     display: inline-block;
     height: auto;
     width: 90%;
-    border-style: hidden;
-    border-color: #c61300;
     background-image: url(LegoFinder.png);
 	background-repeat: no-repeat;
 	background-position: center;
@@ -52,8 +50,7 @@ h1
     width: 90%;
     height: auto;
     margin-top: 3%;
-    border-style: solid;
-    border-color: #c61300;
+    border: solid #c61300;
     background-color: #b3e6b3	;
 	font-family: 'Bree Serif', serif;
 	font-size: 18px;
@@ -66,8 +63,8 @@ h1
     width: 90%;
     margin-top: 3%;
 	margin-bottom: 1%;
-    border-style: solid;
-    border-color: #c61300;
+    border: solid #c61300;
+    
     background-color: #b3e6b3;
 
 }
@@ -135,22 +132,14 @@ nav li a:hover
 	display: inline-block;
 }
 
-/*
-.idfk
-{
-display: inline-block;
-
-}
-*/
-
 /*Searchbar*/
 .searchbar
 {
 	margin-top: 1%;
 	height: 30px;
     font-size: 20px;
-	border-style: double;
-	border-color: #b3e6b3;
+	border: double #b3e6b3;
+	
 }
 
 /*Div around searchbar */
@@ -162,20 +151,28 @@ display: inline-block;
 }
 .button
 {
-	border-style: solid;
-	border-color: #b3e6b3;
+	border: solid #b3e6b3;
 	height: 30px;
-
-	
 }
 
 .filterbutton
 {
-	border-style: solid;
-	border-color: #b3e6b3;
+	border: solid #b3e6b3;
 	margin-left: 1%;
 }
-.formbitch
+
+/* div around prev and next button */
+.pagenavigation
+{
+	display: inline-block;
+	margin: 1% auto;
+	border: solid #c61300;
+	width: 90%;
+	padding-bottom: 1%;
+	padding: 0.5% 0 0.5% 0;
+}
+
+.searchform
 {
 	margin-top: 1%;
 	height: 28px;
@@ -187,9 +184,10 @@ display: inline-block;
 	border: none !important;
 }
 
-.parttable
+table
 {
 	width: 100%;
+	border-collapse: collapse;
 }
 
 th, td
@@ -211,11 +209,7 @@ tr:nth-child(even)
   background-color: #f2f2f2
 }
 
-table
-{
-    display: inline-block;
-	border-collapse: collapse;
-}
+
 
 /* Code to make site responsive */
 
@@ -257,7 +251,7 @@ p
 	
 }
 
-.formbitch
+.searchform
 {
 	margin-top: 3%;
 	height: 28px;
