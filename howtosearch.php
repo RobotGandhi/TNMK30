@@ -37,7 +37,7 @@
       <div class= "content">
         
             <h1>How to search</h1>
-			<p>This database is dedicated to search for any piece of Lego in existence. It is possible to search for any piece and then see which set it belongs to, and also every variation of it.</p>
+			<p>This database is dedicated to search for any piece of Lego in this database. It is possible to search for any piece and then see which set it belongs to, and also every variation of it.</p>
             <!-- content content div closing tag  -->
         </div>
     

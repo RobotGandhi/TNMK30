@@ -27,8 +27,9 @@
 		 
       <div class= "content">
         
-            <h1>About Us</h1>
-			<p>We are a group of students studying the course Electronic Publishing. The course required us to make a website with a search function that is linked to a database. In our case, the database used is a Lego-database that shows information about any existing piece.</p>
+            <h1>About us</h1>
+			<p>We are a group of five students studying the course Electronic Publishing at the University of Linköping, Sweden. The course required us to make a website with a search function that is linked to a database. 
+			In our case, the search function is linked to a Lego-database that shows information about any piece in it.</p>
 		</div>	
 		
 		 

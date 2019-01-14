@@ -19,8 +19,8 @@
         
         <!-- Sökruta -->
         <div class="searchdiv">
-        <form class="formbitch" action="Homepage_V2.php" method="get" >
-        <input class="searchbar" type="text" name="searchkey" placeholder="Search for a lego part using name or PartID">
+        <form class="searchform" action="Homepage_V2.php" method="get" >
+        <input class="searchbar" type="text" name="searchkey" placeholder="Search for a lego part using name or PartID" size="40">
 		<input type="hidden" name="pagenumber" value="1">
 		<button class ="button" type="submit"> Search </button> 
         </form>
@@ -73,10 +73,24 @@ if(isset($_GET['searchkey']) && $_GET['searchkey'] != NULL) {
 	while(mysqli_fetch_array($result)) {
 		$amount_of_results ++;
 	}
+print("<table>\n<tr>");
+print("<th>PartID</th> <th>Partname</th>");
+print("</tr>\n");
+while ($row = mysqli_fetch_array($visible_result)) {
+    $PartID   = $row['PartID'];
+    $Partname = $row['Partname'];
+    print("<tr>");
+    print("<td>$PartID</td>");
+    print("<td><a href=\"Searchresult_parts.php?PartID=" . $PartID . "\">$Partname</a></td>");
+    print("</tr>");
+}
+print("</table>");
+print("</div>");
+
+print("<div class='pagenavigation'>");
 
 	if($amount_of_results != 0) {
 		$amount_of_resultpages = ceil(($amount_of_results/15));
-
 		$visible_result = mysqli_query($connection, "SELECT DISTINCT parts.PartID, parts.CatID, parts.Partname, inventory.ItemID FROM parts, inventory WHERE (parts.partname LIKE '%$searchkey%' OR parts.PartID LIKE '%$searchkey%') AND parts.PartID=inventory.ItemID ORDER BY length(CatID), CatID, partname ASC LIMIT 15 OFFSET $offset");
 		echo"<table>\n<tr>
 		<th>Image </th> <th>PartID</th> <th>Partname</th>
@@ -122,7 +136,7 @@ if(isset($_GET['searchkey']) && $_GET['searchkey'] != NULL) {
 
 
 </form> 
-       </div>
+
         
         <?php include("footer.txt");?>
 		</div>
