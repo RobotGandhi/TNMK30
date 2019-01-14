@@ -61,7 +61,7 @@ print("<tr>");
 print("<th>Image</th> <th> Partname </th> <th> Colorname </th>");
 print("</tr>");
 print("<tr>");
-print("<td><img src='$prefix_colors/$ColorID/$ItemID.gif' onerror='this.onerror=null;this.src=\"$prefix_colors/$ColorID/$ItemID.jpg\"' alt='No image available!'></td> <td>" . $Partname . "</td> <td>" . $Colorname . "</td>");
+print("<td><img src='$prefix_colors/$ColorID/$ItemID.gif' onerror='LoadJPG(this, \"$prefix_colors/$ColorID/$ItemID\")' alt='No image available!'></td> <td>" . $Partname . "</td> <td>" . $Colorname . "</td>");
 print("</tr>");
 print("</table>");
 print("</div>");
