@@ -14,18 +14,7 @@
 
 <body>
 <div class="wrapper">
-<div class ="header">
-        <h1>This is the header</h1>
-        </div>
-		<nav>
-
-<ul>
-<li><a href="Homepage_V2.php">Home</a></li>
-<li><a href="howtosearch.php">How To Search</a></li>
-<li><a href="aboutus.php">About Us</a></li>
-</ul>
-
-</nav>
+<?php include("headermenu.txt");?>
 <?php
 $pagenumber = $_GET['pagenumber'];
 $offset = ($pagenumber-1) * 15;
@@ -142,6 +131,7 @@ echo
 }
 
 ?>
+   <?php include("footer.txt");?>
 </div>
 </body>
 </html>

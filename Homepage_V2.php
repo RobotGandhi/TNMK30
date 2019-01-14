@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <?php
 	error_reporting(E_ALL);
@@ -16,31 +15,18 @@
     </head>
     <body>
 	<div class="wrapper">
-    <div class ="header">
-       
-        <h1>Lego finder</h1>
-		<h2>Search for a lego part and see what set it's in</h2>
-		</div>
-		
-		<nav>
-
-<ul>
-<li><a href="Homepage_V2.php">Home</a></li>
-<li><a href="howtosearch.php">How To Search</a></li>
-<li><a href="aboutus.php">About Us</a></li>
-</ul>
-
-</nav>
+	<?php include("headermenu.txt");?>
         
         <!-- Sökruta -->
         <div class="searchdiv">
         <form class="formbitch" action="Homepage_V2.php" method="get" >
-        <input class="searchbar" type="text" name="searchkey" placeholder="Search for a lego part using name or PartID" size="40">
+        <input class="searchbar" type="text" name="searchkey" placeholder="Search for a lego part using name or PartID">
 		<input type="hidden" name="pagenumber" value="1">
 		<button class ="button" type="submit"> Search </button> 
-        
         </form>
         </div>
+		
+		
         
         <!-- Sökresultat efter string management -->
         
@@ -92,7 +78,7 @@ $result = mysqli_query($connection, "SELECT DISTINCT * FROM parts WHERE partname
 
 $visible_result = mysqli_query($connection, "SELECT DISTINCT * FROM parts WHERE partname LIKE '%$searchkey%' OR PartID LIKE '%$searchkey%' ORDER BY length(CatID), CatID, partname ASC LIMIT 15 OFFSET $offset"); 
 
-echo"$searchkey";
+print("<p>Search results for: &nbsp <span style=\"font-style:italic\">$searchkey</span></p>");
 print("<table>\n<tr>");
 print("<th>PartID</th> <th>Partname</th>");
 print("</tr>\n");
@@ -155,12 +141,7 @@ echo
 </form> 
        </div>
         
-        <div class="footer">
-            <p>This is the footer</p>
-			<p>Contact</p>
-<p>Email: questions@liu.se</p>
-<p>Phone: 013 28 10 00</p>
-        </div>
+        <?php include("footer.txt");?>
 		</div>
     </body>
 </html>

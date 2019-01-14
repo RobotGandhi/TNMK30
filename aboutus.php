@@ -21,20 +21,7 @@
         
      
     
-        <div class ="header">
-       
-        <h1>This is the header</h1>
-		</div>
-		
-		<nav>
-
-<ul>
-<li><a href="Homepage_V2.php">Home</a></li>
-<li><a href="howtosearch.php">How To Search</a></li>
-<li><a href="aboutus.php">About Us</a></li>
-</ul>
-
-</nav>
+<?php include("headermenu.txt");?>
 		
        
 		 
@@ -51,14 +38,7 @@
     
     
 
-    <div class = "footer">
-        <p>This is the footer</p>
-		<p>Contact</p>
-<p>Email: questions@liu.se</p>
-<p>Phone: 013 28 10 00</p>
-        
-        <!-- Footer content div closing tag  -->
-    </div>
+<?php include("footer.txt");?>
             
 <!-- wrapper content div closing tag  -->
  </div>
