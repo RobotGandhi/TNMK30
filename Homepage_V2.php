@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <?php
 	error_reporting(E_ALL);
@@ -16,31 +15,18 @@
     </head>
     <body>
 	<div class="wrapper">
-    <div class ="header">
-       
-        <h1>Lego finder</h1>
-		<h2>Search for a lego part and see what set it's in</h2>
-		</div>
-		
-		<nav>
-
-<ul>
-<li><a href="Homepage_V2.php">Home</a></li>
-<li><a href="howtosearch.php">How To Search</a></li>
-<li><a href="aboutus.php">About Us</a></li>
-</ul>
-
-</nav>
+	<?php include("headermenu.txt");?>
         
         <!-- Sökruta -->
         <div class="searchdiv">
         <form class="formbitch" action="Homepage_V2.php" method="get" >
-        <input class="searchbar" type="text" name="searchkey" placeholder="Search for a lego part using name or PartID" size="40">
+        <input class="searchbar" type="text" name="searchkey" placeholder="Search for a lego part using name or PartID">
 		<input type="hidden" name="pagenumber" value="1">
 		<button class ="button" type="submit"> Search </button> 
-        
         </form>
         </div>
+		
+		
         
         <!-- Sökresultat efter string management -->
         
@@ -87,14 +73,49 @@ if(isset($_GET['searchkey']) && $_GET['searchkey'] != NULL) {
 	while(mysqli_fetch_array($result)) {
 		$amount_of_results ++;
 	}
- 
+
 	if($amount_of_results != 0) {
 		$amount_of_resultpages = ceil(($amount_of_results/15));
 
+		$visible_result = mysqli_query($connection, "SELECT DISTINCT * FROM parts WHERE partname LIKE '%$searchkey%' OR PartID LIKE '%$searchkey%' ORDER BY length(CatID), CatID, partname ASC LIMIT 15 OFFSET $offset"); 
+
+		print("<p>Search results for: &nbsp <span style=\"font-style:italic\">$searchkey</span></p>");
+		print("<table class='tablebody'>\n<tr>");
+		print("<th>PartID</th> <th>Partname</th>");
+		print("</tr>\n");
+		while ($row = mysqli_fetch_array($visible_result)) {
+			$PartID   = $row['PartID'];
+			$Partname = $row['Partname'];
+			print("<tr>");
+			print("<td>$PartID</td>");
+			print("<td><a href=\"Searchresult_parts.php?PartID=" . $PartID . "\">$Partname</a></td>");
+			print("</tr>");
+		}
+		print("</table>");
+		if($pagenumber != 1 && $pagenumber != $amount_of_resultpages) {
+		echo "<form action='Homepage_V2.php' method='get'>\n
+		<button type='submit' name='pagenumber' value='$previous_page'> Previous page </button>
+		<input type='hidden' name='searchkey' value='$searchkey'>";
+		echo "$pagenumber/$amount_of_resultpages";
+		echo "<form action='Homepage_V2.php' method='get'>\n
+		<button type='submit' name='pagenumber' value='$next_page'>Next page</button>
+		<input type='hidden' name='searchkey' value='$searchkey'>";
+		} else if($pagenumber == $amount_of_resultpages) {
+			echo "<form action='Homepage_V2.php' method='get'>\n
+			<button type='submit' name='pagenumber' value='$previous_page'> Previous page </button>
+			<input type='hidden' name='searchkey' value='$searchkey'>";
+			echo"$pagenumber/$amount_of_resultpages";
+		} else {
+			echo "$pagenumber/$amount_of_resultpages";
+			echo "<form action='Homepage_V2.php' method='get'>\n
+			<button type='submit' name='pagenumber' value='$next_page'>Next page</button>
+			<input type='hidden' name='searchkey' value='$searchkey'>";
+		}
+
 		$visible_result = mysqli_query($connection, "SELECT DISTINCT parts.PartID, parts.CatID, parts.Partname, inventory.ItemID FROM parts, inventory WHERE (parts.partname LIKE '%$searchkey%' OR parts.PartID LIKE '%$searchkey%') AND parts.PartID=inventory.ItemID ORDER BY length(CatID), CatID, partname ASC LIMIT 15 OFFSET $offset");
 		echo"<table>\n<tr>
-<th>Image </th> <th>PartID</th> <th>Partname</th>
-</tr>\n";
+		<th>Image </th> <th>PartID</th> <th>Partname</th>
+		</tr>\n";
 		while ($row = mysqli_fetch_array($visible_result)) {
 			$PartID   = $row['PartID'];
 			$Partname = $row['Partname'];
@@ -137,12 +158,7 @@ if(isset($_GET['searchkey']) && $_GET['searchkey'] != NULL) {
 </form> 
        </div>
         
-        <div class="footer">
-            <p>This is the footer</p>
-			<p>Contact</p>
-<p>Email: questions@liu.se</p>
-<p>Phone: 013 28 10 00</p>
-        </div>
+        <?php include("footer.txt");?>
 		</div>
     </body>
 </html>
