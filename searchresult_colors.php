@@ -18,6 +18,7 @@
 <?php include("headermenu.txt");?>
 <?php
 //Declaring variables
+$searchkey_breadcrumbs = $_GET['searchkey_breadcrumbs'];
 $pagenumber = $_GET['pagenumber'];
 $offset = ($pagenumber-1) * 15;
 $previous_page = $pagenumber - 1;
@@ -95,15 +96,16 @@ echo"
 <form action='searchresult_colors.php' method='get'>
 <input type='hidden' name='ItemID' value='$ItemID'>
 <input type='hidden' name='ColorID' value='$ColorID'>
+<input type='hidden' name='searchkey_breadcrumbs' value='$searchkey_breadcrumbs'>
 <button type='submit' name='pagenumber' value='$previous_page'> Previous page </button>
 </form>
-
 ";
 echo"$pagenumber/$amount_of_resultpages";
 echo"
 <form action='searchresult_colors.php' method='get'>
 <input type='hidden' name='ItemID' value='$ItemID'>
 <input type='hidden' name='ColorID' value='$ColorID'>
+<input type='hidden' name='searchkey_breadcrumbs' value='$searchkey_breadcrumbs'>
 <button type='submit' name='pagenumber' value='$next_page'>Next page</button>
 </form>
 ";
@@ -115,6 +117,7 @@ else if($pagenumber == $amount_of_resultpages)
 <form action='searchresult_colors.php' method='get'>
 <input type='hidden' name='ItemID' value='$ItemID'>
 <input type='hidden' name='ColorID' value='$ColorID'>
+<input type='hidden' name='searchkey_breadcrumbs' value='$searchkey_breadcrumbs'>
 <button type='submit' name='pagenumber' value='$previous_page'> Previous page </button>
 </form>
 ";
@@ -128,6 +131,7 @@ echo
 <form action='searchresult_colors.php' method='get'>
 <input type='hidden' name='ItemID' value='$ItemID'>
 <input type='hidden' name='ColorID' value='$ColorID'>
+<input type='hidden' name='searchkey_breadcrumbs' value='$searchkey_breadcrumbs'>
 <button type='submit' name='pagenumber' value='$next_page'>Next page</button>
 </form>
 ";

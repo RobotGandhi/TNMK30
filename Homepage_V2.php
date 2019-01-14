@@ -114,7 +114,7 @@ if(isset($_GET['searchkey']) && $_GET['searchkey'] != NULL) {
 			echo"<tr>
 			<td><img src='$Imagesource.gif' onerror='this.onerror=null;this.src=\"$Imagesource.jpg\"' alt='No image avaliable!'> </td>
 			<td>$PartID</td>
-			<td><a href=\"Searchresult_parts.php?PartID=" . $PartID . "&pagenumber=1\">$Partname</a></td>
+			<td><a href=\"Searchresult_parts.php?PartID=" . $PartID . "&pagenumber=1&searchkey_breadcrumbs=".$searchkey."\">$Partname</a></td>
 			</tr>";
 		}
 		print("</table>");
