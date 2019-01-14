@@ -48,7 +48,8 @@ if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
     
     if (isset($_GET['searchkey']) && !empty($_GET['searchkey'])) {
     $color_search = $_GET['searchkey'];
-    $result_colors = mysqli_query($connection, "SELECT DISTINCT inventory.ItemID, colors.ColorID, colors.ColornameFROM inventory, colors WHERE inventory.ItemID='$part_selected' AND inventory.ColorID=colors.ColorID AND colors.Colorname LIKE '%$color_search%'");
+    $result_colors = mysqli_query($connection, "SELECT DISTINCT inventory.ItemID, colors.ColorID, colors.Colorname FROM inventory, colors WHERE inventory.ItemID='$part_selected' AND inventory.ColorID=colors.ColorID AND colors.Colorname LIKE '%$color_search%'");
+	$amount_of_results = $result_colors->num_rows;
     } else {
 	$result_colors = mysqli_query($connection, "SELECT DISTINCT inventory.ItemID, colors.ColorID, colors.Colorname FROM inventory, colors WHERE inventory.ItemID='$part_selected' AND inventory.ColorID=colors.ColorID");
 	//Räkna totalt antal resultat och antal resultatssidor
@@ -95,6 +96,7 @@ if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
     
     print("</table>");
     print("</div>");
+	
     print("<h1>Available colors:</h1>");
    //Form for filtering colors
     print("<form action='Searchresult_parts.php' method='get'>");
@@ -104,7 +106,8 @@ if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
 	echo"<button class='filterbutton' type='submit' class='button'> Filter </button>"; 
     print("</form>");
     print("</div>");
-        
+    
+	if($amount_of_results != 0) {
 	//Print all the available colors for the selected part
     print("<div class='content'>");
     print("<table>\n<tr>");
@@ -150,6 +153,12 @@ if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
 		<button type='submit' name='pagenumber' value='$next_page'>Next page</button>";
 		echo"<input type='hidden' name='PartID' value='$PartID'>"; 
 		echo"</form>";
+	}
+	}
+	else{
+		print("This part is not available in the color \"$color_search\". Try going back and checking for misspellings in your filtering.");
+		print("<br>");
+		print("<a href='Searchresult_parts.php?PartID=".$part_selected."&pagenumber=1'>Back</a>");
 	}
 
 }
