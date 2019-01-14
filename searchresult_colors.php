@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="proj.css" type="text/css"/>
     <title>Search result colors</title>
 	<link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="script.js"></script>
 </head>
 
 <body>
