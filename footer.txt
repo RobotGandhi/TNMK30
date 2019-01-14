@@ -1,0 +1,8 @@
+    <div class = "footer">
+      
+		<p>Contact</p>
+<p>Email: questions@liu.se</p>
+<p>Phone: 013 28 10 00</p>
+
+        
+    </div>

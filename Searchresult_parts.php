@@ -18,19 +18,7 @@
     <div class="wrapper">
      
 		<!-- header wrapper div -->
-        <div class ="header">
-        <h1>This is the header</h1>
-        </div>
-		
-			<nav>
-
-<ul>
-<li><a href="Homepage_V2.php">Home</a></li>
-<li><a href="howtosearch.php">How To Search</a></li>
-<li><a href="aboutus.php">About Us</a></li>
-</ul>
-
-</nav>
+       <?php include("headermenu.txt");?>
         
 
        
@@ -124,10 +112,8 @@ if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
 }
 ?>
    
-    <div class = "footer">
-        <p>This is the footer</p>
-    <!-- Footer content div closing tag  -->
-    </div>
+   <?php include("footer.txt");?>
+    
     <!-- wrapper content div closing tag  -->
     </div> 
 </body>

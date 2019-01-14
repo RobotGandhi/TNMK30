@@ -4,8 +4,9 @@ body
 	background-color: honeydew;
 	text-align: center;
 	margin: auto;
-	width: 100%
+	width: 100%;
 	height: auto;
+	font-family: 'Bree Serif', serif;
 	
 }
 
@@ -15,11 +16,6 @@ div
 	border-radius: 5px;
 }
 
-h1
-{
-	/* God damn beautiful font for this beautiful site*/
-	font-family: 'Bree Serif', serif;
-}
 
 /* Parent div*/
 .wrapper
@@ -41,6 +37,17 @@ h1
 	padding-bottom:2%;
 	margin-top: 1%;
     text-align: center;
+	position: relative;
+}
+
+.pagename
+{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: black;
+	font-size: 30px;
 }
 
 /* Content - like tables and such */
@@ -54,6 +61,7 @@ h1
     background-color: #b3e6b3	;
 	font-family: 'Bree Serif', serif;
 	font-size: 18px;
+	max-width: 1000px;
 }
 
 .footer
@@ -66,7 +74,7 @@ h1
     border: solid #c61300;
     
     background-color: #b3e6b3;
-
+	max-width: 1000px;
 }
 
 
@@ -94,8 +102,8 @@ nav
 nav ul 
 {
 	display: inline-block;
-	margin-top: 3%;
-	width: 90%;
+	margin-top: 1%;
+	width: 100%;
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -103,7 +111,6 @@ nav ul
     background-color: darkgreen;
 	justify-content: space-around;
 	font-size: 20px;
-	font-family: 'Bree Serif', serif;
 }
 
 nav li 
@@ -124,6 +131,7 @@ nav li a {
 nav li a:hover 
 {
 	background-color: red;
+	color: black;
 }
 
 /* put part above the other colors */	
@@ -137,6 +145,7 @@ nav li a:hover
 {
 	margin-top: 1%;
 	height: 30px;
+	width: 500px;
     font-size: 20px;
 	border: double #b3e6b3;
 	
@@ -179,10 +188,6 @@ nav li a:hover
 }
 
 /*Remove border around searchbar*/
-.searchtable th, td
-{
-	border: none !important;
-}
 
 table
 {
@@ -195,7 +200,8 @@ th, td
 	text-align: center;
 	font-size: 20px;
 	padding: 15px;
-	border: 1px solid black;	
+	border-bottom: 1px solid black;
+
 }
 
 th 
@@ -203,12 +209,28 @@ th
 	font-size: 25px;
 }
 
+tbody>tr>:nth-child(1)
+{
+	width: 100px;
+}
+
+tbody>tr>:nth-child(2)
+{
+	width: 500px;
+	border-left: 1px solid black;
+}
+
+tbody>tr>:nth-child(3)
+{
+	width: 200px;
+	border-left: 1px solid black;
+}
+
 /* Striped table */
 tr:nth-child(even) 
 {
   background-color: #f2f2f2
 }
-
 
 
 /* Code to make site responsive */

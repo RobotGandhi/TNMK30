@@ -21,52 +21,29 @@
         
      
     
-        <div class ="header">
-       
-        <h1>This is the header</h1>
-		
-        </div>
-		
-	
-        		<nav>
-
-<ul>
-<li><a href="Homepage_V2.php">Home</a></li>
-<li><a href="howtosearch.php">How To Search</a></li>
-<li><a href="aboutus.php">About Us</a></li>
-</ul>
-
-</nav>
+<?php include("headermenu.txt");?>
 
  
         <!-- Sökruta -->
-        <div class="searchdiv">
-        <form action="Homepage_V2.php" method="get" >
-       
-        <input class="searchbar" type="text" name="searchkey" placeholder="Search for a lego part using name or PartID" size="40">
+       <div class="searchdiv">
+        <form class="formbitch" action="Homepage_V2.php" method="get" >
+        <input class="searchbar" type="text" name="searchkey" placeholder="Search for a lego part using name or PartID">
 		<input type="hidden" name="pagenumber" value="1">
 		<button class ="button" type="submit"> Search </button> 
-       
         </form>
         </div>
 		
 		 
       <div class= "content">
         
-            <h1>hellohello how to serach??</h1>
+            <h1>How to search</h1>
 			<p>This database is dedicated to search for any piece of Lego in existence. It is possible to search for any piece and then see which set it belongs to, and also every variation of it.</p>
-            <!-- contetn content div closing tag  -->
+            <!-- content content div closing tag  -->
         </div>
     
     
 
-    <div class = "footer">
-        <p>This is the footer</p>
-        	<p>Contact</p>
-<p>Email: questions@liu.se</p>
-<p>Phone: 013 28 10 00</p>
-        <!-- Footer content div closing tag  -->
-    </div>
+      <?php include("footer.txt");?>
             
 <!-- wrapper content div closing tag  -->
  </div>
