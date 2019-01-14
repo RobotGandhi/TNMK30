@@ -24,9 +24,11 @@
        
 		
      <?php
+	 //Print an error message if no PartID is set.
 if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
-    die("<p>No results found!</p>"); 
+    die("<p>No PartID found!</p>"); 
 } else {
+	//Declaring variables
 	$pagenumber = $_GET['pagenumber'];
 	$offset = ($pagenumber-1) * 15;
 	$previous_page = $pagenumber - 1;
@@ -34,22 +36,28 @@ if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
     $part_selected = $_GET['PartID'];
     $prefix        = "http://www.itn.liu.se/~stegu76/img.bricklink.com/PL/";
     $prefix_colors = "http://www.itn.liu.se/~stegu76/img.bricklink.com/P/";
+	
+	//Checking connection to the database
     $connection    = mysqli_connect("mysql.itn.liu.se", "lego", "", "lego");
     if (!$connection) {
         die("No connection to the lego database could be established.");
     }
     
+	
     $result        = mysqli_query($connection, "SELECT DISTINCT parts.PartID, parts.partname, images.ItemTypeID, images.ItemID, images.has_largegif, images.has_largejpg FROM parts, images WHERE parts.PartID = '$part_selected' AND images.ItemID=parts.PartID AND images.ItemTypeID='P'");
     
     if (isset($_GET['searchkey']) && !empty($_GET['searchkey'])) {
     $color_search = $_GET['searchkey'];
-    $result_colors = mysqli_query($connection, "SELECT DISTINCT inventory.ItemID, colors.ColorID, colors.Colorname, images.ItemID FROM inventory, colors, images WHERE inventory.ItemID='$part_selected' AND inventory.ColorID=colors.ColorID AND inventory.ItemID=images.ItemID AND colors.Colorname LIKE '%$color_search%'");
+    $result_colors = mysqli_query($connection, "SELECT DISTINCT inventory.ItemID, colors.ColorID, colors.ColornameFROM inventory, colors WHERE inventory.ItemID='$part_selected' AND inventory.ColorID=colors.ColorID AND colors.Colorname LIKE '%$color_search%'");
     } else {
-    $result_colors = mysqli_query($connection, "SELECT DISTINCT inventory.ItemID, colors.ColorID, colors.Colorname, images.ItemID FROM inventory, colors, images WHERE inventory.ItemID='$part_selected' AND inventory.ColorID=colors.ColorID AND inventory.ItemID=images.ItemID");
+	$result_colors = mysqli_query($connection, "SELECT DISTINCT inventory.ItemID, colors.ColorID, colors.Colorname FROM inventory, colors WHERE inventory.ItemID='$part_selected' AND inventory.ColorID=colors.ColorID");
+	//Räkna totalt antal resultat och antal resultatssidor
 	$amount_of_results = $result_colors->num_rows;
 	$amount_of_resultpages = ceil($amount_of_results/15);
+	//Query for each page visible in the result
 	$result_colors = mysqli_query($connection, "SELECT DISTINCT inventory.ItemID, colors.ColorID, colors.Colorname, images.ItemID FROM inventory, colors, images WHERE inventory.ItemID='$part_selected' AND inventory.ColorID=colors.ColorID AND inventory.ItemID=images.ItemID LIMIT 15 OFFSET $offset");
     }
+	//If no image is found for the part you have selected then only the PartID 
     if ($result->num_rows == 0) {
         $result = mysqli_query($connection, "SELECT DISTINCT PartID, partname FROM parts WHERE PartID = '$part_selected'");
     }
