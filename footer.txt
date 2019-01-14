@@ -1,8 +1,6 @@
-    <div class = "footer">
-      
-		<p>Contact</p>
+<div class = "footer">   
+<p>Contact:</p>
+<p>The group working on the project consists of: Viktor Carlsson, Uma Eriksson, Ruben Bromee, Jessie Chow, Alma Fernvik </p> 
 <p>Email: questions@liu.se</p>
-<p>Phone: 013 28 10 00</p>
-
-        
-    </div>
+<p>Phone: 013 28 10 00</p>    
+</div>

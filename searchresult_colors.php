@@ -16,6 +16,7 @@
 <div class="wrapper">
 <?php include("headermenu.txt");?>
 <?php
+//Declaring variables
 $pagenumber = $_GET['pagenumber'];
 $offset = ($pagenumber-1) * 15;
 $previous_page = $pagenumber - 1;
@@ -23,25 +24,27 @@ $next_page = $pagenumber + 1;
 $ItemID        = $_GET['ItemID'];
 $ColorID       = $_GET['ColorID'];
 $prefix_colors = "http://www.itn.liu.se/~stegu76/img.bricklink.com/P/";
+//Checking connection to database
 $connection    = mysqli_connect("mysql.itn.liu.se", "lego", "", "lego");
 if (!$connection) {
 	die("No connection to the lego database could be established.");
 }
 
+//Query for total amount of results
 $result_sets = mysqli_query($connection, "SELECT inventory.SetID, inventory.ItemID, inventory.ColorID, sets.SetID, sets.Setname, sets.Year FROM inventory, sets WHERE inventory.ItemID='$ItemID' AND inventory.ColorID='$ColorID' AND inventory.SetID=sets.SetID");
 
+//Query for each page visible in the result
 $result_sets_visible = mysqli_query($connection, "SELECT inventory.SetID, inventory.ItemID, inventory.ColorID, sets.SetID, sets.Setname, sets.Year FROM inventory, sets WHERE inventory.ItemID='$ItemID' AND inventory.ColorID='$ColorID' AND inventory.SetID=sets.SetID ORDER BY sets.Setname ASC LIMIT 15 OFFSET $offset");
 
-$amount_of_results = 0;
+//Counting total amount of results
+$amount_of_results = $result_sets->num_rows;
 
-while(mysqli_fetch_array($result_sets))
-{
-	$amount_of_results ++;
-}
 $amount_of_resultpages = ceil(($amount_of_results/15));
 
+//Query for information about the part you have chosen
 $result_part = mysqli_query($connection, "SELECT colors.ColorID, colors.Colorname, parts.PartID, parts.Partname FROM colors, parts WHERE colors.ColorID='$ColorID' AND parts.PartID='$ItemID'");
 
+//Displaying information about the part you have chosen
 $row_part = mysqli_fetch_array($result_part);
 $Partname = $row_part['Partname'];
 $Colorname = $row_part['Colorname'];
@@ -58,11 +61,16 @@ print("<tr>");
 print("<th>Image</th> <th> Partname </th> <th> Colorname </th>");
 print("</tr>");
 print("<tr>");
-print("<td><img src='$prefix_colors/$ColorID/$ItemID.gif' onerror='this.onerror=null;this.src=\"$prefix_colors/$ColorID/$ItemID.jpg\"'></td> <td>" . $Partname . "</td> <td>" . $Colorname . "</td>");
+print("<td><img src='$prefix_colors/$ColorID/$ItemID.gif' onerror='this.onerror=null;this.src=\"$prefix_colors/$ColorID/$ItemID.jpg\"' alt='No image available!'></td> <td>" . $Partname . "</td> <td>" . $Colorname . "</td>");
 print("</tr>");
 print("</table>");
 print("</div>");
 print("<div class=\"content\">");
+
+//Displaying information about the sets the chosen part is included in
+print("<div>");
+print("<h1>Sets this part is included in:</h1>");
+print("</div>");
 print("<table>");
 print("<tr>");
 print("<th>SetID</th> <th>Setname</th> <th>Year</th>");
