@@ -33,9 +33,7 @@ h1
 {
     display: inline-block;
     height: auto;
-    width: 315px;
-    border-style: hidden;
-    border-color: #c61300;
+    width: 90%;
     background-image: url(LegoFinder.png);
 	background-repeat: no-repeat;
 	background-position: center;
@@ -64,9 +62,9 @@ h1
     width: 90%;
     height: auto;
     margin-top: 3%;
-    border-style: solid;
-    border-color: #c61300;
-    background-color: #b3e6b3;
+    border: solid #c61300;
+    background-color: #b3e6b3	;
+	font-family: 'Bree Serif', serif;
 	font-size: 18px;
 	max-width: 1000px;
 	padding: 0 2%;
@@ -78,8 +76,8 @@ h1
 	height: 20%;
     width: 90%;
     margin-top: 3%;
-    border-style: solid;
-    border-color: #c61300;
+	margin-bottom: 1%;
+    border: solid #c61300;
     background-color: #b3e6b3;
 	max-width: 1000px;
 	padding: 0 2%;
@@ -148,14 +146,6 @@ nav li a:hover
 	display: inline-block;
 }
 
-/*
-.idfk
-{
-display: inline-block;
-
-}
-*/
-
 /*Searchbar*/
 .searchbar
 {
@@ -163,8 +153,8 @@ display: inline-block;
 	height: 30px;
 	width: 500px;
     font-size: 20px;
-	border-style: double;
-	border-color: #b3e6b3;
+	border: double #b3e6b3;
+	
 }
 
 /*Div around searchbar */
@@ -176,21 +166,29 @@ display: inline-block;
 }
 .button
 {
-	border-style: solid;
-	border-color: #b3e6b3;
-	height: 32px;
 	font-size: 15px;
-
-	
+	border: solid #b3e6b3;
+	height: 30px;
 }
 
 .filterbutton
 {
-	border-style: solid;
-	border-color: #b3e6b3;
+	border: solid #b3e6b3;
 	margin-left: 1%;
 }
-.formbitch
+
+/* div around prev and next button */
+.pagenavigation
+{
+	display: inline-block;
+	margin: 1% auto;
+	border: solid #c61300;
+	width: 90%;
+	padding-bottom: 1%;
+	padding: 0.5% 0 0.5% 0;
+}
+
+.searchform
 {
 	margin-top: 1%;
 	height: 28px;
@@ -198,9 +196,10 @@ display: inline-block;
 
 /*Remove border around searchbar*/
 
-.parttable
+table
 {
 	width: 100%;
+	border-collapse: collapse;
 }
 
 th, td
@@ -240,13 +239,6 @@ tr:nth-child(even)
   background-color: #f2f2f2
 }
 
-table
-{
-    display: inline-block;
-	border-collapse: collapse;
-	margin: 3% 0;
-}
-
 
 /* Code to make site responsive */
 
@@ -284,7 +276,7 @@ p
 	margin: 5% 0;
 }
 
-.formbitch
+.searchform
 {
 	margin: 5% 0;
 	height: 28px;

@@ -54,7 +54,7 @@ if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
 	print("$Partname");
 	print("</div>");
 	print("<div class=\"content\">");
-    print("<table class= 'parttable'>\n<tr>");
+    print("<table>\n<tr>");
     print("<th>Image</th> <th>PartID</th> <th>Partname</th> ");
     print("</tr>\n");
     
