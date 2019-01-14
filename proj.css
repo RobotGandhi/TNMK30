@@ -210,12 +210,25 @@ tr:nth-child(even)
 
 .searchbar
 {
-	height: 20px;
+	height: 25px;
 	font-size: 15px;
 	width: 70%;
 	margin: 0 1%;
 
 }
+
+.button
+{
+	margin-top: 1%;
+	height: 25px;
+}
+
+.filterbutton
+{
+	margin-left: 0%;
+}
+
+
 
 
 
