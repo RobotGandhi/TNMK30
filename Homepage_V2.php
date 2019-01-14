@@ -77,41 +77,6 @@ if(isset($_GET['searchkey']) && $_GET['searchkey'] != NULL) {
 	if($amount_of_results != 0) {
 		$amount_of_resultpages = ceil(($amount_of_results/15));
 
-		$visible_result = mysqli_query($connection, "SELECT DISTINCT * FROM parts WHERE partname LIKE '%$searchkey%' OR PartID LIKE '%$searchkey%' ORDER BY length(CatID), CatID, partname ASC LIMIT 15 OFFSET $offset"); 
-
-		print("<p>Search results for: &nbsp <span style=\"font-style:italic\">$searchkey</span></p>");
-		print("<table class='tablebody'>\n<tr>");
-		print("<th>PartID</th> <th>Partname</th>");
-		print("</tr>\n");
-		while ($row = mysqli_fetch_array($visible_result)) {
-			$PartID   = $row['PartID'];
-			$Partname = $row['Partname'];
-			print("<tr>");
-			print("<td>$PartID</td>");
-			print("<td><a href=\"Searchresult_parts.php?PartID=" . $PartID . "\">$Partname</a></td>");
-			print("</tr>");
-		}
-		print("</table>");
-		if($pagenumber != 1 && $pagenumber != $amount_of_resultpages) {
-		echo "<form action='Homepage_V2.php' method='get'>\n
-		<button type='submit' name='pagenumber' value='$previous_page'> Previous page </button>
-		<input type='hidden' name='searchkey' value='$searchkey'>";
-		echo "$pagenumber/$amount_of_resultpages";
-		echo "<form action='Homepage_V2.php' method='get'>\n
-		<button type='submit' name='pagenumber' value='$next_page'>Next page</button>
-		<input type='hidden' name='searchkey' value='$searchkey'>";
-		} else if($pagenumber == $amount_of_resultpages) {
-			echo "<form action='Homepage_V2.php' method='get'>\n
-			<button type='submit' name='pagenumber' value='$previous_page'> Previous page </button>
-			<input type='hidden' name='searchkey' value='$searchkey'>";
-			echo"$pagenumber/$amount_of_resultpages";
-		} else {
-			echo "$pagenumber/$amount_of_resultpages";
-			echo "<form action='Homepage_V2.php' method='get'>\n
-			<button type='submit' name='pagenumber' value='$next_page'>Next page</button>
-			<input type='hidden' name='searchkey' value='$searchkey'>";
-		}
-
 		$visible_result = mysqli_query($connection, "SELECT DISTINCT parts.PartID, parts.CatID, parts.Partname, inventory.ItemID FROM parts, inventory WHERE (parts.partname LIKE '%$searchkey%' OR parts.PartID LIKE '%$searchkey%') AND parts.PartID=inventory.ItemID ORDER BY length(CatID), CatID, partname ASC LIMIT 15 OFFSET $offset");
 		echo"<table>\n<tr>
 		<th>Image </th> <th>PartID</th> <th>Partname</th>
@@ -123,11 +88,12 @@ if(isset($_GET['searchkey']) && $_GET['searchkey'] != NULL) {
 			echo"<tr>
 			<td><img src='$Imagesource.gif' onerror='this.onerror=null;this.src=\"$Imagesource.jpg\"' alt='No image avaliable!'> </td>
 			<td>$PartID</td>
-			<td><a href=\"Searchresult_parts.php?PartID=" . $PartID . "\">$Partname</a></td>
+			<td><a href=\"Searchresult_parts.php?PartID=" . $PartID . "&pagenumber=1\">$Partname</a></td>
 			</tr>";
 		}
 		print("</table>");
-		if($pagenumber != 1 && $pagenumber != $amount_of_resultpages) {
+		if($amount_of_resultpages == 1) {}
+		else if($pagenumber != 1 && $pagenumber != $amount_of_resultpages) {
 			echo "<form action='Homepage_V2.php' method='get'>\n
 			<button type='submit' name='pagenumber' value='$previous_page'> Previous page </button>
 			<input type='hidden' name='searchkey' value='$searchkey'>";

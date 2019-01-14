@@ -48,7 +48,7 @@ $Colorname = $row_part['Colorname'];
 print("<div class=\"breadcrumbs\">");
 print("<a href=\"Homepage_V2.php\"> Home </a>");
 print("/");
-print("<a href=\"Searchresult_parts.php?PartID=" . $ItemID . "\">$Partname</a>");
+print("<a href=\"Searchresult_parts.php?PartID=" . $ItemID . "&pagenumber=1\">$Partname</a>");
 print("/");
 print("$Colorname");
 print("</div>");
@@ -79,7 +79,8 @@ while ($row = mysqli_fetch_array($result_sets_visible)) {
 }
 print("</table>");
 print("</div>");
-if($pagenumber != 1 && $pagenumber != $amount_of_resultpages)
+if($amount_of_resultpages == 1 || $amount_of_resultpages == null) {}
+else if($pagenumber != 1 && $pagenumber != $amount_of_resultpages)
 {
 echo" 
 <form action='searchresult_colors.php' method='get'>
@@ -89,11 +90,8 @@ echo"
 </form>
 
 ";
-echo"$pagenumber";
-echo"/";
-echo"$amount_of_resultpages";
-echo
-"
+echo"$pagenumber/$amount_of_resultpages";
+echo"
 <form action='searchresult_colors.php' method='get'>
 <input type='hidden' name='ItemID' value='$ItemID'>
 <input type='hidden' name='ColorID' value='$ColorID'>
@@ -111,15 +109,11 @@ else if($pagenumber == $amount_of_resultpages)
 <button type='submit' name='pagenumber' value='$previous_page'> Previous page </button>
 </form>
 ";
-echo"$pagenumber";
-echo"/";
-echo"$amount_of_resultpages";
+echo"$pagenumber/$amount_of_resultpages";
 }
 else
 {
-echo"$pagenumber";
-echo"/";
-echo"$amount_of_resultpages";
+echo"$pagenumber/$amount_of_resultpages";
 echo
 "
 <form action='searchresult_colors.php' method='get'>

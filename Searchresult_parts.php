@@ -27,6 +27,10 @@
 if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
     die("<p>No results found!</p>"); 
 } else {
+	$pagenumber = $_GET['pagenumber'];
+	$offset = ($pagenumber-1) * 15;
+	$previous_page = $pagenumber - 1;
+	$next_page = $pagenumber + 1;
     $part_selected = $_GET['PartID'];
     $prefix        = "http://www.itn.liu.se/~stegu76/img.bricklink.com/PL/";
     $prefix_colors = "http://www.itn.liu.se/~stegu76/img.bricklink.com/P/";
@@ -42,6 +46,9 @@ if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
     $result_colors = mysqli_query($connection, "SELECT DISTINCT inventory.ItemID, colors.ColorID, colors.Colorname, images.ItemID FROM inventory, colors, images WHERE inventory.ItemID='$part_selected' AND inventory.ColorID=colors.ColorID AND inventory.ItemID=images.ItemID AND colors.Colorname LIKE '%$color_search%'");
     } else {
     $result_colors = mysqli_query($connection, "SELECT DISTINCT inventory.ItemID, colors.ColorID, colors.Colorname, images.ItemID FROM inventory, colors, images WHERE inventory.ItemID='$part_selected' AND inventory.ColorID=colors.ColorID AND inventory.ItemID=images.ItemID");
+	$amount_of_results = $result_colors->num_rows;
+	$amount_of_resultpages = ceil($amount_of_results/15);
+	$result_colors = mysqli_query($connection, "SELECT DISTINCT inventory.ItemID, colors.ColorID, colors.Colorname, images.ItemID FROM inventory, colors, images WHERE inventory.ItemID='$part_selected' AND inventory.ColorID=colors.ColorID AND inventory.ItemID=images.ItemID LIMIT 15 OFFSET $offset");
     }
     if ($result->num_rows == 0) {
         $result = mysqli_query($connection, "SELECT DISTINCT PartID, partname FROM parts WHERE PartID = '$part_selected'");
@@ -108,6 +115,30 @@ if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
     }
     print("</table>");
     print("</div>");
+	if($amount_of_resultpages == 1 || $amount_of_resultpages == null) {}
+	else if($pagenumber != 1 && $pagenumber != $amount_of_resultpages) {
+		echo "<form action='Searchresult_parts.php' method='get'>\n
+		<button type='submit' name='pagenumber' value='$previous_page'> Previous page </button>";
+		echo"<input type='hidden' name='PartID' value='$PartID'>"; 
+		echo"</form>";
+		echo "$pagenumber/$amount_of_resultpages";
+		echo "<form action='Searchresult_parts.php' method='get'>\n
+		<button type='submit' name='pagenumber' value='$next_page'>Next page</button>";
+		echo"<input type='hidden' name='PartID' value='$PartID'>";
+		echo"</form>";
+	} else if($pagenumber == $amount_of_resultpages) {
+		echo "<form action='Searchresult_parts.php' method='get'>\n
+		<button type='submit' name='pagenumber' value='$previous_page'> Previous page </button>";
+		echo"<input type='hidden' name='PartID' value='$PartID'>"; 
+		echo"</form>";
+		echo"$pagenumber/$amount_of_resultpages";
+	} else {
+		echo "$pagenumber/$amount_of_resultpages";
+		echo "<form action='Searchresult_parts.php' method='get'>\n
+		<button type='submit' name='pagenumber' value='$next_page'>Next page</button>";
+		echo"<input type='hidden' name='PartID' value='$PartID'>"; 
+		echo"</form>";
+	}
 
 }
 ?>
