@@ -79,6 +79,21 @@ div
 	max-width: 1000px;
 }
 
+
+.icon:link
+{
+	color: black;
+	
+}
+
+.icon hover
+{
+	 color:#00A0C6; 
+     text-decoration:none; 
+     cursor:pointer;  
+	
+}
+
 /*Menu div, making the menu follow along */
 nav
 {
@@ -149,7 +164,8 @@ display: inline-block;
 /*Div around searchbar */
 .searchdiv
 {
-	
+	margin: auto;
+	margin-bottom: 1%;
 	border-style: hidden;
 }
 .button
@@ -161,6 +177,13 @@ display: inline-block;
 
 	
 }
+
+.filterbutton
+{
+	border-style: solid;
+	border-color: #b3e6b3;
+	margin-left: 1%;
+}
 .formbitch
 {
 	margin-top: 1%;
@@ -168,6 +191,11 @@ display: inline-block;
 }
 
 /*Remove border around searchbar*/
+
+.parttable
+{
+	width: 100%;
+}
 
 th, td
 {
@@ -232,9 +260,11 @@ p
 .header 
 {
     font-size: 95%;
-	height: 40%;
 	width: 95%;
+	height: auto;
 	margin-top: 3%;
+	margin-bottom: 3%;
+	background-size: auto;
 }
 
 .content
@@ -265,11 +295,25 @@ p
 	width: 70px;
 }
 
+.filterbutton
+{
+	margin-left: 0%;
+
+}
+
+.searchdiv
+{
+	
+	width: 90%;
+}
+
 .searchbar
 {
 	height: 20px;
-	width: 90%;
-	font-size:15px;
+	font-size: 15px;
+	width: 100%;
+	margin-right: 1%;
+	margin-left: 1%;
 
 }
 .nav

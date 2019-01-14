@@ -54,7 +54,7 @@ if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
 	print("$Partname");
 	print("</div>");
 	print("<div class=\"content\">");
-    print("<table>\n<tr>");
+    print("<table class= 'parttable'>\n<tr>");
     print("<th>Image</th> <th>PartID</th> <th>Partname</th> ");
     print("</tr>\n");
     
@@ -82,11 +82,12 @@ if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
     print("</div>");
     
     
-    print("<div class='searchdiv'>");
+   
     print("<form action='Searchresult_parts.php' method='get'>");
+	print("<div class='searchdiv'>");
     print("<input class='searchbar' type='text' name='searchkey' placeholder='Filter colors' size='40'>");
     print("<input type='hidden' name='PartID' value='$part_selected'>");
-	echo"<button type='submit' class='button'> Filter </button>"; 
+	echo"<button class='filterbutton' type='submit' class='button'> Filter </button>"; 
     print("</form>");
     print("</div>");
         

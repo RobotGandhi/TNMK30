@@ -79,7 +79,7 @@ $result = mysqli_query($connection, "SELECT DISTINCT * FROM parts WHERE partname
 $visible_result = mysqli_query($connection, "SELECT DISTINCT * FROM parts WHERE partname LIKE '%$searchkey%' OR PartID LIKE '%$searchkey%' ORDER BY length(CatID), CatID, partname ASC LIMIT 15 OFFSET $offset"); 
 
 print("<p>Search results for: &nbsp <span style=\"font-style:italic\">$searchkey</span></p>");
-print("<table>\n<tr>");
+print("<table class='tablebody'>\n<tr>");
 print("<th>PartID</th> <th>Partname</th>");
 print("</tr>\n");
 while ($row = mysqli_fetch_array($visible_result)) {
