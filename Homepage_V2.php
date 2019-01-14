@@ -16,11 +16,15 @@
     </head>
     <body>
 	<div class="wrapper">
+	
+	<a class="icon" href="Homepage_V2.php">
     <div class ="header">
        
+		
         <h1>Lego finder</h1>
-		<h2>Search for a lego part and see what set it's in</h2>
 		</div>
+		
+		</a>
 		
 		<nav>
 
@@ -93,7 +97,7 @@ $result = mysqli_query($connection, "SELECT DISTINCT * FROM parts WHERE partname
 $visible_result = mysqli_query($connection, "SELECT DISTINCT * FROM parts WHERE partname LIKE '%$searchkey%' OR PartID LIKE '%$searchkey%' ORDER BY length(CatID), CatID, partname ASC LIMIT 15 OFFSET $offset"); 
 
 echo"$searchkey";
-print("<table>\n<tr>");
+print("<table class='tablebody'>\n<tr>");
 print("<th>PartID</th> <th>Partname</th>");
 print("</tr>\n");
 while ($row = mysqli_fetch_array($visible_result)) {
