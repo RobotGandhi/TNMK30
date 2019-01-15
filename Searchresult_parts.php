@@ -67,7 +67,7 @@ if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
 	$amount_of_results = $result_colors->num_rows;
 	$amount_of_resultpages = ceil($amount_of_results/15);
 	//Query for each page visible in the result
-	$result_colors = mysqli_query($connection, "SELECT DISTINCT inventory.ItemID, colors.ColorID, colors.Colorname, images.ItemID FROM inventory, colors, images WHERE inventory.ItemID='$part_selected' AND inventory.ColorID=colors.ColorID AND inventory.ItemID=images.ItemID LIMIT 15 OFFSET $offset");
+	$result_colors = mysqli_query($connection, "SELECT DISTINCT inventory.ItemID, colors.ColorID, colors.Colorname FROM inventory, colors WHERE inventory.ItemID='$part_selected' AND inventory.ColorID=colors.ColorID LIMIT 15 OFFSET $offset");
     }
 	//If no image is found for the part you have selected then only the PartID and the Partname is shown 
     if ($result->num_rows == 0) {
@@ -75,6 +75,7 @@ if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
     }
 	$row = mysqli_fetch_array($result);
 	$Partname    = $row['partname'];
+	//Printing breadcrumbs
 	print("<div class\"breadcrumbs\">");
 	print("<a href=\"Homepage_V2.php\"> Home </a>");
 	print("/");
@@ -82,6 +83,7 @@ if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
 	print("/");
 	print("$Partname");
 	print("</div>");
+	//Printing the part you have chosen
 	print("<div class=\"content\">");
     print("<table>\n<tr>");
     print("<th>Image</th> <th>PartID</th> <th>Partname</th> ");
