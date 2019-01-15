@@ -114,12 +114,7 @@ if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
 	print("<div class='searchdiv'>");
     print("<input class='searchbar' type='text' name='searchkey' placeholder='Filter colors' size='40'>");
     print("<input type='hidden' name='PartID' value='$part_selected'>");
-<<<<<<< HEAD
-	echo"<button class='button' type='submit'> Filter </button>"; 
-=======
-	print("<button class='filterbutton' type='submit' class='button'> Filter </button>"); 
-	
->>>>>>> b310c5c2af7ffc4943a9bcdb65644fcc0f29a920
+	echo"<button class='button' type='submit'> Filter </button>";
     print("</form>");
     print("</div>");
     
