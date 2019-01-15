@@ -11,6 +11,7 @@
         <meta name="author" content="Viktor Carlsson, Uma Eriksson, Ruben Bromee, Jessie Chow, Alma Fernvik"/>
         <link rel="stylesheet" href="proj.css" type="text/css"/>
 		<link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
+		<script type="text/javascript" src="script.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
@@ -103,7 +104,7 @@ if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
         if ($Imageexists)
             print("<td> <img src=\"$Imagesource\"></td>");
         else
-            print("<td>No image avaliable!</td>");
+            print("<td> <img src=\"No_image_available.svg\"></td>");
         print("<td>$PartID</td> <td>$Partname</td>");
         print("</tr>");
     
@@ -133,7 +134,7 @@ if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
         $Imagesource_colors = $prefix_colors . "/" . $ColorID . "/" . $part_selected;
         print("<tr>");
 		//If no gif file is found search for a jpg file
-        print("<td><img class='smallimages' src='$Imagesource_colors.gif' onerror='this.onerror=null;this.src=\"$Imagesource_colors.jpg\"' alt='No image avaliable!'>");
+        print("<td><img class='smallimages' src='$Imagesource_colors.gif' onerror='this.src=LoadJPG(this)' alt='No image avaliable!'>");
         print("<td>$Partname</td>");
 		//Print a link to the selected color of the selected part
         print("<td><a href='searchresult_colors.php?ItemID=" . $part_selected . "&ColorID=" . $ColorID . "&pagenumber=1&searchkey_breadcrumbs=".$searchkey_breadcrumbs."'> $Colorname </a> </td>");
