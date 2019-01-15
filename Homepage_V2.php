@@ -107,6 +107,7 @@ if(isset($_GET['searchkey']) && $_GET['searchkey'] != NULL) {
 		echo"<table>\n<tr>
 		<th>Image </th> <th>PartID</th> <th>Partname</th>
 		</tr>\n";
+		$searchkey = str_replace(" ","_",$searchkey);
 		while ($row = mysqli_fetch_array($visible_result)) {
 			$PartID   = $row['PartID'];
 			$Partname = $row['Partname'];
@@ -120,30 +121,39 @@ if(isset($_GET['searchkey']) && $_GET['searchkey'] != NULL) {
 		}
 		print("</table>");
 		
-		print("<div class='pages'>");
 		
 		/*Print only a "Next page" button if you're on page 1. Print both a "Next page" and a "Previous page" button if you're on any page between the first and the last. 
 		Print only a "Next page" button if you're on the last page. */ 
 		if($amount_of_resultpages == 1) {}
 		else if($pagenumber != 1 && $pagenumber != $amount_of_resultpages) {
+			print("<div class='pages'>");
 			echo "<form action='Homepage_V2.php' method='get'>\n
 			<button class='pagebuttons' type='submit' name='pagenumber' value='$previous_page'> Previous page </button>
 			<input type='hidden' name='searchkey' value='$searchkey'>";
+			echo"</form> ";
 			echo "$pagenumber/$amount_of_resultpages";
 			echo "<form action='Homepage_V2.php' method='get'>\n
 			<button class='pagebuttons'  type='submit' name='pagenumber' value='$next_page'>Next page</button>
 			<input type='hidden' name='searchkey' value='$searchkey'>";
+			echo"</form> ";
+			print("</div>");
 		} else if($pagenumber == $amount_of_resultpages) {
+			print("<div class='pages'>");
 			echo "<form action='Homepage_V2.php' method='get'>\n
 			<button class='pagebuttons' type='submit' name='pagenumber' value='$previous_page'> Previous page </button>
 			<input type='hidden' name='searchkey' value='$searchkey'>";
 			echo"$pagenumber/$amount_of_resultpages";
+			echo"</form> ";
+			print("</div>");
 		}
 		else {
+			print("<div class='pages'>");
 			echo "$pagenumber/$amount_of_resultpages";
 			echo "<form action='Homepage_V2.php' method='get'>\n
 			<button  class='pagebuttons' type='submit' name='pagenumber' value='$next_page'>Next page</button>
 			<input type='hidden' name='searchkey' value='$searchkey'>";
+			echo"</form> ";
+			print("</div>");
 		}
 	} else {
 		//Print an error message if no searchresults were found.
@@ -164,13 +174,13 @@ else {
          ");
 }
 
-print("</div>");
+
 ?>
 
 </div>
 
 
-</form> 
+
       <?php include("footer.txt");?>
 		</div>
     </body>

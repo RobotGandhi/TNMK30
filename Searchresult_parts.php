@@ -77,7 +77,7 @@ if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
 	$row = mysqli_fetch_array($result);
 	$Partname    = $row['partname'];
 	//Printing breadcrumbs
-	print("<div class\"breadcrumbs\">");
+	print("<div class=\"breadcrumbs\">");
 	print("<a href=\"Homepage_V2.php\"> Home </a>");
 	print("/");
 	print("<a href='Homepage_V2.php?searchkey=$searchkey_breadcrumbs&pagenumber=1'>Searchresult of \"$searchkey_breadcrumbs\" </a>");
@@ -104,9 +104,9 @@ if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
         }
         print("<tr>");
         if ($Imageexists)
-            print("<td> <img src=\"$Imagesource\"></td>");
+            print("<td> <img src=\"$Imagesource\" alt='No image found!'></td>");
         else
-            print("<td> <img src=\"No_image_available.svg\"></td>");
+            print("<td> <img src=\"No_image_available.svg\" alt='No image found!'></td>");
         print("<td>$PartID</td> <td>$Partname</td>");
         print("</tr>");
     
@@ -115,8 +115,8 @@ if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
 	
     print("<h1>Available colors:</h1>");
    //Form for filtering colors
+    print("<div class='searchdiv'>");
     print("<form action='Searchresult_parts.php' method='get'>");
-	print("<div class='searchdiv'>");
     print("<input class='searchbar' type='text' name='searchkey' placeholder='Filter colors' size='40'>");
     print("<input type='hidden' name='PartID' value='$part_selected'>");
 	print("<input type='hidden' name='searchkey_breadcrumbs' value='$searchkey_breadcrumbs'>");
@@ -150,28 +150,28 @@ if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
 	if($amount_of_resultpages == 1 || $amount_of_resultpages == null) {}
 	else if($pagenumber != 1 && $pagenumber != $amount_of_resultpages) {
 		echo "<form action='Searchresult_parts.php' method='get'>\n";
-		echo"<input type='hidden' name='PartID' value='$PartID'>"; 
-		print("<input type='hidden' name='searchkey_breadcrumbs' value='$searchkey_breadcrumbs'>");
+		echo"<input type='hidden' name='PartID' value='$PartID' />"; 
+		print("<input type='hidden' name='searchkey_breadcrumbs' value='$searchkey_breadcrumbs' />");
 		echo"<button type='submit' name='pagenumber' value='$previous_page'> Previous page </button>";
 		echo"</form>";
 		echo "$pagenumber/$amount_of_resultpages";
 		echo "<form action='Searchresult_parts.php' method='get'>\n";
-		echo"<input type='hidden' name='PartID' value='$PartID'>";
-		print("<input type='hidden' name='searchkey_breadcrumbs' value='$searchkey_breadcrumbs'>");
+		echo"<input type='hidden' name='PartID' value='$PartID' />";
+		print("<input type='hidden' name='searchkey_breadcrumbs' value='$searchkey_breadcrumbs' />");
 		echo"<button type='submit' name='pagenumber' value='$next_page'>Next page</button>";
 		echo"</form>";
 	} else if($pagenumber == $amount_of_resultpages) {
 		echo "<form action='Searchresult_parts.php' method='get'>\n";
-		echo"<input type='hidden' name='PartID' value='$PartID'>"; 
-		print("<input type='hidden' name='searchkey_breadcrumbs' value='$searchkey_breadcrumbs'>");
+		echo"<input type='hidden' name='PartID' value='$PartID' />"; 
+		print("<input type='hidden' name='searchkey_breadcrumbs' value='$searchkey_breadcrumbs' />");
 		echo"<button type='submit' name='pagenumber' value='$previous_page'> Previous page </button>";
 		echo"</form>";
 		echo"$pagenumber/$amount_of_resultpages";
 	} else {
 		echo "$pagenumber/$amount_of_resultpages";
 		echo "<form action='Searchresult_parts.php' method='get'>\n";
-		echo"<input type='hidden' name='PartID' value='$PartID'>";	
-		print("<input type='hidden' name='searchkey_breadcrumbs' value='$searchkey_breadcrumbs'>");
+		echo"<input type='hidden' name='PartID' value='$PartID' />";	
+		print("<input type='hidden' name='searchkey_breadcrumbs' value='$searchkey_breadcrumbs' />");
 		echo"<button type='submit' name='pagenumber' value='$next_page'>Next page</button>";
 		echo"</form>";
 	}
