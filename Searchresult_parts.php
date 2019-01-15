@@ -5,30 +5,41 @@
 ?>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <link rel="stylesheet" href="proj.css" type="text/css"/>
-    <title>Search result</title>
-	<link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
+        <meta charset="UTF-8"/>
+        <title>Homepage</title>
+        <meta name="description" content="A site where you can find your lego parts and see what set they're in!"/>
+        <meta name="author" content="Viktor Carlsson, Uma Eriksson, Ruben Bromee, Jessie Chow, Alma Fernvik"/>
+        <link rel="stylesheet" href="proj.css" type="text/css"/>
+		<link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-    
-<body>
-        
-    <!-- Parent wrapper div -->
-    <div class="wrapper">
-     
-		<!-- header wrapper div -->
-       <?php include("headermenu.txt");?>
-        
-
+    </head>
+    <body>
+	<div class="wrapper">
+		<a class="icon" href="Homepage_V2.php">
+    <div class ="header">
        
 		
+        <h1>Lego finder</h1>
+		</div>
+		
+		</a>
+		
+		<nav>
+
+<ul>
+<li><a href="Homepage_V2.php">Home</a></li>
+<li><a href="howtosearch.php">How To Search</a></li>
+<li><a href="aboutus.php">About Us</a></li>
+</ul>
+
+</nav>
      <?php
 	 //Print an error message if no PartID is set.
 if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
     die("<p>No PartID found!</p>"); 
 } else {
 	//Declaring variables
+	$searchkey_breadcrumbs = $_GET['searchkey_breadcrumbs'];
 	$pagenumber = $_GET['pagenumber'];
 	$offset = ($pagenumber-1) * 15;
 	$previous_page = $pagenumber - 1;
@@ -99,11 +110,16 @@ if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
 	
     print("<h1>Available colors:</h1>");
    //Form for filtering colors
-    print("<form action='Searchresult_parts.php' method='get'>");
+    print("<form action='Searchresult_parts.php?searchkey_breadcrumbs=$searchkey_breadcrumbs' method='get'>");
 	print("<div class='searchdiv'>");
     print("<input class='searchbar' type='text' name='searchkey' placeholder='Filter colors' size='40'>");
     print("<input type='hidden' name='PartID' value='$part_selected'>");
-	echo"<button class='filterbutton' type='submit' class='button'> Filter </button>"; 
+<<<<<<< HEAD
+	echo"<button class='button' type='submit'> Filter </button>"; 
+=======
+	print("<button class='filterbutton' type='submit' class='button'> Filter </button>"); 
+	
+>>>>>>> b310c5c2af7ffc4943a9bcdb65644fcc0f29a920
     print("</form>");
     print("</div>");
     
@@ -119,10 +135,10 @@ if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
         $Imagesource_colors = $prefix_colors . "/" . $ColorID . "/" . $part_selected;
         print("<tr>");
 		//If no gif file is found search for a jpg file
-        print("<td><img src='$Imagesource_colors.gif' onerror='this.onerror=null;this.src=\"$Imagesource_colors.jpg\"' alt='No image avaliable!'>");
+        print("<td><img class='smallimages' src='$Imagesource_colors.gif' onerror='this.onerror=null;this.src=\"$Imagesource_colors.jpg\"' alt='No image avaliable!'>");
         print("<td>$Partname</td>");
 		//Print a link to the selected color of the selected part
-        print("<td><a href='searchresult_colors.php?ItemID=" . $part_selected . "&ColorID=" . $ColorID . "&pagenumber=1'> $Colorname </a> </td>");
+        print("<td><a href='searchresult_colors.php?ItemID=" . $part_selected . "&ColorID=" . $ColorID . "&pagenumber=1&searchkey_breadcrumbs=".$searchkey_breadcrumbs."'> $Colorname </a> </td>");
         print("</tr>");
     }
     print("</table>");
@@ -132,39 +148,39 @@ if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
 	Print only a "Next page" button if you're on the last page. */
 	if($amount_of_resultpages == 1 || $amount_of_resultpages == null) {}
 	else if($pagenumber != 1 && $pagenumber != $amount_of_resultpages) {
-		echo "<form action='Searchresult_parts.php' method='get'>\n
+		echo "<form action='Searchresult_parts.php?searchkey_breadcrumbs=$searchkey_breadcrumbs' method='get'>\n
 		<button type='submit' name='pagenumber' value='$previous_page'> Previous page </button>";
 		echo"<input type='hidden' name='PartID' value='$PartID'>"; 
 		echo"</form>";
 		echo "$pagenumber/$amount_of_resultpages";
-		echo "<form action='Searchresult_parts.php' method='get'>\n
+		echo "<form action='Searchresult_parts.php?searchkey_breadcrumbs=$searchkey_breadcrumbs' method='get'>\n
 		<button type='submit' name='pagenumber' value='$next_page'>Next page</button>";
 		echo"<input type='hidden' name='PartID' value='$PartID'>";
 		echo"</form>";
 	} else if($pagenumber == $amount_of_resultpages) {
-		echo "<form action='Searchresult_parts.php' method='get'>\n
+		echo "<form action='Searchresult_parts.php?searchkey_breadcrumbs=$searchkey_breadcrumbs' method='get'>\n
 		<button type='submit' name='pagenumber' value='$previous_page'> Previous page </button>";
 		echo"<input type='hidden' name='PartID' value='$PartID'>"; 
 		echo"</form>";
 		echo"$pagenumber/$amount_of_resultpages";
 	} else {
 		echo "$pagenumber/$amount_of_resultpages";
-		echo "<form action='Searchresult_parts.php' method='get'>\n
+		echo "<form action='Searchresult_parts.php?searchkey_breadcrumbs=$searchkey_breadcrumbs' method='get'>\n
 		<button type='submit' name='pagenumber' value='$next_page'>Next page</button>";
-		echo"<input type='hidden' name='PartID' value='$PartID'>"; 
+		echo"<input type='hidden' name='PartID' value='$PartID'>";	
 		echo"</form>";
 	}
 	}
 	else{
 		print("This part is not available in the color \"$color_search\". Try going back and checking for misspellings in your filtering.");
 		print("<br>");
-		print("<a href='Searchresult_parts.php?PartID=".$part_selected."&pagenumber=1'>Back</a>");
+		print("<a href='Searchresult_parts.php?PartID=".$part_selected."&pagenumber=1&searchkey_breadcrumbs=".$searchkey_breadcrumbs."'>Back</a>");
 	}
 
 }
 ?>
    
-   <?php include("footer.txt");?>
+  <?php include("footer.txt");?>
     
     <!-- wrapper content div closing tag  -->
     </div> 

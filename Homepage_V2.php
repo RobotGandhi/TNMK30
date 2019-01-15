@@ -36,9 +36,9 @@
         
         <!-- Sökruta -->
         <div class="searchdiv">
-        <form class="searchform" action="Homepage_V2.php" method="get" >
+        <form action="Homepage_V2.php" method="get" >
         <input class="searchbar" type="text" name="searchkey" placeholder="Search for a lego part using name or PartID" size="40">
-		<input type="hidden" name="pagenumber" value="1">
+		<input class ="pagenumber" type="hidden" name="pagenumber" value="1">
 		<button class ="button" type="submit"> Search </button> 
         </form>
         </div>
@@ -114,31 +114,34 @@ if(isset($_GET['searchkey']) && $_GET['searchkey'] != NULL) {
 			echo"<tr>
 			<td><img src='$Imagesource.gif' onerror='this.onerror=null;this.src=\"$Imagesource.jpg\"' alt='No image avaliable!'> </td>
 			<td>$PartID</td>
-			<td><a href=\"Searchresult_parts.php?PartID=" . $PartID . "&pagenumber=1\">$Partname</a></td>
+			<td><a href=\"Searchresult_parts.php?PartID=" . $PartID . "&pagenumber=1&searchkey_breadcrumbs=".$searchkey."\">$Partname</a></td>
 			</tr>";
 		}
 		print("</table>");
+		
+		print("<div class='pages'>");
+		
 		/*Print only a "Next page" button if you're on page 1. Print both a "Next page" and a "Previous page" button if you're on any page between the first and the last. 
 		Print only a "Next page" button if you're on the last page. */ 
 		if($amount_of_resultpages == 1) {}
 		else if($pagenumber != 1 && $pagenumber != $amount_of_resultpages) {
 			echo "<form action='Homepage_V2.php' method='get'>\n
-			<button type='submit' name='pagenumber' value='$previous_page'> Previous page </button>
+			<button class='pagebuttons' type='submit' name='pagenumber' value='$previous_page'> Previous page </button>
 			<input type='hidden' name='searchkey' value='$searchkey'>";
 			echo "$pagenumber/$amount_of_resultpages";
 			echo "<form action='Homepage_V2.php' method='get'>\n
-			<button type='submit' name='pagenumber' value='$next_page'>Next page</button>
+			<button class='pagebuttons'  type='submit' name='pagenumber' value='$next_page'>Next page</button>
 			<input type='hidden' name='searchkey' value='$searchkey'>";
 		} else if($pagenumber == $amount_of_resultpages) {
 			echo "<form action='Homepage_V2.php' method='get'>\n
-			<button type='submit' name='pagenumber' value='$previous_page'> Previous page </button>
+			<button class='pagebuttons' type='submit' name='pagenumber' value='$previous_page'> Previous page </button>
 			<input type='hidden' name='searchkey' value='$searchkey'>";
 			echo"$pagenumber/$amount_of_resultpages";
 		}
 		else {
 			echo "$pagenumber/$amount_of_resultpages";
 			echo "<form action='Homepage_V2.php' method='get'>\n
-			<button type='submit' name='pagenumber' value='$next_page'>Next page</button>
+			<button  class='pagebuttons' type='submit' name='pagenumber' value='$next_page'>Next page</button>
 			<input type='hidden' name='searchkey' value='$searchkey'>";
 		}
 	} else {
@@ -159,18 +162,15 @@ else {
 			</p>
          ");
 }
+
+print("</div>");
 ?>
 
 </div>
 
 
 </form> 
-       <div class="footer">
-            <p>This is the footer</p>
-			<p>Contact</p>
-<p>Email: questions@liu.se</p>
-<p>Phone: 013 28 10 00</p>
-        </div>
+      <?php include("footer.txt");?>
 		</div>
     </body>
 </html>
