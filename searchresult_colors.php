@@ -30,7 +30,6 @@
 
 <ul>
 <li><a href="Homepage_V2.php">Home</a></li>
-<li><a href="howtosearch.php">How To Search</a></li>
 <li><a href="aboutus.php">About Us</a></li>
 </ul>
 

@@ -30,7 +30,6 @@
 
 <ul>
 <li><a href="Homepage_V2.php">Home</a></li>
-<li><a href="howtosearch.php">How To Search</a></li>
 <li><a href="aboutus.php">About Us</a></li>
 </ul>
 
@@ -194,10 +193,11 @@ if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
 }
 ?>
    
-  <?php include("footer.txt");?>
+  
     
     <!-- wrapper content div closing tag  -->
     </div> 
+	<?php include("footer.txt");?>
 </body>
 
 </html>
