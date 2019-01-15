@@ -83,7 +83,7 @@ print("<tr>");
 print("<th>Image</th> <th> Partname </th> <th> Colorname </th>");
 print("</tr>");
 print("<tr>");
-print("<td><img src='$prefix_colors/$ColorID/$ItemID.gif' onerror='this.src=LoadJPG(this)' alt='No image available!'></td> <td>" . $Partname . "</td> <td>" . $Colorname . "</td>");
+print("<td><img src='$prefix_colors/$ColorID/$ItemID.gif' onerror='this.src=FixImage(this)' alt='No image available!'></td> <td>" . $Partname . "</td> <td>" . $Colorname . "</td>");
 print("</tr>");
 print("</table>");
 print("</div>");
