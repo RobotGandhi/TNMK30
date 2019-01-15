@@ -188,6 +188,7 @@ th, td
 	font-size: 20px;
 	padding: 15px;
 	border-bottom: 1px solid black;
+	font-family: 'Roboto', sans-serif;
 }
 
 th 
@@ -230,6 +231,21 @@ font-size: 15px;
 font-family: 'Bree Serif', serif;
 
 	
+}
+.informational_headers
+{
+	font-size: 24px;
+	font-family: 'Roboto', sans-serif;
+}
+.informational_text
+{
+	font-size: 18px;
+	font-family: 'Roboto', sans-serif;
+}
+.breadcrumbs
+{
+	font-size: 18px;
+	font-family: 'Roboto', sans-serif;
 }
 
 

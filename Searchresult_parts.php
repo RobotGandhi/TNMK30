@@ -11,6 +11,7 @@
         <meta name="author" content="Viktor Carlsson, Uma Eriksson, Ruben Bromee, Jessie Chow, Alma Fernvik"/>
         <link rel="stylesheet" href="proj.css" type="text/css"/>
 		<link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 		<script type="text/javascript" src="script.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
@@ -113,7 +114,7 @@ if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
     print("</table>");
     print("</div>");
 	
-    print("<h1>Available colors:</h1>");
+    
    //Form for filtering colors
     print("<div class='searchdiv'>");
     print("<form action='Searchresult_parts.php' method='get'>");
@@ -127,6 +128,7 @@ if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
 	if($amount_of_results != 0) {
 	//Print all the available colors for the selected part
     print("<div class='content'>");
+	print("<h1 class='informational_headers'>Available colors:</h1>");
     print("<table>\n<tr>");
     print("<th>Image</th> <th>Partname</th> <th>Colorname</th>");
     print("</tr>");
@@ -143,7 +145,7 @@ if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
         print("</tr>");
     }
     print("</table>");
-    print("</div>");
+    
 	
 	/*Print only a "Next page" button if you're on page 1. Print both a "Next page" and a "Previous page" button if you're on any page between the first and the last. 
 	Print only a "Next page" button if you're on the last page. */
@@ -181,6 +183,7 @@ if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
 		print("<br>");
 		print("<a href='Searchresult_parts.php?PartID=".$part_selected."&pagenumber=1&searchkey_breadcrumbs=".$searchkey_breadcrumbs."'>Back</a>");
 	}
+	print("</div>");
 
 }
 ?>

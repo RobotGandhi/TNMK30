@@ -11,6 +11,7 @@
         <meta name="author" content="Viktor Carlsson, Uma Eriksson, Ruben Bromee, Jessie Chow, Alma Fernvik"/>
         <link rel="stylesheet" href="proj.css" type="text/css"/>
 		<link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 		<script type="text/javascript" src="script.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
@@ -91,8 +92,8 @@ print("<div class=\"content\">");
 
 //Displaying information about the sets the chosen part is included in
 print("<div>");
-print("<h1>Sets this part is included in:</h1>");
-print("</div>");
+print("<h1 class='informational_headers'>Sets this part is included in:</h1>");
+
 print("<table>");
 print("<tr>");
 print("<th>SetID</th> <th>Setname</th> <th>Year</th>");
@@ -108,7 +109,6 @@ while ($row = mysqli_fetch_array($result_sets_visible)) {
                 print("</tr>");
 }
 print("</table>");
-print("</div>");
 if($amount_of_resultpages == 1 || $amount_of_resultpages == null) {}
 else if($pagenumber != 1 && $pagenumber != $amount_of_resultpages)
 {
@@ -156,9 +156,11 @@ echo
 </form>
 ";
 }
+print("</div>");
 
 ?>
-   <?php include("footer.txt");?>
 </div>
+</div>
+   <?php include("footer.txt");?>
 </body>
 </html>

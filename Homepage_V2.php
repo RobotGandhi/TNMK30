@@ -11,6 +11,7 @@
         <meta name="author" content="Viktor Carlsson, Uma Eriksson, Ruben Bromee, Jessie Chow, Alma Fernvik"/>
         <link rel="stylesheet" href="proj.css" type="text/css"/>
 		<link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 		<script type="text/javascript" src="script.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
@@ -163,14 +164,15 @@ if(isset($_GET['searchkey']) && $_GET['searchkey'] != NULL) {
 }
 else {
 	 print(" 
-        
-            <h1>How to search</h1>
-			<p>Step 1: Search for the type of part you're looking for by typing in either its name or its PartID into the searchbar. <br> Then press either the \"Search\" button with your mouse or press the \"Enter\" button on your keyboard<br>
-			<br>
-			Step 2: Choose the type of part you're looking by clicking the partname with your mouse.<br>
-			Step 3: Choose the color of the part you have chosen. You can filter the colors by typing any available color in the filter bar and either pressing the \"Filter\" button with your mouse or the \"Enter\" button on your keyboard.<br>
-			You can navigate back to the type of part you have chosen by using the breadcrumb menu that appears at the upper part of your screen. You can navigate to the homepage at any time by pressing the \"Home\" button in either the breadcrumb menu, the header menu or by pressing the red lego brick at the top of your screen. 
+			<div class='informational_text'>
+            <h1>How to search:</h1>
+			<p><h2>Step 1:</h2> Search for the type of part you're looking for by typing in either its name or its PartID into the searchbar.  
+			Then press either the \"Search\" button with your mouse or press the \"Enter\" button on your keyboard</p>
+			<p><h2>Step 2:</h2> Choose the type of part you're looking by clicking the partname with your mouse.</p>
+			<p><h2>Step 3:</h2> Choose the color of the part you have chosen. You can filter the colors by typing any available color in the filter bar and either pressing the \"Filter\" button with your mouse or the \"Enter\" button on your keyboard.</p>
+			<p>You can navigate back to the type of part you have chosen by using the breadcrumb menu that appears at the upper part of your screen. You can navigate to the homepage at any time by pressing the \"Home\" button in either the breadcrumb menu, the header menu or by pressing the red lego brick at the top of your screen. 
 			</p>
+			</div>
          ");
 }
 
