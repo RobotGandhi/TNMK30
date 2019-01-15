@@ -11,6 +11,7 @@
         <meta name="author" content="Viktor Carlsson, Uma Eriksson, Ruben Bromee, Jessie Chow, Alma Fernvik"/>
         <link rel="stylesheet" href="proj.css" type="text/css"/>
 		<link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
+		<script type="text/javascript" src="script.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
@@ -80,7 +81,7 @@ print("<tr>");
 print("<th>Image</th> <th> Partname </th> <th> Colorname </th>");
 print("</tr>");
 print("<tr>");
-print("<td><img src='$prefix_colors/$ColorID/$ItemID.gif' onerror='LoadJPG(this, \"$prefix_colors/$ColorID/$ItemID\")' alt='No image available!'></td> <td>" . $Partname . "</td> <td>" . $Colorname . "</td>");
+print("<td><img src='$prefix_colors/$ColorID/$ItemID.gif' onerror='this.src=LoadJPG(this)' alt='No image available!'></td> <td>" . $Partname . "</td> <td>" . $Colorname . "</td>");
 print("</tr>");
 print("</table>");
 print("</div>");

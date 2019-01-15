@@ -1,11 +1,9 @@
-function LoadJPG(image, default_src) {
-    var test = new Image();
-    var avaliable_image = true;
-    test.onerror = "avaliable_image = false";
-    test.URL = default_src + ".jpg";
-    if (avaliable_image) {
-        return test.URL;
-    } else {
-        return "No_image_avaliable.svg";
-    }
+function LoadJPG(image) {
+	if (image.src.substr(image.src.length - 4) == ".jpg") {
+		return "No_image_available.svg";
+	} else {
+		var URL = image.src.substr(0, image.src.length - 4);
+		URL += ".jpg";
+		return URL;
+	}
 }
