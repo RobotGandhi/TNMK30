@@ -136,7 +136,7 @@ if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
         $Imagesource_colors = $prefix_colors . "/" . $ColorID . "/" . $part_selected;
         print("<tr>");
 		//If no gif file is found search for a jpg file
-        print("<td><img class='smallimages' src='$Imagesource_colors.gif' onerror='this.src=LoadJPG(this)' alt='No image avaliable!'>");
+        print("<td><img class='smallimages' src='$Imagesource_colors.gif' onerror='this.src=FixImage(this)' alt='No image avaliable!'>");
         print("<td>$Partname</td>");
 		//Print a link to the selected color of the selected part
         print("<td><a href='searchresult_colors.php?ItemID=" . $part_selected . "&ColorID=" . $ColorID . "&pagenumber=1&searchkey_breadcrumbs=".$searchkey_breadcrumbs."'> $Colorname </a> </td>");
