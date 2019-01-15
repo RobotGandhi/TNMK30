@@ -91,7 +91,7 @@ if(isset($_GET['searchkey']) && $_GET['searchkey'] != NULL) {
 	$searchkey = mysqli_real_escape_string($connection, $searchkey);
 	
 	//Counting amount of total results
-	$result = mysqli_query($connection, "(SELECT DISTINCT parts.PartID, parts.CatID, parts.Partname, inventory.ItemID FROM parts, inventory WHERE (parts.partname LIKE '$searchkey%' OR parts.PartID LIKE '$searchkey%') AND parts.PartID=inventory.ItemID ORDER BY length(CatID), CatID, partname ASC) UNION (SELECT DISTINCT parts.PartID, parts.CatID, parts.Partname, inventory.ItemID FROM parts, inventory WHERE (parts.partname LIKE '%$searchkey%' OR parts.PartID LIKE '%$searchkey%') AND parts.PartID=inventory.ItemID ORDER BY length(CatID), CatID, partname ASC) ");
+	$result = mysqli_query($connection, "(SELECT DISTINCT parts.PartID, parts.CatID, parts.Partname, inventory.ItemID FROM parts, inventory WHERE (parts.partname LIKE '$searchkey' OR parts.PartID LIKE '$searchkey') AND parts.PartID=inventory.ItemID ORDER BY length(CatID), CatID, partname ASC) UNION (SELECT DISTINCT parts.PartID, parts.CatID, parts.Partname, inventory.ItemID FROM parts, inventory WHERE (parts.partname LIKE '$searchkey%' OR parts.PartID LIKE '$searchkey%') AND parts.PartID=inventory.ItemID ORDER BY length(CatID), CatID, partname ASC) UNION (SELECT DISTINCT parts.PartID, parts.CatID, parts.Partname, inventory.ItemID FROM parts, inventory WHERE (parts.partname LIKE '%$searchkey%' OR parts.PartID LIKE '%$searchkey%') AND parts.PartID=inventory.ItemID ORDER BY length(CatID), CatID, partname ASC) ");
 	$amount_of_results = $result->num_rows;
 	
 
@@ -101,7 +101,7 @@ if(isset($_GET['searchkey']) && $_GET['searchkey'] != NULL) {
 	if($amount_of_results != 0) {
 		$amount_of_resultpages = ceil(($amount_of_results/15));
 		//Query for each page visible in the result
-		$visible_result = mysqli_query($connection, "(SELECT DISTINCT parts.PartID, parts.CatID, parts.Partname, inventory.ItemID FROM parts, inventory WHERE (parts.partname LIKE '$searchkey%' OR parts.PartID LIKE '$searchkey%') AND parts.PartID=inventory.ItemID ORDER BY length(CatID), CatID, partname ASC) UNION (SELECT DISTINCT parts.PartID, parts.CatID, parts.Partname, inventory.ItemID FROM parts, inventory WHERE (parts.partname LIKE '%$searchkey%' OR parts.PartID LIKE '%$searchkey%') AND parts.PartID=inventory.ItemID ORDER BY length(CatID), CatID, partname ASC)  LIMIT 15 OFFSET $offset");
+		$visible_result = mysqli_query($connection, "(SELECT DISTINCT parts.PartID, parts.CatID, parts.Partname, inventory.ItemID FROM parts, inventory WHERE (parts.partname LIKE '$searchkey' OR parts.PartID LIKE '$searchkey') AND parts.PartID=inventory.ItemID ORDER BY length(CatID), CatID, partname ASC) UNION (SELECT DISTINCT parts.PartID, parts.CatID, parts.Partname, inventory.ItemID FROM parts, inventory WHERE (parts.partname LIKE '$searchkey%' OR parts.PartID LIKE '$searchkey%') AND parts.PartID=inventory.ItemID ORDER BY length(CatID), CatID, partname ASC) UNION (SELECT DISTINCT parts.PartID, parts.CatID, parts.Partname, inventory.ItemID FROM parts, inventory WHERE (parts.partname LIKE '%$searchkey%' OR parts.PartID LIKE '%$searchkey%') AND parts.PartID=inventory.ItemID ORDER BY length(CatID), CatID, partname ASC)  LIMIT 15 OFFSET $offset");
 		//Print the current resultpage
 		echo"<table>\n<tr>
 		<th>Image </th> <th>PartID</th> <th>Partname</th>
