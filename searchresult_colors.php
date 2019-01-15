@@ -112,12 +112,13 @@ print("</table>");
 if($amount_of_resultpages == 1 || $amount_of_resultpages == null) {}
 else if($pagenumber != 1 && $pagenumber != $amount_of_resultpages)
 {
+print("<div class='pages'>");
 echo" 
 <form action='searchresult_colors.php' method='get'>
 <input type='hidden' name='ItemID' value='$ItemID'>
 <input type='hidden' name='ColorID' value='$ColorID'>
 <input type='hidden' name='searchkey_breadcrumbs' value='$searchkey_breadcrumbs'>
-<button type='submit' name='pagenumber' value='$previous_page'> Previous page </button>
+<button class='pagebuttons' type='submit' name='pagenumber' value='$previous_page'> Previous page </button>
 </form>
 ";
 echo"$pagenumber/$amount_of_resultpages";
@@ -126,25 +127,30 @@ echo"
 <input type='hidden' name='ItemID' value='$ItemID'>
 <input type='hidden' name='ColorID' value='$ColorID'>
 <input type='hidden' name='searchkey_breadcrumbs' value='$searchkey_breadcrumbs'>
-<button type='submit' name='pagenumber' value='$next_page'>Next page</button>
+<button class='pagebuttons' type='submit' name='pagenumber' value='$next_page'>Next page</button>
 </form>
 ";
+print("</div>");
+
 
 }
 else if($pagenumber == $amount_of_resultpages)
 {
-	echo" 
+print("<div class='pages'>");
+echo" 
 <form action='searchresult_colors.php' method='get'>
 <input type='hidden' name='ItemID' value='$ItemID'>
 <input type='hidden' name='ColorID' value='$ColorID'>
 <input type='hidden' name='searchkey_breadcrumbs' value='$searchkey_breadcrumbs'>
-<button type='submit' name='pagenumber' value='$previous_page'> Previous page </button>
+<button class='pagebuttons' type='submit' name='pagenumber' value='$previous_page'> Previous page </button>
 </form>
 ";
 echo"$pagenumber/$amount_of_resultpages";
+print("</div>");
 }
 else
 {
+print("<div class='pages'>");
 echo"$pagenumber/$amount_of_resultpages";
 echo
 "
@@ -152,9 +158,10 @@ echo
 <input type='hidden' name='ItemID' value='$ItemID'>
 <input type='hidden' name='ColorID' value='$ColorID'>
 <input type='hidden' name='searchkey_breadcrumbs' value='$searchkey_breadcrumbs'>
-<button type='submit' name='pagenumber' value='$next_page'>Next page</button>
+<button class='pagebuttons' type='submit' name='pagenumber' value='$next_page'>Next page</button>
 </form>
 ";
+print("</div>");
 }
 print("</div>");
 

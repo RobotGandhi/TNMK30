@@ -211,9 +211,13 @@ tr:nth-child(even)
 
 .pages
 {
-	margin-top: 1%;
-	margin-bottom: 1%;
+	margin-top:1vh;
+	margin-bottom:1vh;
+	display:flex;
+	justify-content:center;
 }
+
+
 
 .pagenumber
 {
@@ -227,10 +231,8 @@ border: 2px outset darkgreen;
 border-radius: 3px;
 height: 3vh;
 font-size: 15px;
-
 font-family: 'Bree Serif', serif;
 
-	
 }
 .informational_headers
 {
