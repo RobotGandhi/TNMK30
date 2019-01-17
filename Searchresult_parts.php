@@ -152,22 +152,25 @@ if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
 	else if($pagenumber != 1 && $pagenumber != $amount_of_resultpages) {
 		print("<div class='pages'>");
 		echo "<form action='Searchresult_parts.php' method='get'>\n";
-		echo"<input type='hidden' name='PartID' value='$PartID' />"; 
-		print("<input type='hidden' name='searchkey_breadcrumbs' value='$searchkey_breadcrumbs' />");
-		echo"<button class='pagebuttons' type='submit' name='pagenumber' value='$previous_page'> Previous page </button>";
+		echo"<input type='hidden' name='PartID' value='$PartID'>"; 
+		print("<input type='hidden' name='searchkey_breadcrumbs' value='$searchkey_breadcrumbs'>");
+		//echo"<button type='submit' name='pagenumber' value='$next_page'>Next page</button>";
+		echo"<button  class='pagebuttons' type='submit' name='pagenumber' value='$previous_page'> Previous page </button>";
 		echo"</form>";
 		echo "$pagenumber/$amount_of_resultpages";
 		echo "<form action='Searchresult_parts.php' method='get'>\n";
-		echo"<input type='hidden' name='PartID' value='$PartID' />";
-		print("<input type='hidden' name='searchkey_breadcrumbs' value='$searchkey_breadcrumbs' />");
+		echo"<input type='hidden' name='PartID' value='$PartID'>";
+		print("<input type='hidden' name='searchkey_breadcrumbs' value='$searchkey_breadcrumbs'>");
+		//echo"<button type='submit' name='pagenumber' value='$next_page'>Next page</button>";
 		echo"<button class='pagebuttons' type='submit' name='pagenumber' value='$next_page'>Next page</button>";
 		echo"</form>";
 		print("</div>");
 	} else if($pagenumber == $amount_of_resultpages) {
 		print("<div class='pages'>");
 		echo "<form action='Searchresult_parts.php' method='get'>\n";
-		echo"<input type='hidden' name='PartID' value='$PartID' />"; 
-		print("<input type='hidden' name='searchkey_breadcrumbs' value='$searchkey_breadcrumbs' />");
+		echo"<input type='hidden' name='PartID' value='$PartID'>"; 
+		print("<input type='hidden' name='searchkey_breadcrumbs' value='$searchkey_breadcrumbs'>");
+		//echo"<button type='submit' name='pagenumber' value='$next_page'>Next page</button>";
 		echo"<button class='pagebuttons' type='submit' name='pagenumber' value='$previous_page'> Previous page </button>";
 		echo"</form>";
 		echo"$pagenumber/$amount_of_resultpages";
@@ -176,8 +179,9 @@ if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
 		print("<div class='pages'>");
 		echo "$pagenumber/$amount_of_resultpages";
 		echo "<form action='Searchresult_parts.php' method='get'>\n";
-		echo"<input type='hidden' name='PartID' value='$PartID' />";	
-		print("<input type='hidden' name='searchkey_breadcrumbs' value='$searchkey_breadcrumbs' />");
+		echo"<input type='hidden' name='PartID' value='$PartID'>";	
+		print("<input type='hidden' name='searchkey_breadcrumbs' value='$searchkey_breadcrumbs'>");
+		//echo"<button type='submit' name='pagenumber' value='$next_page'>Next page</button>";
 		echo"<button class='pagebuttons' type='submit' name='pagenumber' value='$next_page'>Next page</button>";
 		echo"</form>";
 		print("</div>");
