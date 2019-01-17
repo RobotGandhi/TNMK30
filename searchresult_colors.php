@@ -117,7 +117,7 @@ echo"
 <input type='hidden' name='ItemID' value='$ItemID'>
 <input type='hidden' name='ColorID' value='$ColorID'>
 <input type='hidden' name='searchkey_breadcrumbs' value='$searchkey_breadcrumbs'>
-<button type='submit' name='pagenumber' value='$previous_page'> Previous page </button>
+<button class='pagebuttons' type='submit' name='pagenumber' value='$previous_page'> Previous page </button>
 </form>
 ";
 echo"$pagenumber/$amount_of_resultpages";
@@ -126,7 +126,7 @@ echo"
 <input type='hidden' name='ItemID' value='$ItemID'>
 <input type='hidden' name='ColorID' value='$ColorID'>
 <input type='hidden' name='searchkey_breadcrumbs' value='$searchkey_breadcrumbs'>
-<button type='submit' name='pagenumber' value='$next_page'>Next page</button>
+<button class='pagebuttons' type='submit' name='pagenumber' value='$next_page'>Next page</button>
 </form>
 ";
 
@@ -138,7 +138,7 @@ else if($pagenumber == $amount_of_resultpages)
 <input type='hidden' name='ItemID' value='$ItemID'>
 <input type='hidden' name='ColorID' value='$ColorID'>
 <input type='hidden' name='searchkey_breadcrumbs' value='$searchkey_breadcrumbs'>
-<button type='submit' name='pagenumber' value='$previous_page'> Previous page </button>
+<button class='pagebuttons' type='submit' name='pagenumber' value='$previous_page'> Previous page </button>
 </form>
 ";
 echo"$pagenumber/$amount_of_resultpages";
@@ -152,7 +152,7 @@ echo
 <input type='hidden' name='ItemID' value='$ItemID'>
 <input type='hidden' name='ColorID' value='$ColorID'>
 <input type='hidden' name='searchkey_breadcrumbs' value='$searchkey_breadcrumbs'>
-<button type='submit' name='pagenumber' value='$next_page'>Next page</button>
+<button class='pagebuttons' type='submit' name='pagenumber' value='$next_page'>Next page</button>
 </form>
 ";
 }

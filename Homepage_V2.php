@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="proj.css" type="text/css"/>
 		<link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
 		<script type="text/javascript" src="script.js"></script>
+		<!-- Used for responsiveness (is not required for responsiveness always but we have combined this with the css responsiveness -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
@@ -112,8 +113,9 @@ if(isset($_GET['searchkey']) && $_GET['searchkey'] != NULL) {
 			$Partname = $row['Partname'];
 			$Imagesource = $prefix . $PartID;
 			//If no gif file is found, try finding a jpg file. Then print the PartID. Then print a link to the part which has the current PartID.
+			//<td><img src='$Imagesource.gif' onerror='this.src=FixImage(this)' alt='No image avaliable!'> </td>
 			echo"<tr>
-			<td><img src='$Imagesource.gif' onerror='this.src=FixImage(this)' alt='No image avaliable!'> </td>
+			<td><img class='noimage' src='$Imagesource.gif' onerror='this.src=FixImage(this)' alt='No image avaliable!'> </td>
 			<td>$PartID</td>
 			<td><a href=\"Searchresult_parts.php?PartID=" . $PartID . "&pagenumber=1&searchkey_breadcrumbs=".$searchkey."\">$Partname</a></td>
 			</tr>";

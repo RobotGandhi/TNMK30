@@ -3,17 +3,17 @@ body
 	background-color: honeydew;
 	text-align: center;
 	margin: auto;
-	width: 100%;
-	height: auto;
-	font-family: 'Bree Serif', serif;
+
 
 }
-/*Makes images kind of responsive */
+/*Makes images scale depending on width */
 img
 {
 	height: 100%;
-	max-height: 7vh;
+	max-height: 10vw;
+	min-height: 7vw;
 	width: auto;
+	
 	
 	/*
 	 width: 100%;
@@ -26,12 +26,20 @@ img
 
 .smallimages
 {
-	width: 100%;
-	height: auto;
-	max-width: 5vw;
-	max-height:7vw;
+	
+	height: 100%;
+	max-height: 7vw;
+	min-height: 5vw;
+	width: auto;
 	
 }
+
+.noimage
+{
+	min-height: 13vw;
+	
+}
+
 
 div
 {
@@ -46,11 +54,12 @@ h1
 	
 }
 
-/* Parent div*/
+/* Parent div kan tas bort*/
 .wrapper
 {
     text-align: center;
 	width: 100%;
+		font-family: 'Bree Serif', serif;
 }
 
 .header
@@ -80,7 +89,7 @@ h1
     margin-top: 3%;
     border: solid #c61300;
     background-color: #b3e6b3	;
-	font-family: 'Bree Serif', serif;
+
 	font-size: 18px;
 	overflow: auto;
 	
@@ -98,7 +107,7 @@ h1
 }
 
 /* Icon text fix */
-icon:link, icon:visited, icon:hover, icon:black 
+icon:link, icon:visited, icon:hover, icon:active 
 {
 	color: black;
 	text-decoration:none;
@@ -146,6 +155,8 @@ nav li a:hover
 {
 	margin: auto;
 	margin-bottom: 1%;
+	padding-left: 2%;
+	padding-right: 2%;
 	border-style: hidden;
 }
 
@@ -154,7 +165,7 @@ nav li a:hover
 {
 	margin-top: 1%;
 	height: 30%;
-	font-size: 25px;
+	font-size: 20px;
 	border: double #b3e6b3;
 	
 }
@@ -165,6 +176,7 @@ nav li a:hover
 	font-size: 15px;
 	border: solid #b3e6b3;
 	height: 30px;
+	
 }
 
 /* Filter through colors button */
@@ -196,8 +208,8 @@ th
 }
 tr
 {
-	height: 10vw;
-	max-height: 20vw;
+	height: 10vh;
+	
 	
 }
 
@@ -224,14 +236,12 @@ tr:nth-child(even)
 {
 border: 2px outset darkgreen;
 border-radius: 3px;
-height: 3vh;
+height: 30px;
 font-size: 15px;
-
 font-family: 'Bree Serif', serif;
 
 	
 }
-
 
 /* Code to make site responsive */
 
@@ -245,8 +255,10 @@ font-family: 'Bree Serif', serif;
 	width: 100%;
 	height: auto;
 	margin-top: 3%;
+	margin-bottom: 1%;
+
 	padding-top: 5%;
-	padding-bottom: 2%;
+	padding-bottom: 3%;
 	background-size: auto;
 	
 }
@@ -263,18 +275,13 @@ font-family: 'Bree Serif', serif;
 
 }
 
-.searchdiv
-{
-	
-	width: 90%;
-}
+
 
 .searchbar
 {
 	height: 25px;
-	
-	width: 70%;
-	margin: 0 1%;
+
+	font-size: 4vw;
 
 }
 
@@ -284,9 +291,73 @@ font-family: 'Bree Serif', serif;
 	height: 25px;
 }
 
+.noimage
+{
+	max-height: 20vw;
+	min-height: 15vw;
 
+	
+}
 
+tr
+{
+	height: 12vh;
+	
+	
+}
 
+td
+{
+	font-size: 90%;
+	
+}
+
+nav ul 
+{
+	font-size: 4vw;
+	
+}
+
+th 
+{
+	font-size: 5vw;
+}
 
 
 }
+
+/* responsive ipad pro code */
+/*
+@media only screen and (min-device-width : 1000px) and (max-device-width : 1024px) 
+{
+	
+	nav ul 
+{
+	font-size: 30px;
+	
+}
+
+.searchbar
+{
+	
+
+	font-size: 30px;
+
+}
+
+.button
+{
+	font-size: 20px;
+}
+td
+{
+font-size: 30px; 
+}
+
+p
+{
+	font-size: 30px;
+}
+
+}
+*/
