@@ -123,11 +123,16 @@ if (!isset($_GET['PartID']) || empty($_GET['PartID'])) {
 	print("<button class='button' type='submit'> Filter </button>");
     print("</form>");
     print("</div>");
-    
+	
+    if(isset($_GET['searchkey']))
+	{
+		print("<a href='Searchresult_parts.php?PartID=$PartID&pagenumber=1&searchkey_breadcrumbs=$searchkey_breadcrumbs'> Back to all colors </a>");
+	}
 	if($amount_of_results != 0) {
 	//Print all the available colors for the selected part
     print("<div class='content'>");
 	print("<h1 class='informational_headers'>Available colors:</h1>");
+	print("Showing $amount_of_results results");
     print("<table>\n<tr>");
     print("<th>Image</th> <th>Partname</th> <th>Colorname</th>");
     print("</tr>");

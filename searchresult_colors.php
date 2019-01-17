@@ -64,10 +64,11 @@ $amount_of_resultpages = ceil(($amount_of_results/15));
 //Query for information about the part you have chosen
 $result_part = mysqli_query($connection, "SELECT colors.ColorID, colors.Colorname, parts.PartID, parts.Partname FROM colors, parts WHERE colors.ColorID='$ColorID' AND parts.PartID='$ItemID'");
 
-//Displaying information about the part you have chosen
+
 $row_part = mysqli_fetch_array($result_part);
 $Partname = $row_part['Partname'];
 $Colorname = $row_part['Colorname'];
+//Printing breadcrumbs
 print("<div class=\"breadcrumbs\">");
 print("<a href=\"Homepage_V2.php\"> Home </a>");
 print("/");
@@ -76,6 +77,7 @@ print("/");
 print("<a href=\"Searchresult_parts.php?PartID=" . $ItemID . "&pagenumber=1&searchkey_breadcrumbs=$searchkey_breadcrumbs\">$Partname</a>");
 print("/");
 print("$Colorname");
+//Displaying information about the part you have chosen
 print("</div>");
 print("<div class=\"content\">");
 print("<table>");
@@ -92,7 +94,7 @@ print("<div class=\"content\">");
 //Displaying information about the sets the chosen part is included in
 print("<div>");
 print("<h1 class='informational_headers'>Sets this part is included in:</h1>");
-
+print("Showing $amount_of_results results");
 print("<table>");
 print("<tr>");
 print("<th>SetID</th> <th>Setname</th> <th>Year</th>");
@@ -108,6 +110,8 @@ while ($row = mysqli_fetch_array($result_sets_visible)) {
                 print("</tr>");
 }
 print("</table>");
+/*Print only a "Next page" button if you're on page 1. Print both a "Next page" and a "Previous page" button if you're on any page between the first and the last. 
+Print only a "Next page" button if you're on the last page. */ 
 if($amount_of_resultpages == 1 || $amount_of_resultpages == null) {}
 else if($pagenumber != 1 && $pagenumber != $amount_of_resultpages)
 {

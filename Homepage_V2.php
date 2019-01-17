@@ -21,10 +21,8 @@
 		<a class="icon" href="Homepage_V2.php">
     <div class ="header">
        
-		
         <h1>Lego finder</h1>
 		</div>
-		
 		</a>
 		
 		<nav>
@@ -40,7 +38,7 @@
         <div class="searchdiv">
         <form action="Homepage_V2.php" method="get" >
         <input class="searchbar" type="text" name="searchkey" placeholder="Search for a lego part using name or PartID" size="40">
-		<input class ="pagenumber" type="hidden" name="pagenumber" value="1">
+		<input type="hidden" name="pagenumber" value="1">
 		<button class ="button" type="submit"> Search </button> 
         </form>
         </div>
@@ -95,9 +93,6 @@ if(isset($_GET['searchkey']) && $_GET['searchkey'] != NULL) {
 	//Counting amount of total results
 	$result = mysqli_query($connection, "(SELECT DISTINCT parts.PartID, parts.CatID, parts.Partname, inventory.ItemID FROM parts, inventory WHERE (parts.partname LIKE '$searchkey' OR parts.PartID LIKE '$searchkey') AND parts.PartID=inventory.ItemID ORDER BY length(CatID), CatID, partname ASC) UNION (SELECT DISTINCT parts.PartID, parts.CatID, parts.Partname, inventory.ItemID FROM parts, inventory WHERE (parts.partname LIKE '$searchkey%' OR parts.PartID LIKE '$searchkey%') AND parts.PartID=inventory.ItemID ORDER BY length(CatID), CatID, partname ASC) UNION (SELECT DISTINCT parts.PartID, parts.CatID, parts.Partname, inventory.ItemID FROM parts, inventory WHERE (parts.partname LIKE '%$searchkey%' OR parts.PartID LIKE '%$searchkey%') AND parts.PartID=inventory.ItemID ORDER BY length(CatID), CatID, partname ASC) ");
 	$amount_of_results = $result->num_rows;
-	
-
-//SELECT DISTINCT parts.PartID, parts.CatID, parts.Partname, inventory.ItemID FROM parts, inventory WHERE (parts.partname LIKE '%$searchkey%' OR parts.PartID LIKE '%$searchkey%') AND parts.PartID=inventory.ItemID
 
 	//Show results if there are any
 	if($amount_of_results != 0) {
@@ -105,6 +100,7 @@ if(isset($_GET['searchkey']) && $_GET['searchkey'] != NULL) {
 		//Query for each page visible in the result
 		$visible_result = mysqli_query($connection, "(SELECT DISTINCT parts.PartID, parts.CatID, parts.Partname, inventory.ItemID FROM parts, inventory WHERE (parts.partname LIKE '$searchkey' OR parts.PartID LIKE '$searchkey') AND parts.PartID=inventory.ItemID ORDER BY length(CatID), CatID, partname ASC) UNION (SELECT DISTINCT parts.PartID, parts.CatID, parts.Partname, inventory.ItemID FROM parts, inventory WHERE (parts.partname LIKE '$searchkey%' OR parts.PartID LIKE '$searchkey%') AND parts.PartID=inventory.ItemID ORDER BY length(CatID), CatID, partname ASC) UNION (SELECT DISTINCT parts.PartID, parts.CatID, parts.Partname, inventory.ItemID FROM parts, inventory WHERE (parts.partname LIKE '%$searchkey%' OR parts.PartID LIKE '%$searchkey%') AND parts.PartID=inventory.ItemID ORDER BY length(CatID), CatID, partname ASC)  LIMIT 15 OFFSET $offset");
 		//Print the current resultpage
+		print("Showing $amount_of_results results");
 		echo"<table>\n<tr>
 		<th>Image </th> <th>PartID</th> <th>Partname</th>
 		</tr>\n";

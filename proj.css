@@ -58,7 +58,7 @@ h1
 /* Parent div kan tas bort*/
 .wrapper
 {
-    text-align: center;
+   
 	width: 100%;
 	
 }
@@ -74,7 +74,6 @@ h1
 	background-size: auto;
 	padding-top: 3%;
 	padding-bottom: 3%;
-	margin-top: 1%;
     text-align: center;
 	
 }
@@ -82,7 +81,7 @@ h1
 /* Content - like tables and such */
 .content
 {
-    display: block;
+ 
 	margin: auto;
     width: 90%;
     height: auto;
@@ -134,10 +133,6 @@ nav ul
 	border-radius: 5px;
 }
 
-nav li 
-{
-	/*float: left;*/
-}
 
 nav li a {
 	display: inline-block;
@@ -238,7 +233,7 @@ tr:nth-child(even)
 .pagenumber
 {
 	
-	display: inline-block;
+	
 	
 }
 .pagebuttons
@@ -264,6 +259,14 @@ font-family: 'Bree Serif', serif;
 {
 	font-size: 18px;
 	font-family: 'Roboto', sans-serif;
+	border: solid #c61300;
+	border-radius: 5px;
+	margin: 1% auto;
+	width: 90%;
+	padding-top: 1%;
+	padding-bottom: 1%;
+	background-color: #b3e6b3;
+	
 }
 
 /* Code to make site responsive */
@@ -336,17 +339,17 @@ td
 	
 }
 
-nav ul 
-{
-	font-size: 4vw;
-	
-}
 
 th 
 {
 	font-size: 5vw;
 }
 
+nav ul 
+{
+	font-size: 5vw;
+	
+}
 
 }
 
