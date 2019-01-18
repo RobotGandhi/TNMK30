@@ -36,7 +36,7 @@
         
             <h1>About us</h1>
 			<p>We are a group of five students studying the course Electronic Publishing at the University of Linköping, Sweden. The course required us to make a website with a search function that is linked to a database. 
-			In our case, the search function is linked to a Lego-database that shows information about what set a lego piece is included in.</p>
+			In our case, the search function is linked to a Lego-database where you can search for a lego part and see what sets it's included in.</p>
 		</div>	
 		
 		 
