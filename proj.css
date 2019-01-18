@@ -58,16 +58,14 @@ h1
 /* Parent div kan tas bort*/
 .wrapper
 {
-   
 	width: 100%;
-	
 }
 
 .header
 {
     display: inline-block;
     height: auto;
-    width: 90%;
+    width: 315px;
     background-image: url(LegoFinder.png);
 	background-repeat: no-repeat;
 	background-position: center;
@@ -120,7 +118,7 @@ nav ul
 {
 	display: flex;
 	margin-top: 1%;
-	width: 90%;
+	width: 100%;
     list-style-type: none;
     margin: auto;
     padding: 0;
