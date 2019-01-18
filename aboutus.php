@@ -5,10 +5,10 @@
     
 <head>
         <meta charset="UTF-8"/>
-        <title>Homepage</title>
+        <title>About Us | Lego Finder</title>
         <meta name="description" content="A site where you can find your lego parts and see what set they're in!"/>
         <meta name="author" content="Viktor Carlsson, Uma Eriksson, Ruben Bromee, Jessie Chow, Alma Fernvik"/>
-        <link rel="stylesheet" href="proj.css" type="text/css"/>
+        <link rel="stylesheet" href="style.css" type="text/css"/>
 		<link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
