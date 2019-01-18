@@ -169,7 +169,7 @@ else {
 			<h3>Step 3:</h3>
 			<p>Choose the color of the type of part you have chosen and see what sets that part is included in.</p>
 			<p>You can navigate through your search path by using the breadcrumb menu that appears below the menu bar after you've selected the type of part you're looking for.<br> 
-			Clicking the icon at the top of your screen also takes you to the homepage. </p>
+			Clicking the icon at the top of your screen takes you to the homepage. </p>
          ");
 }
 
