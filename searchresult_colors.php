@@ -36,13 +36,16 @@
 </nav>
 <?php
 //Declaring variables
-$searchkey_breadcrumbs = $_GET['searchkey_breadcrumbs'];
 $pagenumber = $_GET['pagenumber'];
 $offset = ($pagenumber-1) * 15;
 $previous_page = $pagenumber - 1;
 $next_page = $pagenumber + 1;
+$searchkey_breadcrumbs = $_GET['searchkey_breadcrumbs'];
 $ItemID        = $_GET['ItemID'];
 $ColorID       = $_GET['ColorID'];
+$sort_order = $_GET['sort_order'];
+$sort_by = $_GET['sort_by'];
+
 $prefix_colors = "http://www.itn.liu.se/~stegu76/img.bricklink.com/P/";
 //Checking connection to database
 $connection    = mysqli_connect("mysql.itn.liu.se", "lego", "", "lego");
@@ -50,11 +53,21 @@ if (!$connection) {
 	die("No connection to the lego database could be established.");
 }
 
+
 //Query for total amount of results
-$result_sets = mysqli_query($connection, "SELECT inventory.SetID, inventory.ItemID, inventory.ColorID, sets.SetID, sets.Setname, sets.Year FROM inventory, sets WHERE inventory.ItemID='$ItemID' AND inventory.ColorID='$ColorID' AND inventory.SetID=sets.SetID");
+$query_prefix = "SELECT inventory.SetID, inventory.ItemID, inventory.ColorID, sets.SetID, sets.Setname, sets.Year FROM inventory, sets WHERE inventory.ItemID='$ItemID' AND inventory.ColorID='$ColorID' AND inventory.SetID=sets.SetID";
+if (($sort_order == "ASC" || $sort_order == "DESC") && ($sort_by == "Setname" || $sort_by == "Year")) {
+	$query = $query_prefix . " ORDER BY sets.$sort_by $sort_order";
+}
+else {
+	$query = $query_prefix . " ORDER BY sets.Setname DESC";
+}
+$query .= " LIMIT 15 OFFSET $offset";
+
+$result_sets = mysqli_query($connection, $query_prefix);
 
 //Query for each page visible in the result
-$result_sets_visible = mysqli_query($connection, "SELECT inventory.SetID, inventory.ItemID, inventory.ColorID, sets.SetID, sets.Setname, sets.Year FROM inventory, sets WHERE inventory.ItemID='$ItemID' AND inventory.ColorID='$ColorID' AND inventory.SetID=sets.SetID ORDER BY sets.Setname ASC LIMIT 15 OFFSET $offset");
+$result_sets_visible = mysqli_query($connection, $query);
 
 //Counting total amount of results
 $amount_of_results = $result_sets->num_rows;
@@ -70,11 +83,11 @@ $Partname = $row_part['Partname'];
 $Colorname = $row_part['Colorname'];
 //Printing breadcrumbs
 print("<div class=\"breadcrumbs\">");
-print("<a href=\"Homepage_V2.php\"> Home </a>");
+print("<a href='Homepage_V2.php'> Home </a>");
 print("/");
 print("<a href='Homepage_V2.php?searchkey=$searchkey_breadcrumbs&pagenumber=1'>Searchresult of \"$searchkey_breadcrumbs\" </a>");
 print("/");
-print("<a href=\"Searchresult_parts.php?PartID=" . $ItemID . "&pagenumber=1&searchkey_breadcrumbs=$searchkey_breadcrumbs\">$Partname</a>");
+print("<a href='Searchresult_parts.php?PartID=" . $ItemID . "&pagenumber=1&searchkey_breadcrumbs=$searchkey_breadcrumbs'>$Partname</a>");
 print("/");
 print("$Colorname");
 //Displaying information about the part you have chosen
@@ -97,7 +110,16 @@ print("<h1 class='informational_headers'>Sets this part is included in:</h1>");
 print("Showing $amount_of_results results");
 print("<table>");
 print("<tr>");
-print("<th>SetID</th> <th>Setname</th> <th>Year</th>");
+print("<th>SetID</th>"); 
+if($sort_by == "Setname" && $sort_order == "DESC")
+	print("<th><a href='searchresult_colors.php?ItemID=$ItemID&ColorID=$ColorID&pagenumber=1&searchkey_breadcrumbs=$searchkey_breadcrumbs&sort_by=Setname&sort_order=ASC'>Setname (sort Ascending)</a></th>");
+else
+	print("<th><a href='searchresult_colors.php?ItemID=$ItemID&ColorID=$ColorID&pagenumber=1&searchkey_breadcrumbs=$searchkey_breadcrumbs&sort_by=Setname&sort_order=DESC'>Setname (sort Descending)</a></th>");
+
+if($sort_by == "Year" && $sort_order == "DESC")
+	print("<th><a href='searchresult_colors.php?ItemID=$ItemID&ColorID=$ColorID&pagenumber=1&searchkey_breadcrumbs=$searchkey_breadcrumbs&sort_by=Year&sort_order=ASC'>Year (sort Ascending)</a></th>");
+else
+	print("<th><a href='searchresult_colors.php?ItemID=$ItemID&ColorID=$ColorID&pagenumber=1&searchkey_breadcrumbs=$searchkey_breadcrumbs&sort_by=Year&sort_order=DESC'>Year (sort Descending)</a></th>");
 print("</tr>");
 while ($row = mysqli_fetch_array($result_sets_visible)) {
 				$SetID   = $row['SetID'];
