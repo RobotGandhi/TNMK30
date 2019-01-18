@@ -35,7 +35,10 @@
       <div class= "content">
         
             <h1>About us</h1>
-			<p>We are a group of five students studying the course Electronic Publishing at the University of Linköping, Sweden. The course required us to make a website with a search function that is linked to a database. 
+			<p>We are a group of five students studying the course Electronic Publishing at the University of Linköping, Sweden. 
+			Our names are Viktor Carlsson, Uma Eriksson, Ruben Brom�e, Jessie Chow and Alma Fernvik.</p>
+			
+			<p>The course required us to make a website with a search function that is linked to a database. 
 			In our case, the search function is linked to a Lego-database where you can search for a lego part and see what sets it's included in.</p>
 		</div>	
 		
