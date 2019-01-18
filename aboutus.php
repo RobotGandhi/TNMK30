@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html>   
     <head>
         <meta charset="UTF-8"/>
         <title>About Us | Lego Finder</title>
         <meta name="description" content="A site where you can find your lego parts and see what set they're in!"/>
-        <meta name="author" content="Viktor Carlsson, Uma Eriksson, Ruben Bromee, Jessie Chow, Alma Fernvik"/>
+        <meta name="author" content="Viktor Carlsson, Uma Eriksson, Ruben Bromée, Jessie Chow, Alma Fernvik"/>
         <link rel="stylesheet" href="style.css" type="text/css"/>
         <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,7 +17,7 @@
         <h1>Lego finder</h1>
         </div>
         </a>
-        
+		
         <nav>
         <ul>
         <li><a href="Homepage_V2.php">Home</a></li>
