@@ -100,7 +100,7 @@ if(isset($_GET['searchkey']) && $_GET['searchkey'] != NULL) {
 		//Query for each page visible in the result
 		$visible_result = mysqli_query($connection, "(SELECT DISTINCT parts.PartID, parts.CatID, parts.Partname, inventory.ItemID FROM parts, inventory WHERE (parts.partname LIKE '$searchkey' OR parts.PartID LIKE '$searchkey') AND parts.PartID=inventory.ItemID ORDER BY length(CatID), CatID, partname ASC) UNION (SELECT DISTINCT parts.PartID, parts.CatID, parts.Partname, inventory.ItemID FROM parts, inventory WHERE (parts.partname LIKE '$searchkey%' OR parts.PartID LIKE '$searchkey%') AND parts.PartID=inventory.ItemID ORDER BY length(CatID), CatID, partname ASC) UNION (SELECT DISTINCT parts.PartID, parts.CatID, parts.Partname, inventory.ItemID FROM parts, inventory WHERE (parts.partname LIKE '%$searchkey%' OR parts.PartID LIKE '%$searchkey%') AND parts.PartID=inventory.ItemID ORDER BY length(CatID), CatID, partname ASC)  LIMIT 15 OFFSET $offset");
 		//Print the current resultpage
-		print("Showing $amount_of_results results");
+		print("<p class='results'>Showing $amount_of_results results</p>");
 		echo"<table>\n<tr>
 		<th>Image </th> <th>PartID</th> <th>Partname</th>
 		</tr>\n";
@@ -155,12 +155,12 @@ if(isset($_GET['searchkey']) && $_GET['searchkey'] != NULL) {
 		}
 	} else {
 		//Print an error message if no searchresults were found.
-		print(" <p> Sorry, no results were found for \"$searchkey\". Try checking for misspellings.</p> ");
+		print(" <p class='results'> Sorry, no results were found for \"$searchkey\". Try checking for misspellings.</p> ");
 	}
 }
 else {
 	 print(" 
-			<p> <h2> Welcome to Lego finder! Here you can search for a lego part and see what sets it's included in.</h2> </p>
+			<h2> Welcome to Lego finder! Here you can search for a lego part and see what sets it's included in.</h2>
             <h2>How to search:</h2>
 			<h3>Step 1:</h3>
 			<p>Search for the <b>type</b> of part you're looking for by typing in either its name or its PartID into the searchbar.</p>
@@ -168,7 +168,7 @@ else {
 			<p>Choose the type of part you're looking by clicking the partname.</p>
 			<h3>Step 3:</h3>
 			<p>Choose the color of the type of part you have chosen and see what sets that part is included in.</p>
-			<p>You can navigate through your search path by using the breadcrumb menu that appears below the menu bar after you've selected the type of part you're looking for.<br> 
+			<p>You can navigate through your search path by using the breadcrumb menu that appears below the menu bar after you've selected the type of part you're looking for. 
 			Clicking the icon at the top of your screen takes you to the homepage. </p>
          ");
 }
