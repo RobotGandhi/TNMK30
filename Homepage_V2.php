@@ -9,7 +9,7 @@
         <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <script type="text/javascript" src="script.js"></script>
-        <!-- Used for responsiveness (is not required for responsiveness always but we have combined this with the css responsiveness -->
+        <!-- Used for responsiveness (is not required for responsiveness always but we have combined this with the css responsiveness) -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     
