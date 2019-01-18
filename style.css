@@ -24,9 +24,11 @@ img
 	width: auto;
 }
 
+/* the no image found picture sizing*/
 .noimage
 {
 	min-height: 13vw;
+	width: auto;
 }
 
 div
@@ -37,6 +39,7 @@ div
 
 h1
 {
+	padding: 0 2%;
 	font-size: 30px;
 	color: black;
 }
@@ -78,9 +81,6 @@ p
 	color: white;
 	border-radius: 0;
 }
-
-
-
 
 /*Menu */
 
@@ -131,7 +131,7 @@ nav li a:hover
 	padding-right: 2%;
 }
 
-/*Searchbar*/
+
 .searchbar
 {
 	margin-top: 2%;
@@ -147,11 +147,13 @@ nav li a:hover
 	height: 30px;
 	margin-left: 0.3%;
 }
+/*Amount of searchrsults in italics */
 .results
 {
 	font-style: italic;	
 }
 
+/*keep links blue even when visited */
 a.sort:link
 {
 	color:#0000ff;
@@ -191,6 +193,7 @@ tr:nth-child(even)
 	background-color: honeydew;
 }
 
+/*div around pagenumber and pagebuttons */
 .pages
 {
 	margin-top:1vh;
@@ -207,16 +210,18 @@ tr:nth-child(even)
 	font-size: 15px;
 	font-family: 'Bree Serif', serif;
 }
+
 .informational_headers
 {
-	font-size: 24px;
-	
+	font-size: 24px;	
 }
+
 .informational_text
 {
 	font-size: 18px;
 	font-family: 'Roboto', sans-serif;
 }
+
 .breadcrumbs
 {
 	font-size: 18px;
@@ -229,8 +234,6 @@ tr:nth-child(even)
 	padding-bottom: 1%;
 	background-color: #b3e6b3;
 }
-
-
 
 /* Code to make site responsive */
 
@@ -253,7 +256,6 @@ tr:nth-child(even)
 .content
 {
 	width: 90%;
-
 }
 
 
@@ -261,7 +263,6 @@ tr:nth-child(even)
 {
 	height: 25px;
 	font-size: 4vw;
-
 }
 
 .button
@@ -276,8 +277,6 @@ tr:nth-child(even)
 	min-height: 15vw;
 }
 
-
-
 tr
 {
 	height: 12vh;
@@ -288,7 +287,6 @@ td
 {
 	font-size: 90%;
 }
-
 
 th 
 {
