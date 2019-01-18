@@ -72,7 +72,7 @@ $Colorname = $row_part['Colorname'];
 print("<div class=\"breadcrumbs\">");
 print("<a href=\"Homepage_V2.php\"> Home </a>");
 print("/");
-print("<a href='Homepage_V2.php?searchkey_breadcrumbs=$searchkey_breadcrumbs&pagenumber=1'>Searchresult of \"$searchkey_breadcrumbs\" </a>");
+print("<a href='Homepage_V2.php?searchkey=$searchkey_breadcrumbs&pagenumber=1'>Searchresult of \"$searchkey_breadcrumbs\" </a>");
 print("/");
 print("<a href=\"Searchresult_parts.php?PartID=" . $ItemID . "&pagenumber=1&searchkey_breadcrumbs=$searchkey_breadcrumbs\">$Partname</a>");
 print("/");

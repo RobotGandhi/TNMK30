@@ -155,19 +155,21 @@ if(isset($_GET['searchkey']) && $_GET['searchkey'] != NULL) {
 		}
 	} else {
 		//Print an error message if no searchresults were found.
-		print(" <p> Sorry, no results were found for \"$searchkey\". Try checking for misspellings and try again. <br>
-		If you're unsure how to search. Click the \"How to search\" button at the top of your screen. </p> ");
+		print(" <p> Sorry, no results were found for \"$searchkey\". Try checking for misspellings.</p> ");
 	}
 }
 else {
 	 print(" 
-            <h1>How to search:</h1>
-			<p><h2>Step 1:</h2> Search for the type of part you're looking for by typing in either its name or its PartID into the searchbar.  
-			Then press either the \"Search\" button with your mouse or press the \"Enter\" button on your keyboard</p>
-			<p><h2>Step 2:</h2> Choose the type of part you're looking by clicking the partname with your mouse.</p>
-			<p><h2>Step 3:</h2> Choose the color of the part you have chosen. You can filter the colors by typing any available color in the filter bar and either pressing the \"Filter\" button with your mouse or the \"Enter\" button on your keyboard.</p>
-			<p>You can navigate back to the type of part you have chosen by using the breadcrumb menu that appears at the upper part of your screen. You can navigate to the homepage at any time by pressing the \"Home\" button in either the breadcrumb menu, the header menu or by pressing the red lego brick at the top of your screen. 
-			</p>
+			<p> <h2> Welcome to Lego finder! Here you can search for a lego part and see what sets it's included in.</h2> </p>
+            <h2>How to search:</h2>
+			<h3>Step 1:</h3>
+			<p>Search for the <b>type</b> of part you're looking for by typing in either its name or its PartID into the searchbar.</p>
+			<h3>Step 2:</h3>
+			<p>Choose the type of part you're looking by clicking the partname.</p>
+			<h3>Step 3:</h3>
+			<p>Choose the color of the type of part you have chosen and see what sets that part is included in.</p>
+			<p>You can navigate through your search path by using the breadcrumb menu that appears below the menu bar after you've selected the type of part you're looking for.<br> 
+			Clicking the icon at the top of your screen takes you to the homepage. </p>
          ");
 }
 

@@ -84,7 +84,8 @@ h1
     width: 90%;
     height: auto;
     margin-top: 3%;
-    border: solid #c61300;
+	border: solid black;
+    /*border: solid #c61300;*/
     background-color: #b3e6b3	;
 
 	font-size: 18px;
@@ -99,7 +100,8 @@ h1
     width: 90%;
     margin-top: 3%;
 	margin-bottom: 1%;
-    border: solid #c61300;
+	border: solid black;
+    /*border: solid #c61300;*/
     background-color: #b3e6b3;
 }
 
@@ -257,7 +259,8 @@ font-family: 'Bree Serif', serif;
 {
 	font-size: 18px;
 	font-family: 'Roboto', sans-serif;
-	border: solid #c61300;
+	border: solid black;
+	/*border: solid #c61300;*/
 	border-radius: 5px;
 	margin: 1% auto;
 	width: 90%;
