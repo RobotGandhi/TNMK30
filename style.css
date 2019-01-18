@@ -79,10 +79,7 @@ p
 	border-radius: 0;
 }
 
-.results
-{
-	font-style: italic;	
-}
+
 
 
 /*Menu */
@@ -118,7 +115,6 @@ nav li a
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-
 }
 
 /* change color while hovering over menu button */
@@ -150,6 +146,20 @@ nav li a:hover
 	border: solid #b3e6b3;
 	height: 30px;
 	margin-left: 0.3%;
+}
+.results
+{
+	font-style: italic;	
+}
+
+a.sort:link
+{
+	color:#0000ff;
+}
+
+a.sort:visited
+{
+	color:#0000ff;
 }
 
 table
@@ -219,6 +229,8 @@ tr:nth-child(even)
 	padding-bottom: 1%;
 	background-color: #b3e6b3;
 }
+
+
 
 /* Code to make site responsive */
 

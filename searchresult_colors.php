@@ -101,15 +101,15 @@ echo"<table>
 <tr>
 <th>SetID</th>";
 if ($sort_by == "Setname" && $sort_order == "DESC") {
-    echo "<th><a href='searchresult_colors.php?ItemID=$ItemID&ColorID=$ColorID&pagenumber=1&searchkey_breadcrumbs=$searchkey_breadcrumbs&sort_by=Setname&sort_order=ASC'>Setname (sort Ascending)</a></th>";
+    echo "<th><a class='sort' href='searchresult_colors.php?ItemID=$ItemID&ColorID=$ColorID&pagenumber=1&searchkey_breadcrumbs=$searchkey_breadcrumbs&sort_by=Setname&sort_order=ASC'>Setname (sort Ascending)</a></th>";
 } else {
-    echo "<th><a href='searchresult_colors.php?ItemID=$ItemID&ColorID=$ColorID&pagenumber=1&searchkey_breadcrumbs=$searchkey_breadcrumbs&sort_by=Setname&sort_order=DESC'>Setname (sort Descending)</a></th>";
+    echo "<th><a class='sort' href='searchresult_colors.php?ItemID=$ItemID&ColorID=$ColorID&pagenumber=1&searchkey_breadcrumbs=$searchkey_breadcrumbs&sort_by=Setname&sort_order=DESC'>Setname (sort Descending)</a></th>";
 }
 
 if ($sort_by == "Year" && $sort_order == "DESC") {
-    echo"<th><a href='searchresult_colors.php?ItemID=$ItemID&ColorID=$ColorID&pagenumber=1&searchkey_breadcrumbs=$searchkey_breadcrumbs&sort_by=Year&sort_order=ASC'>Year (sort Ascending)</a></th>";
+    echo "<th><a class='sort' href='searchresult_colors.php?ItemID=$ItemID&ColorID=$ColorID&pagenumber=1&searchkey_breadcrumbs=$searchkey_breadcrumbs&sort_by=Year&sort_order=ASC'>Year (sort Ascending)</a></th>";
 } else {
-    echo "<th><a href='searchresult_colors.php?ItemID=$ItemID&ColorID=$ColorID&pagenumber=1&searchkey_breadcrumbs=$searchkey_breadcrumbs&sort_by=Year&sort_order=DESC'>Year (sort Descending)</a></th>";
+    echo "<th><a class='sort' href='searchresult_colors.php?ItemID=$ItemID&ColorID=$ColorID&pagenumber=1&searchkey_breadcrumbs=$searchkey_breadcrumbs&sort_by=Year&sort_order=DESC'>Year (sort Descending)</a></th>";
 }
 echo "</tr>";
 while ($row = mysqli_fetch_array($result_sets_visible)) {
