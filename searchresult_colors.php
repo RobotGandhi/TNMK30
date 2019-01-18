@@ -107,7 +107,17 @@ print("<div class=\"content\">");
 //Displaying information about the sets the chosen part is included in
 print("<div>");
 print("<h1 class='informational_headers'>Sets this part is included in:</h1>");
-print("Showing $amount_of_results results");
+if ($sort_by == "Setname" || $sort_by == "Year") {
+	print("Showing $amount_of_results results, sorted by $sort_by");
+	if ($sort_order == "ASC"){
+		print(", sorted in ascending order");
+	}
+	else if ($sort_order == "DESC"){
+		print(", sorted in descending order");
+	}
+} else {
+	print("Showing $amount_of_results results");
+}
 print("<table>");
 print("<tr>");
 print("<th>SetID</th>"); 
