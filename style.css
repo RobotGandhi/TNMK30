@@ -84,12 +84,6 @@ p
 	font-style: italic;	
 }
 
-/* Icon text fix */
-icon:link, icon:visited, icon:hover, icon:active 
-{
-	color: black;
-	text-decoration:none;	
-}
 
 /*Menu */
 
@@ -269,6 +263,8 @@ tr:nth-child(even)
 	max-height: 20vw;
 	min-height: 15vw;
 }
+
+
 
 tr
 {
