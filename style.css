@@ -82,6 +82,29 @@ p
 	border-radius: 0;
 }
 
+/*Div around searchbar */
+.searchdiv
+{
+	padding-left: 2%;
+	padding-right: 2%;
+}
+
+.searchbar
+{
+	margin-top: 2%;
+	font-size: 20px;
+	border: double #b3e6b3;
+}
+
+/* Searchbutton */
+.button
+{
+	font-size: 15px;
+	border: solid #b3e6b3;
+	height: 30px;
+	margin-left: 0.3%;
+}
+
 /*Menu */
 
 /*positioning the menu bar at the top of the site when scrolled*/
@@ -124,29 +147,6 @@ nav li a:hover
 	color: black;
 }
 
-/*Div around searchbar */
-.searchdiv
-{
-	padding-left: 2%;
-	padding-right: 2%;
-}
-
-
-.searchbar
-{
-	margin-top: 2%;
-	font-size: 20px;
-	border: double #b3e6b3;
-}
-
-/* Searchbutton */
-.button
-{
-	font-size: 15px;
-	border: solid #b3e6b3;
-	height: 30px;
-	margin-left: 0.3%;
-}
 /*Amount of searchrsults in italics */
 .results
 {
